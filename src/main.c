@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/08 10:33:34 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:38:57 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	key_handler(int keysym, t_cube *cube)
 		(void)keysym;
 	if (keysym == XK_d)
 		(void)keysym;
-	(void)cube;
+	if (keysym == XK_Escape)
+		cleanup(cube);
 	return (0);
 }
 
@@ -62,6 +63,16 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	}
 }
 
+double	scale(double value, double origin_max,
+			double target_min, double target_max)
+{
+	double	origin_min;
+
+	origin_min = 0;
+	return ((value - origin_min) * (target_max - target_min)
+		/ (origin_max - origin_min) + target_min);
+}
+
 void	render_point(t_cube *cube, int x, int y)
 {
 	draw_pixel(&cube->img, x, y, 0x00FFFF);
@@ -71,40 +82,60 @@ void	render_image(t_cube *cube)
 {
 	int	x;
 	int	y;
+	int	a;
+	int	b;
 
 	mlx_destroy_image(cube->mlx, cube->img.img_addr);
 	init_image(cube);
 	x = -1;
+	a = -1;
 	while (++x < 800)
 	{
+		if (x % 100 == 0)
+			a++;
 		y = -1;
+		b = -1;
 		while (++y < 800)
 		{
-			
+			if (y % 100 == 0)
+				b++;
+			if (cube->map.map[a][b] == 1)
+				cube->color = DARK_RED;
+			else if (cube->map.map[a][b] == 0)
+				cube->color = DARK_BLUE;
+			else if (cube->map.map[a][b] == 2)
+				cube->color = GREEN;
+			draw_pixel(&cube->img, y, x, cube->color);
 		}
 	}
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }
 
 int	main(int ac, char **av)
 {
 	t_cube cube;
-	int map[8][8] = {
+	
+	int	map_init[8][8] = {
 		{1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 1},
 		{1, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 2, 1},
 		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 'P', 0, 0, 0, 1},
 		{1, 0, 0, 0, 0, 0, 0, 1},
 		{1, 0, 0, 0, 0, 0, 0, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1}
 	};
+	
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 8; j++)
+			cube.map.map[i][j] = map_init[i][j];
 
 	(void)ac;
 	(void)av;
-	(void)map;
 	cube.mlx = mlx_init();
 	cube.mlx_win = mlx_new_window(cube.mlx, 800, 800, "Test");
 	init_hooks(&cube);
 	init_image(&cube);
+	render_image(&cube);
 	mlx_loop(cube.mlx);
 }
