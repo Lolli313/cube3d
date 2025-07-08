@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/07 17:16:34 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:33:34 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,33 @@ void	init_image(t_cube *cube)
 			&cube->img.endian);
 }
 
+int	cleanup(t_cube *cube)
+{
+	mlx_destroy_window(cube->mlx, cube->mlx_win);
+	mlx_destroy_image(cube->mlx, cube->img.img_addr);
+	mlx_destroy_display(cube->mlx);
+	free(cube->mlx);
+	exit(0);
+}
+
 int	key_handler(int keysym, t_cube *cube)
 {
 	if (keysym == XK_w)
-		(void);
+		(void)keysym;
 	if (keysym == XK_a)
-		(void);
+		(void)keysym;
 	if (keysym == XK_s)
-		(void);
+		(void)keysym;
 	if (keysym == XK_d)
-		(void);
-	
+		(void)keysym;
+	(void)cube;
+	return (0);
 }
 
 void	init_hooks(t_cube *cube)
 {
 	mlx_key_hook(cube->mlx_win, key_handler, cube);
-	mlx_mouse_hook(cube->mlx_win, mouse_handler, cube);
+//	mlx_mouse_hook(cube->mlx_win, mouse_handler, cube);
 	mlx_hook(cube->mlx_win, 17, 0, cleanup, cube);
 }
 
@@ -91,6 +101,7 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	(void)av;
+	(void)map;
 	cube.mlx = mlx_init();
 	cube.mlx_win = mlx_new_window(cube.mlx, 800, 800, "Test");
 	init_hooks(&cube);

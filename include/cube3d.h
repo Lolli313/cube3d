@@ -6,13 +6,14 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/07 16:59:19 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:33:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
+# include <stdlib.h>
 # include <mlx.h>
 # include <X11/keysym.h>
 
