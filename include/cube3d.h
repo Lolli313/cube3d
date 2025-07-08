@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/08 11:38:23 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:28:00 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,12 @@ typedef struct s_cube
 	void	*mlx;
 	void	*mlx_win;
 	int		color;
+	int		p_position_x;
+	int		p_position_y;
 	t_img	img;
 	t_map	map;
 }			t_cube;
+
+void	render_image(t_cube *cube);
 
 #endif

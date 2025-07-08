@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/08 11:38:57 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:37:29 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,39 @@ int	cleanup(t_cube *cube)
 	exit(0);
 }
 
+void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_position_y)
+{
+	cube->map.map[p_new_position_x][p_new_position_y] = 2;
+	cube->map.map[cube->p_position_x][cube->p_position_y] = 0;
+	cube->p_position_x = p_new_position_x;
+	cube->p_position_y = p_new_position_y;
+}
+
 int	key_handler(int keysym, t_cube *cube)
 {
 	if (keysym == XK_w)
-		(void)keysym;
+	{
+		if (cube->map.map[cube->p_position_x - 1][cube->p_position_y] != 1)
+			update_player_position(cube, cube->p_position_x - 1, cube->p_position_y);
+	}
 	if (keysym == XK_a)
-		(void)keysym;
+	{
+		if (cube->map.map[cube->p_position_x][cube->p_position_y - 1] != 1)
+			update_player_position(cube, cube->p_position_x, cube->p_position_y - 1);
+	}
 	if (keysym == XK_s)
-		(void)keysym;
+	{
+		if (cube->map.map[cube->p_position_x + 1][cube->p_position_y] != 1)
+			update_player_position(cube, cube->p_position_x + 1, cube->p_position_y);
+	}
 	if (keysym == XK_d)
-		(void)keysym;
+	{
+		if (cube->map.map[cube->p_position_x][cube->p_position_y + 1] != 1)
+			update_player_position(cube, cube->p_position_x, cube->p_position_y + 1);
+	}
 	if (keysym == XK_Escape)
 		cleanup(cube);
+	render_image(cube);
 	return (0);
 }
 
@@ -71,11 +92,6 @@ double	scale(double value, double origin_max,
 	origin_min = 0;
 	return ((value - origin_min) * (target_max - target_min)
 		/ (origin_max - origin_min) + target_min);
-}
-
-void	render_point(t_cube *cube, int x, int y)
-{
-	draw_pixel(&cube->img, x, y, 0x00FFFF);
 }
 
 void	render_image(t_cube *cube)
@@ -111,29 +127,40 @@ void	render_image(t_cube *cube)
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }
 
-int	main(int ac, char **av)
+void	init_cube(t_cube *cube)
 {
-	t_cube cube;
-	
+	cube->mlx = mlx_init();
+	cube->mlx_win = mlx_new_window(cube->mlx, 800, 800, "Test");
 	int	map_init[8][8] = {
-		{1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 2, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1}
+	{1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 2, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1}
 	};
 	
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 8; j++)
-			cube.map.map[i][j] = map_init[i][j];
+		{
+			cube->map.map[i][j] = map_init[i][j];
+			if (map_init[i][j] == 2)
+			{
+				cube->p_position_x = i;
+				cube->p_position_y = j;
+			}
+		}				
+}
+
+int	main(int ac, char **av)
+{
+	t_cube cube;
 
 	(void)ac;
 	(void)av;
-	cube.mlx = mlx_init();
-	cube.mlx_win = mlx_new_window(cube.mlx, 800, 800, "Test");
+	init_cube(&cube);
 	init_hooks(&cube);
 	init_image(&cube);
 	render_image(&cube);
