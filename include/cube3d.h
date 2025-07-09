@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/08 13:28:00 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:15:41 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,15 @@
 # define DARK_MAGENTA   0x550055
 # define DARK_PINK  	0x550033
 
+# define WIDTH 800
+# define HEIGHT 800
+# define MAP_X 8
+# define MAP_Y 8
+# define PLAYERSIZE 10
+
 typedef struct s_map
 {
-	int		map[8][8];
+	int		map[MAP_X][MAP_Y];
 	char	*NO;
 	char	*SO;
 	char	*WE;
@@ -69,6 +75,8 @@ typedef struct s_cube
 	int		color;
 	int		p_position_x;
 	int		p_position_y;
+	int		p_square_x;
+	int		p_square_y;
 	t_img	img;
 	t_map	map;
 }			t_cube;
