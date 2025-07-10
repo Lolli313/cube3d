@@ -6,30 +6,11 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/09 18:31:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:49:10 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-void	init_image(t_cube *cube)
-{
-	cube->img.img_addr = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
-	cube->img.pixel_addr = mlx_get_data_addr(cube->img.img_addr,
-			&cube->img.bits_per_pixel, &cube->img.line_length,
-			&cube->img.endian);
-}
-
-int	cleanup(t_cube *cube)
-{
-	mlx_destroy_window(cube->mlx, cube->mlx_win);
-	mlx_destroy_image(cube->mlx, cube->img.img_addr);
-	mlx_destroy_display(cube->mlx);
-	free(cube->mlx);
-	exit(0);
-}
-
-// if (position_x / (WIDTH / MAP_X) < p_square_x )
 
 void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_position_y)
 {
@@ -46,13 +27,7 @@ void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_positi
 	printf("temp3 = %d\n", temp1);
 	temp4 = p_new_position_y / (HEIGHT / MAP_Y);
 	printf("temp4 = %d\n", temp2);
-	/*if (p_new_position_x % (HEIGHT / MAP_X) == 0 && cube->p_position_x != p_new_position_x)
-	{
-		if (cube->p_position_x < p_new_position_x)
-			cube->p_square_x++;
-		else if (cube->p_position_x > p_new_position_x)
-			cube->p_square_x--;
-	}*/
+
 	if (p_new_position_x <= HEIGHT / MAP_X || temp1 < cube->p_square_x)
 	{
 		if (p_new_position_x < HEIGHT / MAP_X || (cube->p_square_x <= 1 && temp2 < cube->p_square_x))
@@ -81,54 +56,8 @@ void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_positi
 		else
 			cube->p_square_y++;
 	}
-	/*if (p_new_position_y % (WIDTH / MAP_Y) == 0 && cube->p_position_y != p_new_position_y)
-	{
-		if (cube->p_position_y < p_new_position_y)
-			cube->p_square_y++;
-		else if (cube->p_position_y > p_new_position_y)
-			cube->p_square_y--;
-	}*/
 	cube->p_position_x = p_new_position_x;
 	cube->p_position_y = p_new_position_y;
-}
-
-int	key_handler(int keysym, t_cube *cube)
-{
-//	if (keysym == XK_Return)
-//		cube->p_position_x = 70;
-	if (keysym == XK_w)
-	{
-//		if (cube->map.map[cube->p_square_x - 1][cube->p_square_y] != 1)
-			update_player_position(cube, cube->p_position_x - 10, cube->p_position_y);
-	}
-	else if (keysym == XK_a)
-	{
-//		if (cube->map.map[cube->p_square_x][cube->p_square_y - 1] != 1)
-			update_player_position(cube, cube->p_position_x, cube->p_position_y - 10);
-	}
-	else if (keysym == XK_s)
-	{
-//		if (cube->map.map[cube->p_square_x + 1][cube->p_square_y] != 1)
-			update_player_position(cube, cube->p_position_x + 10, cube->p_position_y);
-	}
-	else if (keysym == XK_d)
-	{
-//		if (cube->map.map[cube->p_square_x][cube->p_square_y + 1] != 1)
-			update_player_position(cube, cube->p_position_x, cube->p_position_y + 10);
-	}
-	else if (keysym == XK_Escape)
-		cleanup(cube);
-	printf("p_square_x is %d and p_square_y is %d\n", cube->p_square_x, cube->p_square_y);
-	printf("position_x = %d and position_y is %d\n", cube->p_position_x, cube->p_position_y);
-	render_image(cube);
-	return (0);
-}
-
-void	init_hooks(t_cube *cube)
-{
-	mlx_key_hook(cube->mlx_win, key_handler, cube);
-//	mlx_mouse_hook(cube->mlx_win, mouse_handler, cube);
-	mlx_hook(cube->mlx_win, 17, 0, cleanup, cube);
 }
 
 void	draw_pixel(t_img *img, int x, int y, int color)
@@ -223,6 +152,7 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	init_cube(&cube);
+	init_keys(&cube);
 	init_hooks(&cube);
 	init_image(&cube);
 	render_image(&cube);

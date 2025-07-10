@@ -3,7 +3,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 DEPS = -Iinclude -Imlx_linux
 MLXFLAGS = -Lmlx_linux -lmlx -lXext -lX11 -lm
 SRCDIR = ./src/
-SRC = $(SRCDIR)main.c
+SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c
 OBJDIR = obj/
 OBJ = $(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
