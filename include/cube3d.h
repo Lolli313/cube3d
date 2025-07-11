@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/10 14:03:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/11 13:01:44 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include <mlx.h>
 # include <X11/keysym.h>
 
@@ -47,10 +48,13 @@
 # define MAP_X 8
 # define MAP_Y 8
 # define PLAYERSIZE 10
+# define PLAYERSPEED 10
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define DESTROY_WINDOW 17
+
+# define PI 3.14
 
 typedef struct s_keys
 {
@@ -90,6 +94,7 @@ typedef struct s_cube
 	int		p_position_y;
 	int		p_square_x;
 	int		p_square_y;
+	int		player_direction;
 	t_img	img;
 	t_map	map;
 	t_keys	keys;
@@ -102,11 +107,18 @@ void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_positi
 void	init_image(t_cube *cube);
 void	init_keys(t_cube *cube);
 void	init_hooks(t_cube *cube);
+void	init_cube(t_cube *cube);
 
 // hook functions
-int	key_press_handler(int keysym, t_cube *cube);
-int	key_release_handler(int keysym, t_cube *cube);
-int	game_loop(t_cube *cube);
-int	cleanup(t_cube *cube);
+int		key_press_handler(int keysym, t_cube *cube);
+int		key_release_handler(int keysym, t_cube *cube);
+int		game_loop(t_cube *cube);
+int		cleanup(t_cube *cube);
+
+// draw functions
+void	draw_pixel(t_img *img, int x, int y, int color);
+double	scale(double value, double origin_max,
+			double target_min, double target_max);
+void	render_image(t_cube *cube);
 
 #endif
