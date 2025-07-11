@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/11 12:36:47 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:51:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ double	scale(double value, double origin_max,
 	return ((value - origin_min) * (target_max - target_min)
 		/ (origin_max - origin_min) + target_min);
 }
+/*
+void	draw_line(t_cube *cube, int x, int y)
+{
+	
+}*/
+
+// to find x-coordinate use x = PLAYERDIRECTIONSIZE * cos(angle)
+// to find y-coordinate use y = PLAYERDIRECTIONSIZE * sin(angle)
 
 void	render_image(t_cube *cube)
 {
@@ -61,6 +69,8 @@ void	render_image(t_cube *cube)
 				cube->color = DARK_BLUE;
 			if ((x >= cube->p_position_x && x <= cube->p_position_x + PLAYERSIZE) && (y >= cube->p_position_y && y <= cube->p_position_y + PLAYERSIZE))
 				cube->color = GREEN;
+			if (x == PLAYERDIRECTIONSIZE * cos(cube->player_direction) && y == PLAYERDIRECTIONSIZE * sin(cube->player_direction))
+				cube->color = WHITE;
 			draw_pixel(&cube->img, y, x, cube->color);
 			cube->color = DARK_BLUE;
 		}

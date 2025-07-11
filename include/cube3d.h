@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/11 13:01:44 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:07:29 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <math.h>
 # include <mlx.h>
 # include <X11/keysym.h>
 
@@ -53,6 +54,7 @@
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define DESTROY_WINDOW 17
+# define PLAYERDIRECTIONSIZE 5
 
 # define PI 3.14
 
@@ -120,5 +122,9 @@ void	draw_pixel(t_img *img, int x, int y, int color);
 double	scale(double value, double origin_max,
 			double target_min, double target_max);
 void	render_image(t_cube *cube);
+
+// check functions
+bool	check_direction(t_cube *cube);
+bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, int a);
 
 #endif
