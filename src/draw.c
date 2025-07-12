@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/11 17:51:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:58:38 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,46 @@ double	scale(double value, double origin_max,
 	return ((value - origin_min) * (target_max - target_min)
 		/ (origin_max - origin_min) + target_min);
 }
-/*
-void	draw_line(t_cube *cube, int x, int y)
+
+void	bresenham(t_cube *cube, int start_x, int start_y, int end_x, int end_y)
 {
-	
-}*/
+	int m;
+	int	slope_error;
+	int	temp_x;
+	int temp_y;
+
+	m = 2 * (end_y - start_y);
+	slope_error = m - (end_x - start_x);
+	temp_x = start_x;
+	temp_y = start_y;
+	while (temp_x <= end_x)
+	{
+		draw_pixel(&cube->img, temp_y, temp_x, WHITE);
+		slope_error += m;
+		if (slope_error >= 0)
+		{
+			temp_y++;
+			slope_error -= 2 * (end_x - start_x);
+		}
+		temp_x++;
+	}
+}
+
+void	draw_line(t_cube *cube)
+{
+	int	start_x;
+	int	start_y;
+	int	end_x;
+	int	end_y;
+
+	start_x = cube->p_position_x + (PLAYERSIZE / 2);
+	start_y = cube->p_position_y + (PLAYERSIZE / 2);
+	end_x = start_x + (PLAYERDIRECTIONSIZE * cos(cube->player_direction));
+	end_y = start_y + (PLAYERDIRECTIONSIZE * sin(cube->player_direction));
+	bresenham(cube, start_x, start_y, end_x, end_y);	
+	bresenham(cube, start_x, start_y - 1, end_x, end_y - 1);	
+	bresenham(cube, start_x, start_y + 1, end_x, end_y + 1);	
+}
 
 // to find x-coordinate use x = PLAYERDIRECTIONSIZE * cos(angle)
 // to find y-coordinate use y = PLAYERDIRECTIONSIZE * sin(angle)
@@ -75,5 +110,6 @@ void	render_image(t_cube *cube)
 			cube->color = DARK_BLUE;
 		}
 	}
+	draw_line(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }

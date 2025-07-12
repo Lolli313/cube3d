@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/11 16:07:29 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:56:22 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define DESTROY_WINDOW 17
-# define PLAYERDIRECTIONSIZE 5
+# define PLAYERDIRECTIONSIZE 20
 
 # define PI 3.14
 
