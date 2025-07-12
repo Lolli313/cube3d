@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/12 11:56:22 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:10:51 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,19 @@
 
 # define PI 3.14
 
+typedef struct s_coord
+{
+	int		start_x;
+	int		start_y;
+	int		end_x;
+	int		end_y;
+	int		dx;
+	int		dy;
+	bool	is_dx_positive;
+	bool	is_dy_positive;
+	bool	is_line_steep;
+}		t_coord;
+
 typedef struct s_keys
 {
 	int	w_pressed;
@@ -96,10 +109,11 @@ typedef struct s_cube
 	int		p_position_y;
 	int		p_square_x;
 	int		p_square_y;
-	int		player_direction;
+	double	player_direction;
 	t_img	img;
 	t_map	map;
 	t_keys	keys;
+	t_coord	coord;
 }			t_cube;
 
 void	render_image(t_cube *cube);
@@ -122,6 +136,9 @@ void	draw_pixel(t_img *img, int x, int y, int color);
 double	scale(double value, double origin_max,
 			double target_min, double target_max);
 void	render_image(t_cube *cube);
+
+// draw line functions
+void	draw_line(t_cube *cube);
 
 // check functions
 bool	check_direction(t_cube *cube);

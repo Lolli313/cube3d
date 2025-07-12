@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/11 14:59:48 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:50:31 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_positi
 	int	temp3;
 	int	temp4;
 
-	temp1 = cube->p_position_x / (HEIGHT / MAP_X);
+	temp1 = cube->p_position_x / (WIDTH / MAP_X);
 	printf("temp1 = %d\n", temp1);
-	temp2 = p_new_position_x / (HEIGHT / MAP_X);
+	temp2 = p_new_position_x / (WIDTH / MAP_X);
 	printf("temp2 = %d\n", temp2);
 	temp3 = cube->p_position_y / (HEIGHT / MAP_Y);
 	printf("temp3 = %d\n", temp1);
