@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/12 18:10:51 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:33:58 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ typedef struct s_coord
 	int		end_y;
 	int		dx;
 	int		dy;
-	bool	is_dx_positive;
-	bool	is_dy_positive;
-	bool	is_line_steep;
+	int		dir_x;
+	int		dir_y;
+	int		err;
+	int		temp_err;
 }		t_coord;
 
 typedef struct s_keys
