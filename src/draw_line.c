@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 11:34:21 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:15:44 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,11 @@ void	prepare_coords(t_cube *cube)
 	cube->coord.end_y = cube->coord.start_y + (PLAYERDIRECTIONSIZE * sin(cube->player_direction));
 	cube->coord.dx = abs(cube->coord.end_x - cube->coord.start_x);
 	cube->coord.dy = abs(cube->coord.end_y - cube->coord.start_y);
-	if (cube->coord.start_x < cube->coord.end_x)
+	if (cube->coord.start_x <= cube->coord.end_x)
 		cube->coord.dir_x = 1;
 	else
-		cube->coord.dir_y = -1;
-	if (cube->coord.start_y < cube->coord.end_y)
+		cube->coord.dir_x = -1;
+	if (cube->coord.start_y <= cube->coord.end_y)
 		cube->coord.dir_y = 1;
 	else
 		cube->coord.dir_y = -1;

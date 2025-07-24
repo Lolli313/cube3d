@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/12 18:37:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:16:42 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	init_keys(t_cube *cube)
 	cube->keys.s_pressed = 0;
 	cube->keys.d_pressed = 0;
 	cube->keys.esc_pressed = 0;
-	cube->player_direction = 7 * PI / 4;
+	cube->keys.left_pressed = 0;
+	cube->keys.right_pressed = 0;
+	cube->player_direction = PI / 2;
 }
 
 void	init_hooks(t_cube *cube)

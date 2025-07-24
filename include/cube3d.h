@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 11:33:58 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:14:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define MAP_Y 8
 # define PLAYERSIZE 10
 # define PLAYERSPEED 10
+# define TURNSPEED PI / 100
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
@@ -79,6 +80,8 @@ typedef struct s_keys
 	int	s_pressed;
 	int	d_pressed;
 	int	esc_pressed;
+	int	left_pressed;
+	int	right_pressed;
 }	t_keys;
 
 typedef struct s_map
