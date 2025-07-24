@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 12:06:14 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 16:11:29 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ int	game_loop(t_cube *cube)
 	if (cube->keys.esc_pressed)
 		cleanup(cube);
 	if (cube->keys.w_pressed)
-		update_player_position(cube, cube->p_position_x, cube->p_position_y - PLAYERSPEED);
+		update_player_position(cube, XK_w);
 	if (cube->keys.a_pressed)
-		update_player_position(cube, cube->p_position_x - PLAYERSPEED, cube->p_position_y);
+		update_player_position(cube, XK_a);
 	if (cube->keys.s_pressed)
-		update_player_position(cube, cube->p_position_x, cube->p_position_y + PLAYERSPEED);
+		update_player_position(cube, XK_s);
 	if (cube->keys.d_pressed)
-		update_player_position(cube, cube->p_position_x + PLAYERSPEED, cube->p_position_y);
+		update_player_position(cube, XK_d);
 	if (cube->keys.left_pressed)
 		cube->player_direction -= TURNSPEED;
 	if (cube->keys.right_pressed)

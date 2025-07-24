@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 12:14:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/24 16:15:44 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define MAP_Y 8
 # define PLAYERSIZE 10
 # define PLAYERSPEED 10
-# define TURNSPEED PI / 100
+# define TURNSPEED PI / 32
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
@@ -58,6 +58,13 @@
 # define PLAYERDIRECTIONSIZE 20
 
 # define PI 3.14
+
+
+typedef struct s_new_p
+{
+	int p_new_position_x;
+	int p_new_position_y;
+}		t_new_p;
 
 typedef struct s_coord
 {
@@ -121,7 +128,7 @@ typedef struct s_cube
 }			t_cube;
 
 void	render_image(t_cube *cube);
-void	update_player_position(t_cube *cube, int p_new_position_x, int p_new_position_y);
+void	update_player_position(t_cube *cube, int keysym);
 
 // init functions
 void	init_image(t_cube *cube);
