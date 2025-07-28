@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/28 15:31:31 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:42:36 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@
 # define PLAYERSIZE 10
 # define PLAYERSPEED 5
 # define TURNSPEED PI / 64
+
+# define LEFT 1
+# define RIGHT 2
+# define UP 3
+# define DOWN 4
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
