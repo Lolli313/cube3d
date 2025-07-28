@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 16:11:29 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:08:13 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,25 @@ int	game_loop(t_cube *cube)
 	if (cube->keys.esc_pressed)
 		cleanup(cube);
 	if (cube->keys.w_pressed)
-		update_player_position(cube, XK_w);
+		update_player_position(cube, 0);
 	if (cube->keys.a_pressed)
-		update_player_position(cube, XK_a);
+		update_player_position(cube, PI / -2);
 	if (cube->keys.s_pressed)
-		update_player_position(cube, XK_s);
+		update_player_position(cube, PI);
 	if (cube->keys.d_pressed)
-		update_player_position(cube, XK_d);
+		update_player_position(cube, PI / 2);
 	if (cube->keys.left_pressed)
+	{
 		cube->player_direction -= TURNSPEED;
+		if (cube->player_direction < 0)
+			cube->player_direction += 2 * PI;
+	}
 	if (cube->keys.right_pressed)
+	{
 		cube->player_direction += TURNSPEED;
+		if (cube->player_direction >= 2 * PI)
+			cube->player_direction -= 2 * PI;
+	}
 	if (cube->keys.w_pressed || cube->keys.a_pressed || cube->keys.s_pressed || cube->keys.d_pressed || cube->keys.left_pressed || cube->keys.right_pressed)
 	{
 		printf("p_square_x is %d and p_square_y is %d\n", cube->p_square_x, cube->p_square_y);

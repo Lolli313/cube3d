@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 12:16:42 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:13:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "Test");
-	int	map_init[8][8] = {
+	int	map_init[MAP_X][MAP_Y] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 1},
@@ -55,14 +55,14 @@ void	init_cube(t_cube *cube)
 	{1, 1, 1, 1, 1, 1, 1, 1}
 	};
 	
-	for (int i = 0; i < 8; i++)
-		for (int j = 0; j < 8; j++)
+	for (int i = 0; i < MAP_X; i++)
+		for (int j = 0; j < MAP_Y; j++)
 		{
 			cube->map.map[i][j] = map_init[i][j];
 			if (map_init[i][j] == 2)
 			{
-				cube->p_position_x = WIDTH / 8 * i;
-				cube->p_position_y = HEIGHT / 8 * j;
+				cube->p_position_x = WIDTH / MAP_X * i;
+				cube->p_position_y = HEIGHT / MAP_Y * j;
 				cube->p_square_x = i;
 				cube->p_square_y = j;
 			}
