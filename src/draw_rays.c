@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.c                                        :+:      :+:    :+:   */
+/*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/24 12:15:44 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:20:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,12 @@ void	bresenham(t_cube *cube)
 	}
 }*/
 
-void	prepare_coords(t_cube *cube)
+void	prepare_coords(t_cube *cube, double angle)
 {
 	cube->coord.start_x = cube->p_position_x + (PLAYERSIZE / 2);
 	cube->coord.start_y = cube->p_position_y + (PLAYERSIZE / 2);
-	cube->coord.end_x = cube->coord.start_x + (PLAYERDIRECTIONSIZE * cos(cube->player_direction));
-	cube->coord.end_y = cube->coord.start_y + (PLAYERDIRECTIONSIZE * sin(cube->player_direction));
+	cube->coord.end_x = cube->coord.start_x + (PLAYERDIRECTIONSIZE * cos(cube->player_direction - (FOV / 2 - angle))); /*- (FOV / 2 + angle)*/
+	cube->coord.end_y = cube->coord.start_y + (PLAYERDIRECTIONSIZE * sin(cube->player_direction - (FOV / 2 - angle)));
 	cube->coord.dx = abs(cube->coord.end_x - cube->coord.start_x);
 	cube->coord.dy = abs(cube->coord.end_y - cube->coord.start_y);
 	if (cube->coord.start_x <= cube->coord.end_x)
@@ -154,17 +154,22 @@ void	prepare_coords(t_cube *cube)
 		cube->coord.err = -cube->coord.dy / 2;
 }
 
-void	draw_line(t_cube *cube)
+void	draw_line(t_cube *cube, double angle)
 {
-	int x;
-	int y;
+	int	tile_x;
+	int	tile_y;
+	int	x;
+	int	y;
 	
-	prepare_coords(cube);
-	draw_pixel(&cube->img, cube->coord.start_x, cube->coord.start_y, RED);
+	prepare_coords(cube, angle);
 	x = cube->coord.start_x;
 	y = cube->coord.start_y;
 	while (1)
 	{
+		tile_x = x / (WIDTH / MAP_X);
+		tile_y = y / (HEIGHT / MAP_Y);
+		if (cube->map.map[tile_y][tile_x] == 1)
+			break;
 		if (x != cube->coord.start_x || y != cube->coord.start_y)
 			draw_pixel(&cube->img, x, y, WHITE);
 		if (x == cube->coord.end_x && y == cube->coord.end_y)
@@ -182,3 +187,25 @@ void	draw_line(t_cube *cube)
 		}
 	}
 }
+
+void	draw_rays(t_cube *cube)
+{
+	double angle;
+	
+	angle = 0;
+//	prepare_coords(cube);
+//	draw_pixel(&cube->img, cube->coord.start_x, cube->coord.start_y, RED);
+	while (angle < FOV)
+	{
+		draw_line(cube, angle);
+		angle += RADIAN;
+	}
+}
+/*
+void	draw_rays(t_cube *cube)
+{
+	int rays;
+
+	rays = 0;
+	
+}*/

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/12 18:05:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:08:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	render_image(t_cube *cube)
 			cube->color = DARK_BLUE;
 		}
 	}
-	draw_line(cube);
+	draw_rays(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }

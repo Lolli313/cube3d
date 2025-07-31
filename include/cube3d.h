@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/28 16:42:36 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:22:22 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define DESTROY_WINDOW 17
-# define PLAYERDIRECTIONSIZE 20
+# define PLAYERDIRECTIONSIZE 2000
+# define FOV PI / 3
 
-# define PI 3.14
+# define PI 3.14159265358979323846
+# define RADIAN PI / 180
 
 
 typedef struct s_new_p
@@ -153,8 +155,9 @@ double	scale(double value, double origin_max,
 			double target_min, double target_max);
 void	render_image(t_cube *cube);
 
-// draw line functions
-void	draw_line(t_cube *cube);
+// draw ray functions
+void	draw_line(t_cube *cube, double angle);
+void	draw_rays(t_cube *cube);
 
 // check functions
 bool	check_direction(t_cube *cube);
