@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/31 11:22:22 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:46:23 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 # define PLAYERDIRECTIONSIZE 2000
 # define FOV PI / 3
 
-# define PI 3.14159265358979323846
+# define PI 3.141592653
 # define RADIAN PI / 180
 
 
@@ -85,7 +85,7 @@ typedef struct s_coord
 	int		dir_y;
 	int		err;
 	int		temp_err;
-}		t_coord;
+}			t_coord;
 
 typedef struct s_keys
 {
@@ -96,7 +96,7 @@ typedef struct s_keys
 	int	esc_pressed;
 	int	left_pressed;
 	int	right_pressed;
-}	t_keys;
+}		t_keys;
 
 typedef struct s_map
 {
@@ -116,7 +116,7 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
+}			t_img;
 
 typedef struct s_cube
 {
@@ -125,8 +125,14 @@ typedef struct s_cube
 	int		color;
 	int		p_position_x;
 	int		p_position_y;
+	double	p_precise_x;
+	double	p_precise_y;
+	double	p_error_x;
+	double	p_error_y;
 	int		p_square_x;
 	int		p_square_y;
+	double	p_cam_x;
+	double	p_cam_y;
 	double	player_direction;
 	t_img	img;
 	t_map	map;
@@ -135,7 +141,7 @@ typedef struct s_cube
 }			t_cube;
 
 void	render_image(t_cube *cube);
-void	update_player_position(t_cube *cube, double direction_modifier);
+void	update_player_position(t_cube *cube, int dir);
 
 // init functions
 void	init_image(t_cube *cube);
@@ -160,7 +166,6 @@ void	draw_line(t_cube *cube, double angle);
 void	draw_rays(t_cube *cube);
 
 // check functions
-bool	check_direction(t_cube *cube);
 bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, int a);
 
 #endif

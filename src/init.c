@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/28 15:13:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:04:45 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init_keys(t_cube *cube)
 	cube->keys.left_pressed = 0;
 	cube->keys.right_pressed = 0;
 	cube->player_direction = PI / 2;
+	cube->p_cam_x = cos(cube->player_direction);
+	cube->p_cam_y = sin(cube->player_direction);
 }
 
 void	init_hooks(t_cube *cube)
@@ -63,6 +65,10 @@ void	init_cube(t_cube *cube)
 			{
 				cube->p_position_x = WIDTH / MAP_X * i;
 				cube->p_position_y = HEIGHT / MAP_Y * j;
+				cube->p_precise_x = (double)cube->p_position_x;
+				cube->p_precise_y = (double)cube->p_position_y;
+				cube->p_error_x = 0.0;
+				cube->p_error_y = 0.0;
 				cube->p_square_x = i;
 				cube->p_square_y = j;
 			}

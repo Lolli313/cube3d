@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/28 16:08:13 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:06:40 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,28 @@ int	game_loop(t_cube *cube)
 	if (cube->keys.esc_pressed)
 		cleanup(cube);
 	if (cube->keys.w_pressed)
-		update_player_position(cube, 0);
+		update_player_position(cube, UP);
 	if (cube->keys.a_pressed)
-		update_player_position(cube, PI / -2);
+		update_player_position(cube, LEFT);
 	if (cube->keys.s_pressed)
-		update_player_position(cube, PI);
+		update_player_position(cube, RIGHT);
 	if (cube->keys.d_pressed)
-		update_player_position(cube, PI / 2);
+		update_player_position(cube, DOWN);
 	if (cube->keys.left_pressed)
 	{
 		cube->player_direction -= TURNSPEED;
 		if (cube->player_direction < 0)
 			cube->player_direction += 2 * PI;
+		cube->p_cam_x = cos(cube->player_direction);
+		cube->p_cam_y = sin(cube->player_direction);
 	}
 	if (cube->keys.right_pressed)
 	{
 		cube->player_direction += TURNSPEED;
 		if (cube->player_direction >= 2 * PI)
 			cube->player_direction -= 2 * PI;
+		cube->p_cam_x = cos(cube->player_direction);
+		cube->p_cam_y = sin(cube->player_direction);
 	}
 	if (cube->keys.w_pressed || cube->keys.a_pressed || cube->keys.s_pressed || cube->keys.d_pressed || cube->keys.left_pressed || cube->keys.right_pressed)
 	{

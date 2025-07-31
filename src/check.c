@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:26 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/28 17:05:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:05:23 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,3 @@ bool	check_wall_tile(t_cube *cube, int new_x, int new_y, int a)
 	}
 	return (false);
 }
-/*
-bool	check_direction(t_cube *cube)
-{
-	
-}*/
