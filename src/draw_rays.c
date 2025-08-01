@@ -6,13 +6,11 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 14:44:08 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 16:12:08 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-
 
 void	prepare_coords(t_cube *cube, double angle)
 {
