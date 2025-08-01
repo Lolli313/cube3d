@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/31 18:06:40 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:42:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,24 @@ int	game_loop(t_cube *cube)
 		update_player_position(cube, DOWN);
 	if (cube->keys.left_pressed)
 	{
-		cube->player_direction -= TURNSPEED;
-		if (cube->player_direction < 0)
-			cube->player_direction += 2 * PI;
-		cube->p_cam_x = cos(cube->player_direction);
-		cube->p_cam_y = sin(cube->player_direction);
+		cube->p.player_direction -= TURNSPEED;
+		if (cube->p.player_direction < 0)
+			cube->p.player_direction += 2 * PI;
+		cube->p.cam_x = cos(cube->p.player_direction);
+		cube->p.cam_y = sin(cube->p.player_direction);
 	}
 	if (cube->keys.right_pressed)
 	{
-		cube->player_direction += TURNSPEED;
-		if (cube->player_direction >= 2 * PI)
-			cube->player_direction -= 2 * PI;
-		cube->p_cam_x = cos(cube->player_direction);
-		cube->p_cam_y = sin(cube->player_direction);
+		cube->p.player_direction += TURNSPEED;
+		if (cube->p.player_direction >= 2 * PI)
+			cube->p.player_direction -= 2 * PI;
+		cube->p.cam_x = cos(cube->p.player_direction);
+		cube->p.cam_y = sin(cube->p.player_direction);
 	}
 	if (cube->keys.w_pressed || cube->keys.a_pressed || cube->keys.s_pressed || cube->keys.d_pressed || cube->keys.left_pressed || cube->keys.right_pressed)
 	{
-		printf("p_square_x is %d and p_square_y is %d\n", cube->p_square_x, cube->p_square_y);
-		printf("position_x = %d and position_y is %d\n", cube->p_position_x, cube->p_position_y);
+		printf("p.square_x is %d and p.square_y is %d\n", cube->p.square_x, cube->p.square_y);
+		printf("position_x = %d and position_y is %d\n", cube->p.position_x, cube->p.position_y);
 		render_image(cube);
 	}
 	return (0);

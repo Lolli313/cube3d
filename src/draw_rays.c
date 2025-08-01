@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/31 17:34:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:44:08 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	prepare_coords(t_cube *cube, double angle)
 	double ray_dir_x, ray_dir_y;
 	double cos_angle, sin_angle;
 	
-	cube->coord.start_x = (int)cube->p_precise_x + (PLAYERSIZE / 2);
-	cube->coord.start_y = (int)cube->p_precise_y + (PLAYERSIZE / 2);
+	cube->coord.start_x = (int)cube->p.precise_x + (PLAYERSIZE / 2);
+	cube->coord.start_y = (int)cube->p.precise_y + (PLAYERSIZE / 2);
 	
 	cos_angle = cos(angle);
 	sin_angle = sin(angle);
 	
-	ray_dir_x = cube->p_cam_x * cos_angle - cube->p_cam_y * sin_angle;
-	ray_dir_y = cube->p_cam_x * sin_angle + cube->p_cam_y * cos_angle;
+	ray_dir_x = cube->p.cam_x * cos_angle - cube->p.cam_y * sin_angle;
+	ray_dir_y = cube->p.cam_x * sin_angle + cube->p.cam_y * cos_angle;
 	
 	cube->coord.end_x = cube->coord.start_x + (PLAYERDIRECTIONSIZE * ray_dir_x);
 	cube->coord.end_y = cube->coord.start_y + (PLAYERDIRECTIONSIZE * ray_dir_y);
@@ -83,19 +83,9 @@ void	draw_rays(t_cube *cube)
 	double angle;
 	
 	angle = 0 - (FOV / 2);
-//	prepare_coords(cube);
-//	draw_pixel(&cube->img, cube->coord.start_x, cube->coord.start_y, RED);
 	while (angle < FOV / 2)
 	{
 		draw_line(cube, angle);
 		angle += RADIAN;
 	}
 }
-/*
-void	draw_rays(t_cube *cube)
-{
-	int rays;
-
-	rays = 0;
-	
-}*/

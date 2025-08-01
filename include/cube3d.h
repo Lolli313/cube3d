@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/31 17:46:23 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:41:57 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,27 +118,34 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_player
+{
+	int		position_x;
+	int		position_y;
+	double	precise_x;
+	double	precise_y;
+	double	error_x;
+	double	error_y;
+	double	delta_x;
+	double	delta_y;
+	int		square_x;
+	int		square_y;
+	double	cam_x;
+	double	cam_y;
+	double	player_direction;
+}			t_player;
+
 typedef struct s_cube
 {
-	void	*mlx;
-	void	*mlx_win;
-	int		color;
-	int		p_position_x;
-	int		p_position_y;
-	double	p_precise_x;
-	double	p_precise_y;
-	double	p_error_x;
-	double	p_error_y;
-	int		p_square_x;
-	int		p_square_y;
-	double	p_cam_x;
-	double	p_cam_y;
-	double	player_direction;
-	t_img	img;
-	t_map	map;
-	t_keys	keys;
-	t_coord	coord;
-}			t_cube;
+	void		*mlx;
+	void		*mlx_win;
+	int			color;
+	t_player	p;
+	t_img		img;
+	t_map		map;
+	t_keys		keys;
+	t_coord		coord;
+}				t_cube;
 
 void	render_image(t_cube *cube);
 void	update_player_position(t_cube *cube, int dir);

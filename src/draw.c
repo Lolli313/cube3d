@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/07/31 11:08:18 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:38:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	render_image(t_cube *cube)
 				cube->color = DARK_RED;
 			else if (cube->map.map[a][b] == 0)
 				cube->color = DARK_BLUE;
-			if ((y >= cube->p_position_y && y <= cube->p_position_y + PLAYERSIZE) && (x >= cube->p_position_x && x <= cube->p_position_x + PLAYERSIZE))
+			if ((y >= cube->p.position_y && y <= cube->p.position_y + PLAYERSIZE) && (x >= cube->p.position_x && x <= cube->p.position_x + PLAYERSIZE))
 				cube->color = GREEN;
 			draw_pixel(&cube->img, x, y, cube->color);
 			cube->color = DARK_BLUE;
