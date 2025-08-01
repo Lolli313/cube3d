@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 16:12:08 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:37:21 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,28 @@ void	prepare_coords(t_cube *cube, double angle)
 		cube->coord.err = -cube->coord.dy / 2;
 }
 
+void	draw_wall(t_cube *cube, int x, int y)
+{
+	double	dx;
+	double	dy;
+	double	wall_height;
+	int		temp_height;
+	int		wall_y;
+
+	temp_height = 0;
+	dx = abs(x - cube->coord.start_x);
+	dy = abs(y - cube->coord.start_y);
+	cube->p.height = sqrt(pow(dx, 2) + pow(dy, 2));
+	wall_height = HEIGHT * 100 / cube->p.height;
+	wall_y = (HEIGHT / 2) - (wall_height / 2);
+	while (temp_height < wall_height)
+	{
+		draw_pixel(&cube->img, x, wall_y, GREEN);
+		temp_height++;
+		wall_y++;
+	}
+}
+
 void	draw_line(t_cube *cube, double angle)
 {
 	int	tile_x;
@@ -60,8 +82,13 @@ void	draw_line(t_cube *cube, double angle)
 		tile_x = x / (WIDTH / MAP_X);
 		tile_y = y / (HEIGHT / MAP_Y);
 		if (cube->map.map[tile_y][tile_x] == 1)
+		{
+			if (!DEBUG)
+				draw_wall(cube, x, y);
 			break;
-		draw_pixel(&cube->img, x, y, WHITE);
+		}
+		if (DEBUG)
+			draw_pixel(&cube->img, x, y, WHITE);
 		cube->coord.temp_err = cube->coord.err;
 		if (cube->coord.temp_err > -cube->coord.dx)
 		{
@@ -76,14 +103,21 @@ void	draw_line(t_cube *cube, double angle)
 	}
 }
 
-void	draw_rays(t_cube *cube)
+void	raycasting(t_cube *cube)
 {
-	double angle;
+	double	angle;
+	double	increment;
 	
-	angle = 0 - (FOV / 2);
+	increment = FOV / WIDTH;
+	angle = 0;
+	if (DEBUG)
+	{
+		increment = RADIAN;
+		angle = 0 - (FOV / 2);
+	}
 	while (angle < FOV / 2)
 	{
 		draw_line(cube, angle);
-		angle += RADIAN;
+		angle += increment;
 	}
 }

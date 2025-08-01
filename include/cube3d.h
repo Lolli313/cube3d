@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 14:41:57 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:12:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@
 # define MAP_X 8
 # define MAP_Y 8
 # define PLAYERSIZE 10
-# define PLAYERSPEED 5
-# define TURNSPEED PI / 64
+# define PLAYERSPEED 1
+# define TURNSPEED PI / 128
+# define DEBUG 0
 
 # define LEFT 1
 # define RIGHT 2
@@ -132,6 +133,8 @@ typedef struct s_player
 	int		square_y;
 	double	cam_x;
 	double	cam_y;
+	double	distance;
+	int		height;
 	double	player_direction;
 }			t_player;
 
@@ -170,7 +173,7 @@ void	render_image(t_cube *cube);
 
 // draw ray functions
 void	draw_line(t_cube *cube, double angle);
-void	draw_rays(t_cube *cube);
+void	raycasting(t_cube *cube);
 
 // check functions
 bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, int a);

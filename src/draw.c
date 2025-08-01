@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 14:38:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:12:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,29 @@ void	render_image(t_cube *cube)
 	init_image(cube);
 	y = -1;
 	a = -1;
-	while (++y < WIDTH)
+	if (DEBUG)
 	{
-		if (y % (WIDTH / MAP_X) == 0)
-			a++;
-		x = -1;
-		b = -1;
-		while (++x < HEIGHT)
+		while (++y < WIDTH)
 		{
-			if (x % (HEIGHT / MAP_Y) == 0)
-				b++;
-			if (cube->map.map[a][b] == 1)
-				cube->color = DARK_RED;
-			else if (cube->map.map[a][b] == 0)
+			if (y % (WIDTH / MAP_X) == 0)
+				a++;
+			x = -1;
+			b = -1;
+			while (++x < HEIGHT)
+			{
+				if (x % (HEIGHT / MAP_Y) == 0)
+					b++;
+				if (cube->map.map[a][b] == 1)
+					cube->color = DARK_RED;
+				else if (cube->map.map[a][b] == 0)
+					cube->color = DARK_BLUE;
+				if ((y >= cube->p.position_y && y <= cube->p.position_y + PLAYERSIZE) && (x >= cube->p.position_x && x <= cube->p.position_x + PLAYERSIZE))
+					cube->color = GREEN;
+				draw_pixel(&cube->img, x, y, cube->color);
 				cube->color = DARK_BLUE;
-			if ((y >= cube->p.position_y && y <= cube->p.position_y + PLAYERSIZE) && (x >= cube->p.position_x && x <= cube->p.position_x + PLAYERSIZE))
-				cube->color = GREEN;
-			draw_pixel(&cube->img, x, y, cube->color);
-			cube->color = DARK_BLUE;
+			}
 		}
 	}
-	draw_rays(cube);
+	raycasting(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }
