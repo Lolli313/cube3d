@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 19:37:21 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:37:33 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	prepare_coords(t_cube *cube, double angle)
 		cube->coord.err = -cube->coord.dy / 2;
 }
 
-void	draw_wall(t_cube *cube, int x, int y)
+void	draw_wall(t_cube *cube, int x, int y, int screen_x)
 {
 	double	dx;
 	double	dy;
@@ -61,13 +61,13 @@ void	draw_wall(t_cube *cube, int x, int y)
 	wall_y = (HEIGHT / 2) - (wall_height / 2);
 	while (temp_height < wall_height)
 	{
-		draw_pixel(&cube->img, x, wall_y, GREEN);
+		draw_pixel(&cube->img, screen_x, wall_y, GREEN);
 		temp_height++;
 		wall_y++;
 	}
 }
 
-void	draw_line(t_cube *cube, double angle)
+void	draw_line(t_cube *cube, double angle, int screen_x)
 {
 	int	tile_x;
 	int	tile_y;
@@ -84,7 +84,7 @@ void	draw_line(t_cube *cube, double angle)
 		if (cube->map.map[tile_y][tile_x] == 1)
 		{
 			if (!DEBUG)
-				draw_wall(cube, x, y);
+				draw_wall(cube, x, y, screen_x);
 			break;
 		}
 		if (DEBUG)
@@ -103,21 +103,3 @@ void	draw_line(t_cube *cube, double angle)
 	}
 }
 
-void	raycasting(t_cube *cube)
-{
-	double	angle;
-	double	increment;
-	
-	increment = FOV / WIDTH;
-	angle = 0;
-	if (DEBUG)
-	{
-		increment = RADIAN;
-		angle = 0 - (FOV / 2);
-	}
-	while (angle < FOV / 2)
-	{
-		draw_line(cube, angle);
-		angle += increment;
-	}
-}

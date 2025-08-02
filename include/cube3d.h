@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 19:12:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:35:55 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ double	scale(double value, double origin_max,
 void	render_image(t_cube *cube);
 
 // draw ray functions
-void	draw_line(t_cube *cube, double angle);
+void	draw_line(t_cube *cube, double angle, int screen_x);
 void	raycasting(t_cube *cube);
 
 // check functions
