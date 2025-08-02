@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/02 17:37:33 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:53:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ void	prepare_coords(t_cube *cube, double angle)
 		cube->coord.err = -cube->coord.dy / 2;
 }
 
-void	draw_wall(t_cube *cube, int x, int y, int screen_x)
+void	draw_wall(t_cube *cube, int x, int y, int screen_x, double angle)
 {
 	double	dx;
 	double	dy;
 	double	wall_height;
+	double	corrected_distance;
 	int		temp_height;
 	int		wall_y;
 
@@ -57,7 +58,12 @@ void	draw_wall(t_cube *cube, int x, int y, int screen_x)
 	dx = abs(x - cube->coord.start_x);
 	dy = abs(y - cube->coord.start_y);
 	cube->p.height = sqrt(pow(dx, 2) + pow(dy, 2));
-	wall_height = HEIGHT * 100 / cube->p.height;
+	corrected_distance = cube->p.height * cos(angle);
+	if (corrected_distance <= 0.001)
+		corrected_distance = 0.001;
+	wall_height = HEIGHT * 100 / corrected_distance;
+	if (wall_height > HEIGHT)
+		wall_height = HEIGHT;
 	wall_y = (HEIGHT / 2) - (wall_height / 2);
 	while (temp_height < wall_height)
 	{
@@ -84,7 +90,7 @@ void	draw_line(t_cube *cube, double angle, int screen_x)
 		if (cube->map.map[tile_y][tile_x] == 1)
 		{
 			if (!DEBUG)
-				draw_wall(cube, x, y, screen_x);
+				draw_wall(cube, x, y, screen_x, angle);
 			break;
 		}
 		if (DEBUG)
