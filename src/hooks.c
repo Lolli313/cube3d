@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/01 14:42:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:24:35 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,6 @@ int	key_release_handler(int keysym, t_cube *cube)
 
 int	game_loop(t_cube *cube)
 {
-	if (cube->keys.esc_pressed)
-		cleanup(cube);
-	if (cube->keys.w_pressed)
-		update_player_position(cube, UP);
-	if (cube->keys.a_pressed)
-		update_player_position(cube, LEFT);
-	if (cube->keys.s_pressed)
-		update_player_position(cube, RIGHT);
-	if (cube->keys.d_pressed)
-		update_player_position(cube, DOWN);
 	if (cube->keys.left_pressed)
 	{
 		cube->p.player_direction -= TURNSPEED;
@@ -87,10 +77,21 @@ int	game_loop(t_cube *cube)
 		cube->p.cam_x = cos(cube->p.player_direction);
 		cube->p.cam_y = sin(cube->p.player_direction);
 	}
+	if (cube->keys.esc_pressed)
+		cleanup(cube);
+	if (cube->keys.w_pressed)
+		update_player_position(cube, UP);
+	if (cube->keys.a_pressed)
+		update_player_position(cube, LEFT);
+	if (cube->keys.s_pressed)
+		update_player_position(cube, DOWN);
+	if (cube->keys.d_pressed)
+		update_player_position(cube, RIGHT);
 	if (cube->keys.w_pressed || cube->keys.a_pressed || cube->keys.s_pressed || cube->keys.d_pressed || cube->keys.left_pressed || cube->keys.right_pressed)
 	{
 		printf("p.square_x is %d and p.square_y is %d\n", cube->p.square_x, cube->p.square_y);
 		printf("position_x = %d and position_y is %d\n", cube->p.position_x, cube->p.position_y);
+		printf("player_direction is %f\n", cube->p.player_direction);
 		render_image(cube);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/02 17:53:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:15:04 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	prepare_coords(t_cube *cube, double angle)
 {
-	double ray_dir_x, ray_dir_y;
-	double cos_angle, sin_angle;
-	
+	double	ray_dir_x;
+	double	ray_dir_y;
+
 	cube->coord.start_x = (int)cube->p.precise_x + (PLAYERSIZE / 2);
 	cube->coord.start_y = (int)cube->p.precise_y + (PLAYERSIZE / 2);
-	
-	cos_angle = cos(angle);
-	sin_angle = sin(angle);
-	
-	ray_dir_x = cube->p.cam_x * cos_angle - cube->p.cam_y * sin_angle;
-	ray_dir_y = cube->p.cam_x * sin_angle + cube->p.cam_y * cos_angle;
-	
+
+	ray_dir_x = cos(angle);
+	ray_dir_y = sin(angle);
+
 	cube->coord.end_x = cube->coord.start_x + (PLAYERDIRECTIONSIZE * ray_dir_x);
 	cube->coord.end_y = cube->coord.start_y + (PLAYERDIRECTIONSIZE * ray_dir_y);
-	
+
 	cube->coord.dx = abs(cube->coord.end_x - cube->coord.start_x);
 	cube->coord.dy = abs(cube->coord.end_y - cube->coord.start_y);
 	if (cube->coord.start_x <= cube->coord.end_x)
@@ -54,11 +51,12 @@ void	draw_wall(t_cube *cube, int x, int y, int screen_x, double angle)
 	int		temp_height;
 	int		wall_y;
 
+	(void)angle;
 	temp_height = 0;
 	dx = abs(x - cube->coord.start_x);
 	dy = abs(y - cube->coord.start_y);
 	cube->p.height = sqrt(pow(dx, 2) + pow(dy, 2));
-	corrected_distance = cube->p.height * cos(angle);
+	corrected_distance = cube->p.height * cos(angle - cube->p.player_direction);
 	if (corrected_distance <= 0.001)
 		corrected_distance = 0.001;
 	wall_height = HEIGHT * 100 / corrected_distance;
@@ -67,13 +65,13 @@ void	draw_wall(t_cube *cube, int x, int y, int screen_x, double angle)
 	wall_y = (HEIGHT / 2) - (wall_height / 2);
 	while (temp_height < wall_height)
 	{
-		draw_pixel(&cube->img, screen_x, wall_y, GREEN);
+		draw_pixel(&cube->img, screen_x, wall_y, DARK_GREEN);
 		temp_height++;
 		wall_y++;
 	}
 }
 
-void	draw_line(t_cube *cube, double angle, int screen_x)
+void	draw_ray(t_cube *cube, double angle, int screen_x)
 {
 	int	tile_x;
 	int	tile_y;
