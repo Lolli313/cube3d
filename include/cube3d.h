@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/04 12:53:02 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:55:23 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@
 # define MAP_X 8
 # define MAP_Y 8
 # define PLAYERSIZE 10
-# define PLAYERSPEED 1
-# define TURNSPEED PI / 512
+# define PLAYERSPEED 2
+# define TURNSPEED PI / 256
 # define DEBUG 0
 
 # define LEFT 1
@@ -78,14 +78,20 @@ typedef struct s_coord
 {
 	int		start_x;
 	int		start_y;
-	int		end_x;
-	int		end_y;
-	int		dx;
-	int		dy;
-	int		dir_x;
-	int		dir_y;
-	int		err;
-	int		temp_err;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		map_x;
+	int		map_y;
+	double	pos_x;
+	double	pos_y;
+	double	wall_distance;
+	int		side;
 }			t_coord;
 
 typedef struct s_keys
