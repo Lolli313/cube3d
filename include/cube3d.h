@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/05 16:55:23 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/05 17:55:29 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 # define KEY_RELEASE 3
 # define DESTROY_WINDOW 17
 # define PLAYERDIRECTIONSIZE 2000
-# define FOV PI / 3
+# define FOV 0.6
 
 # define PI 3.141592653
 # define RADIAN PI / 180
@@ -178,7 +178,7 @@ double	scale(double value, double origin_max,
 void	render_image(t_cube *cube);
 
 // draw ray functions
-void	draw_ray(t_cube *cube, double angle, int screen_x);
+void	draw_ray(t_cube *cube, int screen_x);
 void	raycasting(t_cube *cube);
 
 // check functions

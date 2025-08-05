@@ -6,19 +6,16 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/05 16:58:52 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/05 17:54:59 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	prepare_coords(t_cube *cube, double angle)
+void	prepare_coords(t_cube *cube)
 {
 	double	pos_x;
 	double	pos_y;
-	
-	cube->coord.ray_dir_x = cos(angle);
-	cube->coord.ray_dir_y = sin(angle);
 
 	pos_x = (cube->p.precise_x + (PLAYERSIZE / 2.0)) / (WIDTH / (double)MAP_X);
 	pos_y = (cube->p.precise_y + (PLAYERSIZE / 2.0)) / (HEIGHT / (double)MAP_Y);
@@ -88,9 +85,9 @@ void	draw_wall(t_cube *cube, int screen_x)
 	}
 }
 
-void	draw_ray(t_cube *cube, double angle, int screen_x)
+void	draw_ray(t_cube *cube, int screen_x)
 {
-	prepare_coords(cube, angle);
+	prepare_coords(cube);
 	while (1)
 	{
 		if (cube->coord.side_dist_x < cube->coord.side_dist_y)

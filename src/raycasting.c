@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 19:38:57 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/04 13:02:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/05 18:03:21 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,22 @@
 
 void	raycasting(t_cube *cube)
 {
-	double	angle;
-	double	increment;
-	int		cutoff_angle;
+	double	plane_length;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	int		x;
 
-	if (DEBUG)
+	plane_length = FOV;
+	plane_x = -cube->p.cam_y * plane_length;
+	plane_y = cube->p.cam_x * plane_length;
+	x = 0;
+	while (x < WIDTH)
 	{
-		cutoff_angle = FOV / 2;
-		increment = RADIAN;
-		angle = 0 - cutoff_angle;
-		while (angle < cutoff_angle)
-		{
-			draw_ray(cube, angle, cutoff_angle);
-			angle += increment;
-		}
-	}
-	else
-	{
-		increment = FOV / WIDTH;
-		angle = cube->p.player_direction - (FOV / 2);
-		cutoff_angle = 0;
-		while (cutoff_angle < WIDTH)
-		{
-			draw_ray(cube, angle, cutoff_angle);
-			angle += increment;
-			cutoff_angle += 1;
-		}
+		camera_x = 2.0 * x / (double)WIDTH - 1.0;
+		cube->coord.ray_dir_x = cube->p.cam_x + plane_x * camera_x;
+		cube->coord.ray_dir_y = cube->p.cam_y + plane_y * camera_x;
+		draw_ray(cube, x);
+		x++;
 	}
 }
