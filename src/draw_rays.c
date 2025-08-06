@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/05 17:54:59 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:30:44 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,31 @@ void	prepare_coords(t_cube *cube)
 	}
 }
 
+int	get_wall_color(t_cube *cube)
+{
+	if (cube->coord.side == 0)
+	{
+		if (cube->coord.ray_dir_x < 0)
+			return (GREEN);
+		else
+			return (MAGENTA);
+	}
+	else
+	{
+		if (cube->coord.ray_dir_y < 0)
+			return (SHADOW_GREEN);
+		else
+			return (SHADOW_MAGENTA);
+	}
+}
+
 void	draw_wall(t_cube *cube, int screen_x)
 {
-	double perp_wall_dist;
-	double wall_height;
-	int temp_height;
-	int wall_y;
+	double	perp_wall_dist;
+	double	wall_height;
+	int		temp_height;
+	int		wall_y;
 	
-	cube->color = DARK_GREEN;
 	temp_height = 0;
 	if (cube->coord.side == 0)
 		perp_wall_dist = (cube->coord.side_dist_x - cube->coord.delta_dist_x);
@@ -75,8 +92,7 @@ void	draw_wall(t_cube *cube, int screen_x)
 	if (wall_height > HEIGHT)
 		wall_height = HEIGHT;
 	wall_y = (HEIGHT / 2) - (wall_height / 2);
-	if (cube->coord.side == 1)
-		cube->color = GREEN;
+	cube->color = get_wall_color(cube);
 	while (temp_height < wall_height)
 	{
 		draw_pixel(&cube->img, screen_x, wall_y, cube->color);
