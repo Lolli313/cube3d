@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/07 16:12:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:48:10 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <math.h>
 # include <mlx.h>
 # include <X11/keysym.h>
+# include <fcntl.h>
+# include "get_next_line.h"
 
 # define RED      			0xFF0000
 # define GREEN    			0x00FF00
@@ -193,5 +195,10 @@ bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, i
 // texture functions
 t_img	*load_textures(t_cube *cube, char *path);
 int		get_texture_pixel(t_img *img, int x, int y);
+// parsing functions
+int		check_name(char **argv);
+int		check_arg(int ac);
+char	*create_map_path(char *map_name);
+int		find_map(int ac, char **argv);
 
 #endif
