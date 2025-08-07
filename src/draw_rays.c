@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/06 11:30:44 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:27:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,49 +56,63 @@ void	prepare_coords(t_cube *cube)
 	}
 }
 
-int	get_wall_color(t_cube *cube)
+int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 {
+	double	wall_x;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+	int		tex_height;
+	int		tex_width;
+	int		y;
+
+	tex_height = cube->map.SO->height;
+	tex_width = cube->map.SO->width;
+
 	if (cube->coord.side == 0)
-	{
-		if (cube->coord.ray_dir_x < 0)
-			return (GREEN);
-		else
-			return (MAGENTA);
-	}
+		wall_x = cube->coord.start_y + cube->coord.perp_wall_dist * cube->coord.ray_dir_y;
 	else
+		wall_x = cube->coord.start_x + cube->coord.perp_wall_dist * cube->coord.ray_dir_x;
+	wall_x -= floor(wall_x);
+
+	tex_x = (int)(wall_x * tex_width);
+	if (cube->coord.side == 0 && cube->coord.ray_dir_x > 0)
+		tex_x = tex_width - tex_x - 1;
+	if (cube->coord.side == 1 && cube->coord.ray_dir_y < 0)
+		tex_x = tex_width - tex_x - 1;
+	step = 1.0 * tex_height / wall_height;
+	tex_pos = (draw_start - HEIGHT / 2 + wall_height / 2) * step;
+	y = 0;
+	while (y < wall_height)
 	{
-		if (cube->coord.ray_dir_y < 0)
-			return (SHADOW_GREEN);
-		else
-			return (SHADOW_MAGENTA);
+		int	tex_y = (int)tex_pos;
+		tex_pos += step;
+		cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
+		draw_pixel(&cube->img, screen_x, draw_start, cube->color);
+		draw_start++;
+		y++;
 	}
+	return (1);
 }
 
 void	draw_wall(t_cube *cube, int screen_x)
 {
-	double	perp_wall_dist;
 	double	wall_height;
 	int		temp_height;
 	int		wall_y;
 	
 	temp_height = 0;
 	if (cube->coord.side == 0)
-		perp_wall_dist = (cube->coord.side_dist_x - cube->coord.delta_dist_x);
+		cube->coord.perp_wall_dist = (cube->coord.side_dist_x - cube->coord.delta_dist_x);
 	else
-		perp_wall_dist = (cube->coord.side_dist_y - cube->coord.delta_dist_y);
-	if (perp_wall_dist < 0.001)
-		perp_wall_dist = 0.001;
-	wall_height = HEIGHT / perp_wall_dist;
+		cube->coord.perp_wall_dist = (cube->coord.side_dist_y - cube->coord.delta_dist_y);
+	if (cube->coord.perp_wall_dist < 0.001)
+		cube->coord.perp_wall_dist = 0.001;
+	wall_height = HEIGHT / cube->coord.perp_wall_dist;
 	if (wall_height > HEIGHT)
-		wall_height = HEIGHT;
+		wall_height = HEIGHT; 
 	wall_y = (HEIGHT / 2) - (wall_height / 2);
-	cube->color = get_wall_color(cube);
-	while (temp_height < wall_height)
-	{
-		draw_pixel(&cube->img, screen_x, wall_y, cube->color);
-		temp_height++;
-		wall_y++;
-	}
+	draw_line(cube, screen_x, wall_height, wall_y);
 }
 
 void	draw_ray(t_cube *cube, int screen_x)

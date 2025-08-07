@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 14:16:40 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/04 11:33:48 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:35:09 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	assign_direction(t_player *p, int dir)
 
 void handle_y_wall(t_cube *cube, double new_precise_y)
 {
-	int potential_y = (int)new_precise_y;
+	int potential_y;
+	
+	potential_y = (int)new_precise_y;
 	if (cube->p.delta_y > 0)
 	{
 		if (check_wall_tile(cube, cube->p.position_x, potential_y, DOWN))
@@ -67,7 +69,9 @@ void handle_y_wall(t_cube *cube, double new_precise_y)
 
 void handle_x_wall(t_cube *cube, double new_precise_x)
 {
-	int potential_x = (int)new_precise_x;
+	int potential_x;
+	
+	potential_x = (int)new_precise_x;
 	if (cube->p.delta_x > 0)
 	{
 		if (check_wall_tile(cube, potential_x, cube->p.position_y, RIGHT))
@@ -94,11 +98,12 @@ void handle_x_wall(t_cube *cube, double new_precise_x)
 
 void update_player_position(t_cube *cube, int dir)
 {
+	double	new_precise_x;
+	double	new_precise_y;
+	
 	assign_direction(&cube->p, dir);
-
-	double new_precise_x = cube->p.precise_x + cube->p.delta_x;
+	new_precise_x = cube->p.precise_x + cube->p.delta_x;
 	handle_x_wall(cube, new_precise_x);
-
-	double new_precise_y = cube->p.precise_y + cube->p.delta_y;
+	new_precise_y = cube->p.precise_y + cube->p.delta_y;
 	handle_y_wall(cube, new_precise_y);
 }

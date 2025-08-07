@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/04 11:43:38 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/07 16:16:21 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	init_hooks(t_cube *cube)
 	mlx_hook(cube->mlx_win, DESTROY_WINDOW, 0L, cleanup, cube);
 }
 
+void	init_map(t_cube *cube)
+{
+	cube->map.NO = load_textures(cube, "assets/Tiled.xpm");
+	cube->map.SO = load_textures(cube, "assets/Tiled.xpm");
+	cube->map.EA = load_textures(cube, "assets/Tiled.xpm");
+	cube->map.WE = load_textures(cube, "assets/Tiled.xpm");
+}
+
 void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
@@ -58,6 +66,7 @@ void	init_cube(t_cube *cube)
 	};
 	
 	for (int i = 0; i < MAP_X; i++)
+	{
 		for (int j = 0; j < MAP_Y; j++)
 		{
 			cube->map.map[i][j] = map_init[i][j];
@@ -72,5 +81,7 @@ void	init_cube(t_cube *cube)
 				cube->p.square_x = i;
 				cube->p.square_y = j;
 			}
-		}				
+		}
+	}
+	init_map(cube);
 }

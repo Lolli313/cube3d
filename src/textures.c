@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
+/*   Updated: 2025/08/07 16:12:07 by aakerblo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
+
+t_img	*load_textures(t_cube *cube, char *path)
+{
+	t_img	*img;
+
+	img = malloc(sizeof(t_img));
+	if (!img)
+		return (NULL);
+	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width, &img->height);
+	if (img->img_addr == NULL)
+	{
+		free(img);
+		return (NULL);
+	}
+	img->pixel_addr = mlx_get_data_addr(img->img_addr, &img->bits_per_pixel, &img->line_length, &img->endian);
+	return (img);
+}
+
+int	get_texture_pixel(t_img *img, int x, int y)
+{
+	char	*dst;
+	int		color;
+
+	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
+		return (0);
+	dst = img->pixel_addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	color = *(unsigned int *)dst;
+	return (color);
+}
