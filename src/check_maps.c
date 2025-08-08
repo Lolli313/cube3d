@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/07 16:45:00 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:27:04 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 
 char *create_map_path(char *map_name)
 {
-    int i, j;
-    int maps_len = 5;
-    int name_len = 0;
+    int i;
+    int j;
+    int name_len;
     char *full_path;
 
+    name_len = 0;
     while (map_name[name_len])
         name_len++;
-    full_path = malloc(sizeof(char) * (maps_len + name_len + 1));
+    full_path = malloc(sizeof(char) * (5 + name_len + 1));
     if (!full_path)
         return (NULL);
-    i = 0;
-    full_path[i++] = 'm';
-    full_path[i++] = 'a';
-    full_path[i++] = 'p';
-    full_path[i++] = 's';
-    full_path[i++] = '/';
+    full_path[0] = 'm';
+    full_path[1] = 'a';
+    full_path[2] = 'p';
+    full_path[3] = 's';
+    full_path[4] = '/';
+    i = 5;
     j = 0;
     while (map_name[j])
-    {
         full_path[i++] = map_name[j++];
-    }
     full_path[i] = '\0';
     return (full_path);
 }
@@ -62,4 +61,22 @@ int find_map(int ac, char **argv)
 int extract_line(int fd)
 {
     if (fd < 0)
+        return (0);
+    return (1);
+}
+
+int load_map(int ac, char **argv, t_cube *cube)
+{
+    int fd;
+
+    fd = find_map(ac, argv);
+    if (fd < 0)
+        return (0);
+    if (!parse_map_file(fd, cube))
+    {
+        close(fd);
+        return (0);
+    }
+    close(fd);
+    return (1);
 }

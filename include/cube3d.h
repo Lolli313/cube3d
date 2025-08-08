@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/08 14:27:14 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:31:10 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,5 +200,11 @@ int		check_name(char **argv);
 int		check_arg(int ac);
 char	*create_map_path(char *map_name);
 int		find_map(int ac, char **argv);
+int		parse_rgb(char *line);
+int		parse_texture_line(char *line, t_map *map);
+int		parse_map_file(int fd, t_cube *cube);
+int		parse_map_line(char *line, t_cube *cube, int row);
+void	set_player_direction(t_cube *cube, char direction);
+int		load_map(int ac, char **argv, t_cube *cube);
 
 #endif
