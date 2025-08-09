@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 13:05:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:47:17 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ typedef struct s_new_p
 
 typedef struct s_coord
 {
-	int		start_x;
-	int		start_y;
+	double		start_x;
+	double		start_y;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		step_x;

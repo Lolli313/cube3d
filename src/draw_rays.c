@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 13:05:00 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:48:29 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 {
 	double	wall_x;
 	int		tex_x;
+	int		tex_y;
 	double	step;
 	double	tex_pos;
 	int		tex_height;
@@ -74,8 +75,7 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	else
 		wall_x = cube->coord.start_x + cube->coord.perp_wall_dist * cube->coord.ray_dir_x;
 	wall_x -= floor(wall_x);
-
-	tex_x = (int)(wall_x * tex_width);
+	tex_x = (int)(wall_x * (double)(tex_width));
 	if (cube->coord.side == 0 && cube->coord.ray_dir_x > 0)
 		tex_x = tex_width - tex_x - 1;
 	if (cube->coord.side == 1 && cube->coord.ray_dir_y < 0)
@@ -85,7 +85,7 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	y = 0;
 	while (y < wall_height)
 	{
-		int	tex_y = (int)tex_pos;
+		tex_y = (int)tex_pos;
 		tex_pos += step;
 		cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
 		draw_pixel(&cube->img, screen_x, draw_start, cube->color);
@@ -97,22 +97,21 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 
 void	draw_wall(t_cube *cube, int screen_x)
 {
-	double	wall_height;
-	int		temp_height;
-	int		wall_y;
-	
-	temp_height = 0;
-	if (cube->coord.side == 0)
-		cube->coord.perp_wall_dist = (cube->coord.side_dist_x - cube->coord.delta_dist_x);
-	else
-		cube->coord.perp_wall_dist = (cube->coord.side_dist_y - cube->coord.delta_dist_y);
-	if (cube->coord.perp_wall_dist < 0.001)
-		cube->coord.perp_wall_dist = 0.001;
-	wall_height = HEIGHT / cube->coord.perp_wall_dist;
-	if (wall_height > HEIGHT)
-		wall_height = HEIGHT; 
-	wall_y = (HEIGHT / 2) - (wall_height / 2);
-	draw_line(cube, screen_x, wall_height, wall_y);
+    double	wall_height;
+    int		wall_y;
+
+    if (cube->coord.side == 0)
+        cube->coord.perp_wall_dist = (cube->coord.map_x - cube->coord.start_x + (1 - cube->coord.step_x) / 2.0) / cube->coord.ray_dir_x;
+    else
+        cube->coord.perp_wall_dist = (cube->coord.map_y - cube->coord.start_y + (1 - cube->coord.step_y) / 2.0) / cube->coord.ray_dir_y;
+
+    if (cube->coord.perp_wall_dist < 0.001)
+        cube->coord.perp_wall_dist = 0.001;
+    wall_height = HEIGHT / cube->coord.perp_wall_dist;
+    if (wall_height > HEIGHT)
+        wall_height = HEIGHT; 
+    wall_y = (HEIGHT / 2) - (wall_height / 2);
+    draw_line(cube, screen_x, wall_height, wall_y);
 }
 
 void	draw_ray(t_cube *cube, int screen_x)
