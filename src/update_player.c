@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 14:16:40 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/07 16:35:09 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/09 13:01:19 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void handle_y_wall(t_cube *cube, double new_precise_y)
 	{
 		if (check_wall_tile(cube, cube->p.position_x, potential_y, DOWN))
 		{
-			int tile_y = (potential_y + PLAYERSIZE) / (HEIGHT / MAP_Y);
-			cube->p.precise_y = tile_y * (HEIGHT / MAP_Y) - PLAYERSIZE;
+			int tile_y = (potential_y + PLAYERSIZE) / TILESIZE;
+			cube->p.precise_y = tile_y * TILESIZE - PLAYERSIZE;
 			cube->p.position_y = (int)cube->p.precise_y;
 			return;
 		}
@@ -57,8 +57,8 @@ void handle_y_wall(t_cube *cube, double new_precise_y)
 	{
 		if (check_wall_tile(cube, cube->p.position_x, potential_y, UP))
 		{
-			int tile_y = potential_y / (HEIGHT / MAP_Y);
-			cube->p.precise_y = (tile_y + 1) * (HEIGHT / MAP_Y);
+			int tile_y = potential_y / TILESIZE;
+			cube->p.precise_y = (tile_y + 1) * TILESIZE;
 			cube->p.position_y = (int)cube->p.precise_y;
 			return;
 		}
@@ -76,8 +76,8 @@ void handle_x_wall(t_cube *cube, double new_precise_x)
 	{
 		if (check_wall_tile(cube, potential_x, cube->p.position_y, RIGHT))
 		{
-			int tile_x = (potential_x + PLAYERSIZE) / (WIDTH / MAP_X);
-			cube->p.precise_x = tile_x * (WIDTH / MAP_X) - PLAYERSIZE;
+			int tile_x = (potential_x + PLAYERSIZE) / TILESIZE;
+			cube->p.precise_x = tile_x * TILESIZE - PLAYERSIZE;
 			cube->p.position_x = (int)cube->p.precise_x;
 			return;
 		}
@@ -86,8 +86,8 @@ void handle_x_wall(t_cube *cube, double new_precise_x)
 	{
 		if (check_wall_tile(cube, potential_x, cube->p.position_y, LEFT))
 		{
-			int tile_x = potential_x / (WIDTH / MAP_X);
-			cube->p.precise_x = (tile_x + 1) * (WIDTH / MAP_X);
+			int tile_x = potential_x / TILESIZE;
+			cube->p.precise_x = (tile_x + 1) * TILESIZE;
 			cube->p.position_x = (int)cube->p.precise_x;
 			return;
 		}

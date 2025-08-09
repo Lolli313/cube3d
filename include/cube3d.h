@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/08 15:31:10 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/09 13:05:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@
 # define MAP_X 8
 # define MAP_Y 8
 # define PLAYERSIZE 10
-# define PLAYERSPEED 2
+# define PLAYERSPEED 1
 # define TURNSPEED PI / 256
 # define DEBUG 0
+# define TILESIZE 64
 
 # define LEFT 1
 # define RIGHT 2

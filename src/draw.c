@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/04 13:14:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/09 13:01:19 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	render_image(t_cube *cube)
 	{
 		while (++y < WIDTH)
 		{
-			if (y % (WIDTH / MAP_X) == 0)
+			if (y % TILESIZE == 0)
 				a++;
 			x = -1;
 			b = -1;
 			while (++x < HEIGHT)
 			{
-				if (x % (HEIGHT / MAP_Y) == 0)
+				if (x % TILESIZE == 0)
 					b++;
 				if (cube->map.map[a][b] == 1)
 					cube->color = DARK_RED;
