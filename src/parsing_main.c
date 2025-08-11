@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 16:41:38 by njung            ###   ########.fr       */
+/*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
+/*   Updated: 2025/08/11 16:41:32 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-/*
-	cos(θ - π/2) = sin(θ)
-	sin(θ - π/2) = -cos(θ)
-	cos(θ + π/2) = -sin(θ)
-	sin(θ + π/2) = cos(θ)
-*/
-
-int	main(int ac, char **av)
+int	parse_game(int ac, char **argv, t_cube *cube)
 {
-	t_cube cube;
-
-	(void)ac;
-	(void)av;
-	// if (!parse_game(ac, av, &cube))
-	//     return (1);
-	init_cube(&cube);
-	init_keys(&cube);
-	init_hooks(&cube);
-	init_image(&cube);
-	render_image(&cube);
-	mlx_loop(cube.mlx);
+	if (!load_map(ac, argv, cube))
+	{
+		printf("Error\nFailed to load map\n");
+		return (0);
+	}
+	if (!validate_textures(&cube->map))
+		return (0);
+	if (!validate_map_content(cube))
+		return (0);
+	printf("Parsing completed successfully\n");
+	return (1);
 }

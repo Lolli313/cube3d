@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 16:47:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:40:48 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,16 +196,32 @@ bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, i
 // texture functions
 t_img	*load_textures(t_cube *cube, char *path);
 int		get_texture_pixel(t_img *img, int x, int y);
-// parsing functions
+
+// check_maps.c
+char *create_map_path(char *map_name);
+int find_map(int ac, char **argv);
+int load_map(int ac, char **argv, t_cube *cube);
+
+// parsing.c
 int		check_name(char **argv);
-int		check_arg(int ac);
-char	*create_map_path(char *map_name);
-int		find_map(int ac, char **argv);
-int		parse_rgb(char *line);
-int		parse_texture_line(char *line, t_map *map);
-int		parse_map_file(int fd, t_cube *cube);
-int		parse_map_line(char *line, t_cube *cube, int row);
-void	set_player_direction(t_cube *cube, char direction);
-int		load_map(int ac, char **argv, t_cube *cube);
+int check_arg(int ac);
+int parse_rgb(char *line);
+int parse_texture_line(char *line, t_map *map);
+
+//parsing2.c
+int parse_map_file(int fd, t_cube *cube);
+
+//parsing3.c
+int parse_map_line(char *line, t_cube *cube, int row);
+void set_player_direction(t_cube *cube, char direction);
+
+//parsing4.c
+int check_xpm_extension(char *texture);
+int check_texture_file(char *path);
+int validate_textures(t_map *map);
+int validate_map_content(t_cube *cube);
+
+// parsing_main.c
+int	parse_game(int ac, char **argv, t_cube *cube);
 
 #endif

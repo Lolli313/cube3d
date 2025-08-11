@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/08 17:27:04 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 16:41:49 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,6 @@ int find_map(int ac, char **argv)
         return (fd);
     }
     return (-1);
-}
-
-int extract_line(int fd)
-{
-    if (fd < 0)
-        return (0);
-    return (1);
 }
 
 int load_map(int ac, char **argv, t_cube *cube)

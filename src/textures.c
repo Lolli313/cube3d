@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/07 16:12:07 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:41:45 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ t_img	*load_textures(t_cube *cube, char *path)
 
 	img = malloc(sizeof(t_img));
 	if (!img)
+	{
+		printf("Error\nWhile loading texture");
 		return (NULL);
+	}
 	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width, &img->height);
 	if (img->img_addr == NULL)
 	{
+		printf("Error\nWhile loading texture");
 		free(img);
 		return (NULL);
 	}
