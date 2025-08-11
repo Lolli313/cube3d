@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 17:19:44 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 17:24:58 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,12 @@ int check_texture_file(char *path);
 int validate_textures(t_map *map);
 int validate_map_content(t_cube *cube);
 int validate_element_order(int fd);
+
+//parsing5.c
+int is_texture_element(char c);
+int is_map_element(char c);
+int check_map_before_textures(int texture_count, char first_char);
+int process_order_line(char *line, int *texture_count, int *map_started);
 
 // parsing_main.c
 int	parse_game(int ac, char **argv, t_cube *cube);

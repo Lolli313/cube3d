@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 17:19:49 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 17:24:59 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,32 +90,16 @@ int validate_element_order(int fd)
     char *line;
     int texture_count;
     int map_started;
+    int result;
 
     texture_count = 0;
     map_started = 0;
     while ((line = get_next_line(fd)))
     {
-        if (line[0] == '\n' || line[0] == '\0')
-        {
-            free(line);
-            continue;
-        }
-        if (!map_started && (line[0] == 'N' || line[0] == 'S' || line[0] == 'W' || 
-            line[0] == 'E' || line[0] == 'F' || line[0] == 'C'))
-        {
-            texture_count++;
-            free(line);
-            continue;
-        }
-        if (texture_count < 6 && (line[0] == '1' || line[0] == '0' || 
-            line[0] == ' '))
-        {
-            printf("Error\nMap found before all textures defined\n");
-            free(line);
-            return (0);
-        }
-        map_started = 1;
+        result = process_order_line(line, &texture_count, &map_started);
         free(line);
+        if (!result)
+            return (0);
     }
     return (1);
 }
