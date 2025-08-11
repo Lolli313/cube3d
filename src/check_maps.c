@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 16:41:49 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 17:19:41 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ int load_map(int ac, char **argv, t_cube *cube)
 {
     int fd;
 
+    fd = find_map(ac, argv);
+    if (fd < 0)
+        return (0);
+    if (!validate_element_order(fd))
+    {
+        close(fd);
+        return (0);
+    }
+    close(fd);
     fd = find_map(ac, argv);
     if (fd < 0)
         return (0);

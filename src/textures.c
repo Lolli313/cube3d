@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 16:41:45 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 17:16:54 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ t_img	*load_textures(t_cube *cube, char *path)
 {
 	t_img	*img;
 
+	if (!check_xpm_extension(path))
+		return (NULL);
+	if (!check_texture_file(path))
+		return (NULL);
 	img = malloc(sizeof(t_img));
 	if (!img)
 	{

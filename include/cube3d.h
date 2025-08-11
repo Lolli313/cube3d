@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 16:40:48 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/11 17:19:44 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ int check_xpm_extension(char *texture);
 int check_texture_file(char *path);
 int validate_textures(t_map *map);
 int validate_map_content(t_cube *cube);
+int validate_element_order(int fd);
 
 // parsing_main.c
 int	parse_game(int ac, char **argv, t_cube *cube);
