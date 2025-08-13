@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 14:28:43 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:53:27 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	cleanup(t_cube *cube)
 {
 	mlx_destroy_window(cube->mlx, cube->mlx_win);
 	mlx_destroy_image(cube->mlx, cube->img.img_addr);
+#ifdef __linux__
 	mlx_destroy_display(cube->mlx);
+#endif
 	free(cube->mlx);
 	exit(0);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 16:41:27 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/13 11:55:37 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int	process_texture_line(char *line, t_cube *cube, int *texture_count)
+int	process_texture_line(char *line, t_cube *cube, int *texture_count)
 {
 	if (parse_texture_line(line, &cube->map))
 	{
@@ -22,7 +22,7 @@ static int	process_texture_line(char *line, t_cube *cube, int *texture_count)
 	return (0);
 }
 
-static int	validate_textures_complete(int texture_count)
+int	validate_textures_complete(int texture_count)
 {
 	if (texture_count != 6)
 	{

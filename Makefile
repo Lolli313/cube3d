@@ -1,10 +1,22 @@
 NAME = cube3d
 CFLAGS = -g -Wall -Wextra -Werror
-DEPS = -Iinclude -Imlx_linux -Ilibft
-MLXFLAGS = -Lmlx_linux -lmlx -lXext -lX11 -lm
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLXDIR = mlx_linux
+	MLXFLAGS = -L$(MLXDIR) -lmlx -lXext -lX11 -lm
+endif
+ifeq ($(UNAME_S),Darwin)
+	MLXDIR = mlx_macos
+	MLXFLAGS = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
+endif
+
+DEPS = -Iinclude -I$(MLXDIR) -Ilibft
 SRCDIR = ./src/
 SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c $(SRCDIR)check.c $(SRCDIR)draw.c $(SRCDIR)draw_rays.c \
-		$(SRCDIR)update_player.c $(SRCDIR)raycasting.c $(SRCDIR)textures.c
+		$(SRCDIR)update_player.c $(SRCDIR)raycasting.c $(SRCDIR)textures.c $(SRCDIR)check_maps.c \
+		$(SRCDIR)parsing.c $(SRCDIR)parsing2.c $(SRCDIR)parsing3.c $(SRCDIR)parsing4.c \
+		$(SRCDIR)parsing5.c $(SRCDIR)parsing_main.c
 LIBFTDIR = libft/
 LIBFT = $(LIBFTDIR)libft.a
 OBJDIR = obj/
@@ -19,6 +31,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
 
 $(NAME): $(OBJ)
 	make -C $(LIBFTDIR)
+	make -C $(MLXDIR)
 	cp $(LIBFT) $(NAME)
 	cc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLXFLAGS)
 
@@ -26,10 +39,12 @@ clean:
 	rm -f $(OBJ)
 	rm -rf $(OBJDIR)
 	make -C $(LIBFTDIR) clean
+	make -C $(MLXDIR) clean
 
 fclean: clean
 	rm -f $(NAME)
 	make -C $(LIBFTDIR) fclean
+	make -C $(MLXDIR) clean
 
 re: fclean all
 

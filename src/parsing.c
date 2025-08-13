@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 16:17:32 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/13 11:53:27 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int parse_rgb(char *line)
         return (-1);
     }
     color = (r << 16) | (g << 8) | b; // to create the real vlaue
-    ft_free_matrix(rgb_values); // nice find
+    free_matrix(rgb_values); // nice find
     return (color);
 }
 

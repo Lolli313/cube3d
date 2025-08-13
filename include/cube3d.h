@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 17:24:58 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/13 11:55:31 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,21 @@
 # include <stdbool.h>
 # include <math.h>
 # include <mlx.h>
-# include <X11/keysym.h>
 # include <fcntl.h>
 # include "libft.h"
+
+# ifdef __linux__
+#  include <X11/keysym.h>
+# elif __APPLE__
+// Définitions des touches pour macOS (codes de touches MLX macOS)
+#  define XK_w			13  // W
+#  define XK_a			0   // A
+#  define XK_s			1   // S
+#  define XK_d			2   // D
+#  define XK_Escape		53  // Escape
+#  define XK_Left		123 // Left Arrow
+#  define XK_Right		124 // Right Arrow
+# endif
 
 # define RED      			0xFF0000
 # define GREEN    			0x00FF00
@@ -210,10 +222,14 @@ int parse_texture_line(char *line, t_map *map);
 
 //parsing2.c
 int parse_map_file(int fd, t_cube *cube);
+int process_texture_line(char *line, t_cube *cube, int *texture_count);
+int validate_textures_complete(int texture_count);
 
 //parsing3.c
 int parse_map_line(char *line, t_cube *cube, int row);
 void set_player_direction(t_cube *cube, char direction);
+int process_line(char *line, t_cube *cube, int *textures_done, int *texture_count, int *map_row);
+int process_map_line(char *line, t_cube *cube, int *map_row);
 
 //parsing4.c
 int check_xpm_extension(char *texture);

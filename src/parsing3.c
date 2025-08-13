@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 16:41:24 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/13 11:55:41 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	handle_texture_phase(char *line, t_cube *cube, int *texture_count,
 	return (2);
 }
 
-static int	process_line(char *line, t_cube *cube, int *textures_done,
+int	process_line(char *line, t_cube *cube, int *textures_done,
 		int *texture_count, int *map_row)
 {
 	int	result;
@@ -41,7 +41,7 @@ static int	process_line(char *line, t_cube *cube, int *textures_done,
 	return (2);
 }
 
-static int	process_map_line(char *line, t_cube *cube, int *map_row)
+int	process_map_line(char *line, t_cube *cube, int *map_row)
 {
 	if (*map_row < MAP_Y)
 	{
