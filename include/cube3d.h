@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/14 16:23:49 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/14 20:00:57 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,12 +240,16 @@ int validate_element_order(int fd);
 //parsing5.c
 int is_texture_element(char c);
 int is_map_element(char c);
-int check_map_before_textures(int texture_count, char first_char);
 int process_order_line(char *line, int *texture_count, int *map_started);
+void init_texture_counters(int *no, int *so, int *we, int *ea);
+void init_color_counters(int *f, int *c);
+
+//parsing6.c
 int check_duplicates(int fd);
 int count_elements(char *line, int *no, int *so, int *we, int *ea, int *f, int *c);
-void init_counters(int *no, int *so, int *we, int *ea, int *f, int *c);
 int check_and_increment(int *count, char *element_name);
+int check_map_before_textures(int texture_count, char first_char);
+int check_map_characters(char *line);
 
 // parsing_main.c
 int	parse_game(int ac, char **argv, t_cube *cube);
