@@ -66,6 +66,9 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	int		tex_height;
 	int		tex_width;
 	int		y;
+	double	zoom_factor;
+	double	effective_tex_height;
+	double	tex_offset;
 
 	tex_height = cube->map.SO->height;
 	tex_width = cube->map.SO->width;
@@ -80,15 +83,30 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 		tex_x = tex_width - tex_x - 1;
 	if (cube->coord.side == 1 && cube->coord.ray_dir_y < 0)
 		tex_x = tex_width - tex_x - 1;
-	step = 1.0 * tex_height / wall_height;
-	tex_pos = (draw_start - HEIGHT / 2 + wall_height / 2) * step;
+	
+	if (cube->coord.perp_wall_dist < 1.0)
+	{
+		zoom_factor = 1.0 / cube->coord.perp_wall_dist;
+		effective_tex_height = tex_height / zoom_factor;
+		tex_offset = (tex_height - effective_tex_height) / 2.0;
+		step = effective_tex_height / wall_height;
+		tex_pos = tex_offset + (draw_start - HEIGHT / 2 + wall_height / 2) * step;
+	}
+	else
+	{
+		step = 1.0 * tex_height / wall_height;
+		tex_pos = (draw_start - HEIGHT / 2 + wall_height / 2) * step;
+	}
 	y = 0;
 	while (y < wall_height)
 	{
 		tex_y = (int)tex_pos;
-		tex_pos += step;
-		cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
-		draw_pixel(&cube->img, screen_x, draw_start, cube->color);
+		if (tex_y >= 0 && tex_y < tex_height)
+		{
+			tex_pos += step;
+			cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
+			draw_pixel(&cube->img, screen_x, draw_start, cube->color);
+		}
 		draw_start++;
 		y++;
 	}
