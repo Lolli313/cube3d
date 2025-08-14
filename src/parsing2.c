@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/13 11:55:37 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/14 16:23:58 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	handle_empty_line(char *line)
 	return (0);
 }
 
-static void	init_parse_vars(int *textures_done, int *map_row, int *texture_count)
+static void	init_parse_vars(int *textures_done, int *map_row, int *texture_count) // thx norme
 {
 	*textures_done = 0;
 	*map_row = 0;

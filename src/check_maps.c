@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/11 17:19:41 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/14 16:23:56 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,19 @@ int find_map(int ac, char **argv)
     return (-1);
 }
 
-int load_map(int ac, char **argv, t_cube *cube)
+static int validate_file_checks(int ac, char **argv)
 {
     int fd;
 
+    fd = find_map(ac, argv);
+    if (fd < 0)
+        return (0);
+    if (!check_duplicates(fd))
+    {
+        close(fd);
+        return (0);
+    }
+    close(fd);
     fd = find_map(ac, argv);
     if (fd < 0)
         return (0);
@@ -71,6 +80,15 @@ int load_map(int ac, char **argv, t_cube *cube)
         return (0);
     }
     close(fd);
+    return (1);
+}
+
+int load_map(int ac, char **argv, t_cube *cube)
+{
+    int fd;
+
+    if (!validate_file_checks(ac, argv))
+        return (0);
     fd = find_map(ac, argv);
     if (fd < 0)
         return (0);

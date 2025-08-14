@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/13 11:55:31 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/14 16:23:49 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # ifdef __linux__
 #  include <X11/keysym.h>
 # elif __APPLE__
-// Définitions des touches pour macOS (codes de touches MLX macOS)
 #  define XK_w			13  // W
 #  define XK_a			0   // A
 #  define XK_s			1   // S
@@ -243,6 +242,10 @@ int is_texture_element(char c);
 int is_map_element(char c);
 int check_map_before_textures(int texture_count, char first_char);
 int process_order_line(char *line, int *texture_count, int *map_started);
+int check_duplicates(int fd);
+int count_elements(char *line, int *no, int *so, int *we, int *ea, int *f, int *c);
+void init_counters(int *no, int *so, int *we, int *ea, int *f, int *c);
+int check_and_increment(int *count, char *element_name);
 
 // parsing_main.c
 int	parse_game(int ac, char **argv, t_cube *cube);
