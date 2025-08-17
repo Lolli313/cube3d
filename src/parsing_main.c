@@ -16,7 +16,7 @@ int	parse_game(int ac, char **argv, t_cube *cube)
 {
 	if (!load_map(ac, argv, cube))
 	{
-		printf("Error\nFailed to load map\n");
+		printf("Error: Failed to load map\n");
 		return (0);
 	}
 	if (!validate_textures(&cube->map))

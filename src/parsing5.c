@@ -17,6 +17,11 @@ int is_texture_element(char c)
     return (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == 'F' || c == 'C');
 }
 
+int	is_player_rotation(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
 int is_map_element(char c)
 {
     return (c == '1' || c == '0' || c == ' ');

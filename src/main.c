@@ -23,11 +23,11 @@ int	main(int ac, char **av)
 {
 	t_cube cube;
 
-	(void)ac;
-	(void)av;
-	// if (!parse_game(ac, av, &cube))
-	//     return (1);
+	if (ac != 2)
+		return (printf("Error: Wrong number of arguments\n"), 1);
 	init_cube(&cube);
+ 	if (!parse_game(ac, av, &cube))
+		return (1);
 	init_keys(&cube);
 	init_hooks(&cube);
 	init_image(&cube);

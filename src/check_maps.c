@@ -48,10 +48,11 @@ int find_map(int ac, char **argv)
         map_path = create_map_path(argv[1]);
         if (!map_path)
         {
-            printf("Error\nMap not found");
+            printf("Error: Map not found\n");
             return (-1);
         }
         fd = open(map_path, O_RDONLY);
+//		printf("map fd ia %d and pat is %s\n", fd, map_path);
         free(map_path);
         return (fd);
     }

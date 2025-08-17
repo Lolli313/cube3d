@@ -14,7 +14,7 @@
 
 int	process_texture_line(char *line, t_cube *cube, int *texture_count)
 {
-	if (parse_texture_line(line, &cube->map))
+	if (parse_texture_line(line, cube))
 	{
 		(*texture_count)++;
 		return (1);
@@ -26,7 +26,7 @@ int	validate_textures_complete(int texture_count)
 {
 	if (texture_count != 6)
 	{
-		printf("Error\nInvalid map format");
+		printf("Error: Invalid map format\n");
 		return (0);
 	}
 	return (1);
@@ -62,6 +62,7 @@ int parse_map_file(int fd, t_cube *cube)
 	{
 		if (handle_empty_line(line))
 			continue;
+//	printf("line is %s", line);
 		result = process_line(line, cube, &textures_done, &texture_count, &map_row);
 		if (result == 0)
 		{

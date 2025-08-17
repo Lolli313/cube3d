@@ -14,18 +14,20 @@
 
 int check_xpm_extension(char *texture)
 {
-    int len;
+    size_t len;
     
     len = ft_strlen(texture);
     if (len < 4)
     {
-        printf("Error\nWrong texture extension");
+		printf("Error: Wrong texture extension\n");
         return (0);
     }
+//	printf("texture is %s and length is %ld\n", texture, len);
+//	printf("attempted extension hunt is %c%c%c%c\n", texture[len - 4], texture[len - 3], texture[len - 2], texture[len - 1]);
     if (texture[len - 4] == '.' && texture[len - 3] == 'x' && 
         texture[len - 2] == 'p' && texture[len - 1] == 'm')
         return (1);
-    printf("Error\nWrong texture extension");
+    printf("Error: Wrong texture extension\n");
     return (0);
 }
 
@@ -34,9 +36,12 @@ int check_texture_file(char *path)
     int fd;
     
     fd = open(path, O_RDONLY);
+//	printf("texture path is %s\n", path);
+//	printf("length of path is %ld\n", ft_strlen(path));
+//	printf("fd is %d\n", fd);
     if (fd == -1)
     {
-        printf("Error\nWhile loading textures");
+        printf("Error: While loading textures\n");
         return (0);
     }
     close(fd);
@@ -47,12 +52,12 @@ int validate_textures(t_map *map)
 {
     if (!map->NO || !map->SO || !map->WE || !map->EA)
     {
-        printf("Error\nMissing texture(s)\n");
+        printf("Error: Missing texture(s)\n");
         return (0);
     }
     if (map->floor == -1 || map->ground == -1)
     {
-        printf("Error\nMissing floor or ceiling color\n");
+        printf("Error: Missing floor or ceiling color\n");
         return (0);
     }
     return (1);
@@ -79,7 +84,7 @@ int validate_map_content(t_cube *cube)
     }
     if (player_count != 1)
     {
-        printf("Error\nMap must have exactly one player\n");
+        printf("Error: Map must have exactly one player\n");
         return (0);
     }
     return (1);

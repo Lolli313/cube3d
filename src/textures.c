@@ -12,10 +12,12 @@
 
 #include "cube3d.h"
 
-t_img	*load_textures(t_cube *cube, char *path)
+t_img	*load_textures(t_cube *cube, char *path_plus_newline)
 {
 	t_img	*img;
+	char	*path;
 
+	path = ft_strtrim(path_plus_newline, "\n\r");
 	if (!check_xpm_extension(path))
 		return (NULL);
 	if (!check_texture_file(path))
@@ -23,13 +25,14 @@ t_img	*load_textures(t_cube *cube, char *path)
 	img = malloc(sizeof(t_img));
 	if (!img)
 	{
-		printf("Error\nWhile loading texture");
+		printf("Error: While loading texture\n");
 		return (NULL);
 	}
+//	printf("cube->mlx is %p\n", cube->mlx);
 	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width, &img->height);
 	if (img->img_addr == NULL)
 	{
-		printf("Error\nWhile loading texture");
+		printf("Error: While loading texture\n");
 		free(img);
 		return (NULL);
 	}

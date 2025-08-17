@@ -62,8 +62,8 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define MAP_X 8
-# define MAP_Y 8
+# define MAP_X 33
+# define MAP_Y 13
 # define PLAYERSIZE 10
 # define PLAYERSPEED 1
 # define TURNSPEED PI / 256
@@ -217,7 +217,7 @@ int load_map(int ac, char **argv, t_cube *cube);
 int		check_name(char **argv);
 int check_arg(int ac);
 int parse_rgb(char *line);
-int parse_texture_line(char *line, t_map *map);
+int parse_texture_line(char *line, t_cube *cube);
 
 //parsing2.c
 int parse_map_file(int fd, t_cube *cube);
@@ -239,6 +239,7 @@ int validate_element_order(int fd);
 
 //parsing5.c
 int is_texture_element(char c);
+int	is_player_rotation(char c);
 int is_map_element(char c);
 int process_order_line(char *line, int *texture_count, int *map_started);
 void init_texture_counters(int *no, int *so, int *we, int *ea);

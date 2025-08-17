@@ -47,7 +47,7 @@ int	check_and_increment(int *count, char *element_name)
 	(*count)++;
 	if (*count > 1)
 	{
-		printf("Error\nDuplicate %s\n", element_name);
+		printf("Error: Duplicate %s\n", element_name);
 		return (0);
 	}
 	return (1);
@@ -74,7 +74,7 @@ int	check_map_before_textures(int texture_count, char first_char)
 {
 	if (texture_count < 6 && is_map_element(first_char))
 	{
-		printf("Error\nMap found before all textures defined\n");
+		printf("Error: Map found before all textures defined\n");
 		return (0);
 	}
 	return (1);
@@ -89,7 +89,7 @@ int	check_map_characters(char *line)
 		if (line[i] != '1' || line[i] != '0' || line[i] != 'N' || line[i] != 'S'
 			|| line[i] != 'E' || line[i] != 'W' || line[i] != ' ')
 		{
-			printf("Error\nMap invalid (wrong character)");
+			printf("Error: Map invalid (wrong character)\n");
 			return (0);
 		}
 	}

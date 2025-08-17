@@ -54,7 +54,7 @@ void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "Test");
-	int	map_init[MAP_Y][MAP_X] = {
+/*	int	map_init[MAP_Y][MAP_X] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 2, 0, 0, 0, 0, 1},
@@ -81,6 +81,6 @@ void	init_cube(t_cube *cube)
 				cube->p.square_y = y;
 			}
 		}
-	}
-	init_map(cube);
+	}*/
+//	init_map(cube);
 }
