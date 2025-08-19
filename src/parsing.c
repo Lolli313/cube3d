@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/13 11:53:27 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:04:42 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,17 @@ static int	parse_direction_texture(char *line, t_cube *cube)
 	return (0);
 }
 
-static int	parse_color_line(char *line, t_map map)
+static int	parse_color_line(char *line, t_map *map)
 {
 	if (line[0] == 'F' && line[1] == ' ')
 	{
-		map.floor = parse_rgb(line + 2);
-		return (map.floor != -1);
+		map->floor = parse_rgb(line + 2);
+		return (map->floor != -1);
 	}
 	else if (line[0] == 'C' && line[1] == ' ')
 	{
-		map.ground = parse_rgb(line + 2);
-		return (map.ground != -1);
+		map->ground = parse_rgb(line + 2);
+		return (map->ground != -1);
 	}
 	return (0);
 }
@@ -109,7 +109,7 @@ int parse_texture_line(char *line, t_cube *cube)
 {
 	if (parse_direction_texture(line, cube))
 		return (1);
-	if (parse_color_line(line, cube->map))
+	if (parse_color_line(line, &cube->map))
 		return (1);
 	return (0);
 }

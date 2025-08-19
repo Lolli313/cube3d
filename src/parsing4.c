@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/14 19:48:59 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:27:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,15 @@ int validate_map_content(t_cube *cube)
         j = 0;
         while (j < MAP_X)
         {
+//			printf("%d, ", cube->map.map[i][j]);
             if (cube->map.map[i][j] == 2)
                 player_count++;
             j++;
         }
+//		printf("\n");
         i++;
     }
+//	printf("player count is %d\n", player_count);
     if (player_count != 1)
     {
         printf("Error: Map must have exactly one player\n");

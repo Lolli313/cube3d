@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/14 20:00:57 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:22:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define MAP_X 33
-# define MAP_Y 13
+# define MAP_Y 14
 # define PLAYERSIZE 10
 # define PLAYERSPEED 1
 # define TURNSPEED PI / 256
@@ -136,7 +136,7 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	int		map[MAP_X][MAP_Y];
+	int		map[MAP_Y][MAP_X];
 	t_img	*NO;
 	t_img	*SO;
 	t_img	*WE;
@@ -226,7 +226,7 @@ int validate_textures_complete(int texture_count);
 
 //parsing3.c
 int parse_map_line(char *line, t_cube *cube, int row);
-void set_player_direction(t_cube *cube, char direction);
+void	set_player_position(t_cube *cube, char direction, int row, int col);
 int process_line(char *line, t_cube *cube, int *textures_done, int *texture_count, int *map_row);
 int process_map_line(char *line, t_cube *cube, int *map_row);
 

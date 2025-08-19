@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 13:09:01 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:10:51 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,16 @@ void	init_hooks(t_cube *cube)
 
 void	init_map(t_cube *cube)
 {
-	cube->map.NO = load_textures(cube, "assets/Tiled.xpm");
-	cube->map.SO = load_textures(cube, "assets/Tiled.xpm");
-	cube->map.EA = load_textures(cube, "assets/Tiled.xpm");
-	cube->map.WE = load_textures(cube, "assets/Tiled.xpm");
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < MAP_Y)
+	{
+		j = -1;
+		while (++j < MAP_X)
+			cube->map.map[i][j] = 0;
+	}
 }
 
 void	init_cube(t_cube *cube)
@@ -82,5 +88,5 @@ void	init_cube(t_cube *cube)
 			}
 		}
 	}*/
-//	init_map(cube);
+	init_map(cube);
 }
