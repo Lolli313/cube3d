@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/19 14:22:18 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct s_map
 	t_img	*WE;
 	t_img	*EA;
 	int		floor;
-	int		ground;
+	int		ceiling;
 }			t_map;
 
 typedef struct s_player

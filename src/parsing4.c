@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/19 14:27:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int validate_textures(t_map *map)
         printf("Error: Missing texture(s)\n");
         return (0);
     }
-    if (map->floor == -1 || map->ground == -1)
+    if (map->floor == -1 || map->ceiling == -1)
     {
         printf("Error: Missing floor or ceiling color\n");
         return (0);

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/19 14:04:42 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ static int	parse_color_line(char *line, t_map *map)
 	}
 	else if (line[0] == 'C' && line[1] == ' ')
 	{
-		map->ground = parse_rgb(line + 2);
-		return (map->ground != -1);
+		map->ceiling = parse_rgb(line + 2);
+		return (map->ceiling != -1);
 	}
 	return (0);
 }
