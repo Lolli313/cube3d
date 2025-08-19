@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 16:48:29 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/19 16:29:32 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,19 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	while (y < wall_height)
 	{
 		tex_y = (int)tex_pos;
-		if (tex_y >= 0 && tex_y < tex_height)
+		/*if (tex_y >= 0 && tex_y < tex_height)
 		{
 			tex_pos += step;
 			cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
 			draw_pixel(&cube->img, screen_x, draw_start, cube->color);
-		}
+		}*/
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= tex_height)
+			tex_y = tex_height - 1;
+		tex_pos += step;
+		cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
+		draw_pixel(&cube->img, screen_x, draw_start, cube->color);
 		draw_start++;
 		y++;
 	}
