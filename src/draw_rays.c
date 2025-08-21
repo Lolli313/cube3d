@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/19 16:29:32 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:53:06 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,49 @@ void	prepare_coords(t_cube *cube)
 	}
 }
 
+t_img	*check_wall_side_2(t_cube *cube)
+{
+	if (cube->coord.side == 1)
+	{
+		if (cube->coord.ray_dir_y > 0)
+			return (cube->map.SO);
+		else
+			return (cube->map.NO);
+	}
+	else
+	{
+		if (cube->coord.ray_dir_x > 0)
+			return (cube->map.WE);
+		else
+			return (cube->map.EA);
+	}
+}
+
+void	check_wall_side(t_cube *cube, int *tex_height, int *tex_width)
+{
+	cube->coord.side_detailed = check_wall_side_2(cube);
+	if (cube->coord.side_detailed == cube->map.SO)
+	{
+		*tex_height = cube->map.SO->height;
+		*tex_width = cube->map.SO->width;
+	}
+	else if (cube->coord.side_detailed == cube->map.NO)
+	{
+		*tex_height = cube->map.NO->height;
+		*tex_width = cube->map.NO->width;
+	}
+	else if (cube->coord.side_detailed == cube->map.WE)
+	{
+		*tex_height = cube->map.WE->height;
+		*tex_width = cube->map.WE->width;
+	}
+	else
+	{
+		*tex_height = cube->map.EA->height;
+		*tex_width = cube->map.EA->width;
+	}
+}
+
 int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 {
 	double	wall_x;
@@ -70,9 +113,7 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	double	effective_tex_height;
 	double	tex_offset;
 
-	tex_height = cube->map.SO->height;
-	tex_width = cube->map.SO->width;
-
+	check_wall_side(cube, &tex_height, &tex_width);
 	if (cube->coord.side == 0)
 		wall_x = cube->coord.start_y + cube->coord.perp_wall_dist * cube->coord.ray_dir_y;
 	else
@@ -101,18 +142,12 @@ int	draw_line(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	while (y < wall_height)
 	{
 		tex_y = (int)tex_pos;
-		/*if (tex_y >= 0 && tex_y < tex_height)
-		{
-			tex_pos += step;
-			cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
-			draw_pixel(&cube->img, screen_x, draw_start, cube->color);
-		}*/
 		if (tex_y < 0)
 			tex_y = 0;
 		if (tex_y >= tex_height)
 			tex_y = tex_height - 1;
 		tex_pos += step;
-		cube->color = get_texture_pixel(cube->map.SO, tex_x, tex_y);
+		cube->color = get_texture_pixel(cube->coord.side_detailed, tex_x, tex_y);
 		draw_pixel(&cube->img, screen_x, draw_start, cube->color);
 		draw_start++;
 		y++;

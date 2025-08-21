@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:50:00 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,17 @@ typedef struct s_new_p
 	int p_new_position_y;
 }		t_new_p;
 
+typedef struct s_img
+{
+	void	*img_addr;
+	char	*pixel_addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}			t_img;
+
 typedef struct s_coord
 {
 	double		start_x;
@@ -110,6 +121,7 @@ typedef struct s_coord
 	double	wall_distance;
 	double	perp_wall_dist;
 	int		side;
+	t_img	*side_detailed;
 }			t_coord;
 
 typedef struct s_keys
@@ -122,17 +134,6 @@ typedef struct s_keys
 	int	left_pressed;
 	int	right_pressed;
 }		t_keys;
-
-typedef struct s_img
-{
-	void	*img_addr;
-	char	*pixel_addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		width;
-	int		height;
-}			t_img;
 
 typedef struct s_map
 {
