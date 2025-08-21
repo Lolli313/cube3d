@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 15:53:06 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:11:34 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ t_img	*check_wall_side_2(t_cube *cube)
 	else
 	{
 		if (cube->coord.ray_dir_x > 0)
-			return (cube->map.WE);
-		else
 			return (cube->map.EA);
+		else
+			return (cube->map.WE);
 	}
 }
 
