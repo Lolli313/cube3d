@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/19 14:10:51 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:33:41 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	init_keys(t_cube *cube)
 
 void	init_hooks(t_cube *cube)
 {
-	mlx_hook(cube->mlx_win, KEY_PRESS, 1L<<0, key_press_handler, cube);
-	mlx_hook(cube->mlx_win, KEY_RELEASE, 1L<<1, key_release_handler, cube);
+	mlx_hook(cube->mlx_win, KEY_PRESS, 1L << 0, key_press_handler, cube);
+	mlx_hook(cube->mlx_win, KEY_RELEASE, 1L << 1, key_release_handler, cube);
 	mlx_loop_hook(cube->mlx, game_loop, cube);
 	mlx_hook(cube->mlx_win, DESTROY_WINDOW, 0L, cleanup, cube);
 }
@@ -60,33 +60,5 @@ void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "Test");
-/*	int	map_init[MAP_Y][MAP_X] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 2, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	};
-	
-	for (int y = 0; y < MAP_Y; y++)
-	{
-		for (int x = 0; x < MAP_X; x++)
-		{
-			cube->map.map[y][x] = map_init[y][x];
-			if (map_init[y][x] == 2)
-			{
-				cube->p.position_x = TILESIZE * x;
-				cube->p.position_y = TILESIZE * y;
-				cube->p.precise_x = (double)cube->p.position_x;
-				cube->p.precise_y = (double)cube->p.position_y;
-				cube->p.error_x = 0.0;
-				cube->p.error_y = 0.0;
-				cube->p.square_x = y;
-				cube->p.square_y = y;
-			}
-		}
-	}*/
 	init_map(cube);
 }

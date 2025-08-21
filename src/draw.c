@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/19 14:46:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:19:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,51 +38,22 @@ void	render_image(t_cube *cube)
 {
 	int	x;
 	int	y;
-	int	a;
-	int	b;
 
 	mlx_destroy_image(cube->mlx, cube->img.img_addr);
 	init_image(cube);
 	y = -1;
-	a = -1;
-	if (DEBUG)
+	while (++y < WIDTH / 2)
 	{
-		while (++y < WIDTH)
-		{
-			if (y % TILESIZE == 0)
-				a++;
-			x = -1;
-			b = -1;
-			while (++x < HEIGHT)
-			{
-				if (x % TILESIZE == 0)
-					b++;
-				if (cube->map.map[a][b] == 1)
-					cube->color = DARK_RED;
-				else if (cube->map.map[a][b] == 0)
-					cube->color = DARK_BLUE;
-				if ((y >= cube->p.position_y && y <= cube->p.position_y + PLAYERSIZE) && (x >= cube->p.position_x && x <= cube->p.position_x + PLAYERSIZE))
-					cube->color = GREEN;
-				draw_pixel(&cube->img, x, y, cube->color);
-				cube->color = DARK_BLUE;
-			}
-		}
+		x = -1;
+		while (++x < HEIGHT)
+			draw_pixel(&cube->img, x, y, cube->map.ceiling);
 	}
-	else
+	while (++y < WIDTH)
 	{
-		while (++y < WIDTH / 2)
-		{
-			x = -1;
-			while (++x < HEIGHT)
-				draw_pixel(&cube->img, x, y, cube->map.ceiling);
-		}
-		while (++y < WIDTH)
-		{
-			x = -1;
-			while (++x < HEIGHT)
-				draw_pixel(&cube->img, x, y, cube->map.floor);
-		}
-		raycasting(cube);
+		x = -1;
+		while (++x < HEIGHT)
+			draw_pixel(&cube->img, x, y, cube->map.floor);
 	}
+	raycasting(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }

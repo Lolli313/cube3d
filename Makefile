@@ -16,7 +16,8 @@ SRCDIR = ./src/
 SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c $(SRCDIR)check.c $(SRCDIR)draw.c $(SRCDIR)draw_rays.c \
 		$(SRCDIR)update_player.c $(SRCDIR)raycasting.c $(SRCDIR)textures.c $(SRCDIR)check_maps.c \
 		$(SRCDIR)parsing.c $(SRCDIR)parsing2.c $(SRCDIR)parsing3.c $(SRCDIR)parsing4.c \
-		$(SRCDIR)parsing5.c $(SRCDIR)parsing6.c $(SRCDIR)parsing_main.c
+		$(SRCDIR)parsing5.c $(SRCDIR)parsing6.c $(SRCDIR)parsing_main.c $(SRCDIR)draw_wall.c \
+		$(SRCDIR)check_wall_side.c
 LIBFTDIR = libft/
 LIBFT = $(LIBFTDIR)libft.a
 OBJDIR = obj/

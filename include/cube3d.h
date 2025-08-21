@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 15:50:00 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:38:38 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,18 @@ typedef struct s_new_p
 	int p_new_position_x;
 	int p_new_position_y;
 }		t_new_p;
+
+typedef struct s_tex
+{
+	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
+	int		tex_height;
+	int		tex_width;
+	double	visual_tex_height;
+	double	tex_offset;
+	double	step;
+}			t_tex;
 
 typedef struct s_img
 {
@@ -175,6 +187,7 @@ typedef struct s_cube
 	t_map		map;
 	t_keys		keys;
 	t_coord		coord;
+	t_tex		tex;
 }				t_cube;
 
 void	render_image(t_cube *cube);
@@ -201,6 +214,12 @@ void	render_image(t_cube *cube);
 // draw ray functions
 void	draw_ray(t_cube *cube, int screen_x);
 void	raycasting(t_cube *cube);
+
+// draw wall functions
+void	draw_wall(t_cube *cube, int screen_x);
+
+// check wall side functions
+void	check_wall_side(t_cube *cube, int *tex_height, int *tex_width);
 
 // check functions
 bool	check_wall_tile(t_cube *cube, int p_new_position_x, int p_new_position_y, int a);

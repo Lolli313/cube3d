@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/11 17:16:54 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/21 18:41:41 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ t_img	*load_textures(t_cube *cube, char *path_plus_newline)
 		printf("Error: While loading texture\n");
 		return (NULL);
 	}
-//	printf("cube->mlx is %p\n", cube->mlx);
-	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width, &img->height);
+	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width,
+			&img->height);
 	if (img->img_addr == NULL)
 	{
 		printf("Error: While loading texture\n");
 		free(img);
 		return (NULL);
 	}
-	img->pixel_addr = mlx_get_data_addr(img->img_addr, &img->bits_per_pixel, &img->line_length, &img->endian);
+	img->pixel_addr = mlx_get_data_addr(img->img_addr, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
 	return (img);
 }
 
@@ -47,7 +48,8 @@ int	get_texture_pixel(t_img *img, int x, int y)
 
 	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return (0);
-	dst = img->pixel_addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = img->pixel_addr + (y * img->line_length + x * (img->bits_per_pixel
+				/ 8));
 	color = *(unsigned int *)dst;
 	return (color);
 }
