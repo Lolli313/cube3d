@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/22 13:40:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int parse_rgb(char *line)
     b = ft_atoi(rgb_values[2]);
     if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
     {
+		free_matrix(rgb_values);
         printf("Error: Wrong RGB value(s)");
         return (-1);
     }
@@ -67,6 +68,7 @@ int parse_rgb(char *line)
 
 static int	parse_direction_texture(char *line, t_cube *cube)
 {
+//	printf("HERE\n");
 	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
 	{
 		cube->map.NO = load_textures(cube, line + 3);
@@ -87,6 +89,7 @@ static int	parse_direction_texture(char *line, t_cube *cube)
 		cube->map.EA = load_textures(cube, line + 3);
 		return (1);
 	}
+//	printf("HERE\n");
 	return (0);
 }
 

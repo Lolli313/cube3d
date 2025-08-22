@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:41:41 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/22 13:52:46 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ t_img	*load_textures(t_cube *cube, char *path_plus_newline)
 
 	path = ft_strtrim(path_plus_newline, "\n\r");
 	if (!check_xpm_extension(path))
-		return (NULL);
+		return (free(path), NULL);
 	if (!check_texture_file(path))
-		return (NULL);
+		return (free(path), NULL);
 	img = malloc(sizeof(t_img));
 	if (!img)
 	{
 		printf("Error: While loading texture\n");
-		return (NULL);
+		return (free(path), NULL);
 	}
 	img->img_addr = mlx_xpm_file_to_image(cube->mlx, path, &img->width,
 			&img->height);
@@ -34,11 +34,11 @@ t_img	*load_textures(t_cube *cube, char *path_plus_newline)
 	{
 		printf("Error: While loading texture\n");
 		free(img);
-		return (NULL);
+		return (free(path), NULL);
 	}
 	img->pixel_addr = mlx_get_data_addr(img->img_addr, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	return (img);
+	return (free(path), img);
 }
 
 int	get_texture_pixel(t_img *img, int x, int y)

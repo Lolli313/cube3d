@@ -6,22 +6,11 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:31:41 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:49:13 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-int	cleanup(t_cube *cube)
-{
-	mlx_destroy_window(cube->mlx, cube->mlx_win);
-	mlx_destroy_image(cube->mlx, cube->img.img_addr);
-#ifdef __linux__
-	mlx_destroy_display(cube->mlx);
-#endif
-	free(cube->mlx);
-	exit(0);
-}
 
 int	key_press_handler(int keysym, t_cube *cube)
 {
