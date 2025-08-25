@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 15:53:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 16:52:26 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,13 @@ int	mouse_handler(int x, int y, t_cube *cube)
 //		render_image(cube);
 	}
 	if (x != WIDTH / 2)
+	{
+#ifdef __linux__
 		mlx_mouse_move(cube->mlx, cube->mlx_win, WIDTH / 2, HEIGHT / 2);
+#elif __APPLE__
+		mlx_mouse_move(cube->mlx_win, WIDTH / 2, HEIGHT / 2);
+#endif
+	}
 	prev_x = WIDTH / 2;
 	return (0);
 }

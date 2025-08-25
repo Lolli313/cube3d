@@ -27,7 +27,8 @@ default: all
 
 all: $(NAME)
 
-$(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	@mkdir -p $(OBJDIR)
 	cc $(CFLAGS) -c $< -o $@ $(DEPS)
 
 $(NAME): $(OBJ)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 15:42:23 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 16:52:24 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ void	init_hooks(t_cube *cube)
 	mlx_hook(cube->mlx_win, KEY_PRESS, 1L << 0, key_press_handler, cube);
 	mlx_hook(cube->mlx_win, KEY_RELEASE, 1L << 1, key_release_handler, cube);
 	mlx_hook(cube->mlx_win, MOTION_NOTIFY, 1L<<6, mouse_handler, cube);
+#ifdef __linux__
 	mlx_mouse_hide(cube->mlx, cube->mlx_win);
 	mlx_mouse_move(cube->mlx, cube->mlx_win, WIDTH / 2, HEIGHT / 2);
+#elif __APPLE__
+	mlx_mouse_hide();
+	mlx_mouse_move(cube->mlx_win, WIDTH / 2, HEIGHT / 2);
+#endif
 	mlx_loop_hook(cube->mlx, game_loop, cube);
 	mlx_hook(cube->mlx_win, DESTROY_WINDOW, 0L, cleanup, cube);
 }
