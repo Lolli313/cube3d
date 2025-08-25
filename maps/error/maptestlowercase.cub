@@ -1,7 +1,7 @@
-NO textures/cobble.xpm
-SO textures/stone.xpm
-WE textures/deepslate.xpm
-EA textures/stonebrick.xpm
+no textures/cobble.xpm
+so textures/stone.xpm
+we textures/deepslate.xpm
+ea textures/stonebrick.xpm
 
 F 220,100,0
 C 225,30,0

@@ -1,0 +1,16 @@
+NO ./textures/cobblestone.xpm
+
+SO ./textures/cobblestone.xpm
+
+WE ./textures/planks_oak.xpm
+
+EA ./textures/planks_oak.xpm
+
+F a,100,0
+C 225,30v,0
+
+111111
+100101
+101001
+1000S1
+111111

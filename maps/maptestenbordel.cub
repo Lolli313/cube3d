@@ -1,10 +1,14 @@
-NO textures/cobble.xpm
+NO     textures/cobble.xpm
 SO textures/stone.xpm
-WE textures/deepslate.xpm
+WE     textures/deepslate.xpm
+
+
 EA textures/stonebrick.xpm
 
 F 220,100,0
-C 225,30,0
+
+
+C 225,30,      0
 
         1111111111111111111111111
         1000000000110000000000001
