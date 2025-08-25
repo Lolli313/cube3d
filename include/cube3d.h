@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:49:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 15:53:17 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -66,7 +67,8 @@
 # define MAP_Y 14
 # define PLAYERSIZE 10
 # define PLAYERSPEED 1
-# define TURNSPEED PI / 256
+# define TURNSPEED PI / 2
+# define MOUSE_SENSITIVITY 0.002
 # define DEBUG 0
 # define TILESIZE 64
 
@@ -77,6 +79,7 @@
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
+# define MOTION_NOTIFY 6
 # define DESTROY_WINDOW 17
 # define PLAYERDIRECTIONSIZE 2000
 # define FOV 0.6
@@ -201,6 +204,7 @@ void			init_cube(t_cube *cube);
 // hook functions
 int				key_press_handler(int keysym, t_cube *cube);
 int				key_release_handler(int keysym, t_cube *cube);
+int				mouse_handler(int x, int y, t_cube *cube);
 int				game_loop(t_cube *cube);
 int				cleanup(t_cube *cube);
 

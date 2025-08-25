@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/22 11:49:13 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 15:53:17 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,35 @@ int	key_release_handler(int keysym, t_cube *cube)
 	return (0);
 }
 
-void	update_player_direction(t_cube *cube)
+int	mouse_handler(int x, int y, t_cube *cube)
+{
+	static int	prev_x = WIDTH / 2;
+	int			dx;
+	
+	(void)y;
+	dx = x - prev_x;
+	if (dx != 0)
+	{
+		cube->p.player_direction += dx * MOUSE_SENSITIVITY;
+		if (cube->p.player_direction < 0)
+			cube->p.player_direction += 2 * PI;
+		if (cube->p.player_direction > 0)
+			cube->p.player_direction -= 2 * PI;
+		cube->p.cam_x = cos(cube->p.player_direction);
+		cube->p.cam_y = sin(cube->p.player_direction);
+//		render_image(cube);
+	}
+	if (x != WIDTH / 2)
+		mlx_mouse_move(cube->mlx, cube->mlx_win, WIDTH / 2, HEIGHT / 2);
+	prev_x = WIDTH / 2;
+	return (0);
+}
+
+void	update_player_direction(t_cube *cube, double delta_time)
 {
 	if (cube->keys.left_pressed)
 	{
-		cube->p.player_direction -= TURNSPEED;
+		cube->p.player_direction -= TURNSPEED * delta_time;
 		if (cube->p.player_direction < 0)
 			cube->p.player_direction += 2 * PI;
 		cube->p.cam_x = cos(cube->p.player_direction);
@@ -62,7 +86,7 @@ void	update_player_direction(t_cube *cube)
 	}
 	if (cube->keys.right_pressed)
 	{
-		cube->p.player_direction += TURNSPEED;
+		cube->p.player_direction += TURNSPEED * delta_time;
 		if (cube->p.player_direction >= 2 * PI)
 			cube->p.player_direction -= 2 * PI;
 		cube->p.cam_x = cos(cube->p.player_direction);
@@ -70,9 +94,26 @@ void	update_player_direction(t_cube *cube)
 	}
 }
 
+double	get_delta_time(void)
+{
+	static struct timeval	last;
+	struct timeval			now;
+	double					delta;
+
+	gettimeofday(&now, NULL);
+	if (last.tv_sec == 0)
+		last = now;
+	delta = (now.tv_sec - last.tv_sec) + (now.tv_usec - last.tv_usec) / 1e6;
+	last = now;
+	return (delta);
+}
+
 int	game_loop(t_cube *cube)
 {
-	update_player_direction(cube);
+	double	delta_time;
+
+	delta_time = get_delta_time();
+	update_player_direction(cube, delta_time);
 	if (cube->keys.esc_pressed)
 		cleanup(cube);
 	if (cube->keys.w_pressed)
@@ -83,9 +124,6 @@ int	game_loop(t_cube *cube)
 		update_player_position(cube, DOWN);
 	if (cube->keys.d_pressed)
 		update_player_position(cube, RIGHT);
-	if (cube->keys.w_pressed || cube->keys.a_pressed || cube->keys.s_pressed
-		|| cube->keys.d_pressed || cube->keys.left_pressed
-		|| cube->keys.right_pressed)
-		render_image(cube);
+	render_image(cube);
 	return (0);
 }
