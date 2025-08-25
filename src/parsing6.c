@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/08/14 19:54:45 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/25 17:16:23 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,13 @@ int	check_map_characters(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '1' || line[i] != '0' || line[i] != 'N' || line[i] != 'S'
-			|| line[i] != 'E' || line[i] != 'W' || line[i] != ' ')
+		if (line[i] != '1' && line[i] != '0' && line[i] != 'N' && line[i] != 'S'
+			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' ' && line[i] != '\n')
 		{
 			printf("Error: Map invalid (wrong character)\n");
 			return (0);
 		}
+		i++;
 	}
 	return (1);
 }

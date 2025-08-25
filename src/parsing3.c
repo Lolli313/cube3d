@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/19 14:23:04 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:16:42 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ int	process_line(char *line, t_cube *cube, int *textures_done,
 			return (1);
 	}
 	if (*textures_done)
-		process_map_line(line, cube, map_row);
+	{
+		if (!process_map_line(line, cube, map_row))
+			return (0);
+	}
 	return (2);
 }
 
 int	process_map_line(char *line, t_cube *cube, int *map_row)
 {
+	if (!check_map_characters(line))
+		return (0);
 	if (*map_row < MAP_Y)
 	{
 		parse_map_line(line, cube, *map_row);

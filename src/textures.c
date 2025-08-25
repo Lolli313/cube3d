@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:47:34 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/22 13:52:46 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:10:26 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_img	*load_textures(t_cube *cube, char *path_plus_newline)
 	t_img	*img;
 	char	*path;
 
-	path = ft_strtrim(path_plus_newline, "\n\r");
+	path = ft_strtrim(path_plus_newline, " \n\r\t");
 	if (!check_xpm_extension(path))
 		return (free(path), NULL);
 	if (!check_texture_file(path))

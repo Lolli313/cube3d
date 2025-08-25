@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/19 14:45:30 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:10:38 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int check_xpm_extension(char *texture)
 		printf("Error: Wrong texture extension\n");
         return (0);
     }
-//	printf("texture is %s and length is %ld\n", texture, len);
-//	printf("attempted extension hunt is %c%c%c%c\n", texture[len - 4], texture[len - 3], texture[len - 2], texture[len - 1]);
     if (texture[len - 4] == '.' && texture[len - 3] == 'x' && 
         texture[len - 2] == 'p' && texture[len - 1] == 'm')
         return (1);
@@ -36,9 +34,6 @@ int check_texture_file(char *path)
     int fd;
     
     fd = open(path, O_RDONLY);
-//	printf("texture path is %s\n", path);
-//	printf("length of path is %ld\n", ft_strlen(path));
-//	printf("fd is %d\n", fd);
     if (fd == -1)
     {
         printf("Error: While loading textures\n");

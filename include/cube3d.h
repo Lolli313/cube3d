@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 15:53:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:53:17 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,5 +283,24 @@ int				check_map_characters(char *line);
 
 // parsing_main.c
 int				parse_game(int ac, char **argv, t_cube *cube);
+
+// flood_fill.c
+int				is_valid_position(int x, int y);
+int				is_accessible(int map[MAP_Y][MAP_X], int x, int y);
+int				is_border_accessible(int visited[MAP_Y][MAP_X]);
+void			flood_fill_recursive(int map[MAP_Y][MAP_X], 
+					int visited[MAP_Y][MAP_X], int x, int y);
+
+// flood_fill1.c
+void			init_visited_map(int visited[MAP_Y][MAP_X]);
+int				find_player_position(int map[MAP_Y][MAP_X], int *player_x, 
+					int *player_y);
+int				check_player_on_border(int player_x, int player_y);
+int				validate_map_boundaries(t_cube *cube);
+
+// flood_fill3.c
+int				is_external_wall(int map[MAP_Y][MAP_X], int x, int y);
+int				check_player_on_external_wall(int map[MAP_Y][MAP_X], 
+					int player_x, int player_y);
 
 #endif
