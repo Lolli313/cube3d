@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:37:30 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:38:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/26 16:04:01 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 t_img	*check_wall_side_2(t_cube *cube)
 {
+	t_door	*door;
+
+	door = find_door(cube);
+	if (door != NULL)
+		return (cube->map.door);
 	if (cube->coord.side == 1)
 	{
 		if (cube->coord.ray_dir_y > 0)
@@ -48,9 +53,14 @@ void	check_wall_side(t_cube *cube, int *tex_height, int *tex_width)
 		*tex_height = cube->map.WE->height;
 		*tex_width = cube->map.WE->width;
 	}
-	else
+	else if (cube->coord.side_detailed == cube->map.EA)
 	{
 		*tex_height = cube->map.EA->height;
 		*tex_width = cube->map.EA->width;
+	}
+	else
+	{
+		*tex_height = cube->map.door->height;
+		*tex_width = cube->map.door->width;
 	}
 }

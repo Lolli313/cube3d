@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:40:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/26 14:03:36 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	draw_ray(t_cube *cube, int screen_x)
 		}
 		if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1)
 			break ;
+		else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3)
+		{
+			if (!is_door_open(cube))
+				break ;
+		}
 	}
 	if (!DEBUG)
 		draw_wall(cube, screen_x);

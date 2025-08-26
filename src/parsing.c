@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/22 13:40:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/26 15:57:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int parse_rgb(char *line)
 
 static int	parse_direction_texture(char *line, t_cube *cube)
 {
-//	printf("HERE\n");
 	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
 	{
 		cube->map.NO = load_textures(cube, line + 3);
@@ -89,7 +88,9 @@ static int	parse_direction_texture(char *line, t_cube *cube)
 		cube->map.EA = load_textures(cube, line + 3);
 		return (1);
 	}
-//	printf("HERE\n");
+	cube->map.door = load_textures(cube, "assets/glass_tile.xpm");
+	if (!cube->map.door)
+		return (1);
 	return (0);
 }
 

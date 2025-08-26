@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing6.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/08/25 17:16:23 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/26 11:20:39 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	check_map_characters(char *line)
 	while (line[i])
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'N' && line[i] != 'S'
-			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' ' && line[i] != '\n')
+			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' ' && line[i] != '\n'
+			&& line[i] != 'D')
 		{
 			printf("Error: Map invalid (wrong character)\n");
 			return (0);

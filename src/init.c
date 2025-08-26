@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 16:52:24 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/26 15:32:55 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_hooks(t_cube *cube)
 {
 	mlx_hook(cube->mlx_win, KEY_PRESS, 1L << 0, key_press_handler, cube);
 	mlx_hook(cube->mlx_win, KEY_RELEASE, 1L << 1, key_release_handler, cube);
-	mlx_hook(cube->mlx_win, MOTION_NOTIFY, 1L<<6, mouse_handler, cube);
+	mlx_hook(cube->mlx_win, MOTION_NOTIFY, 1L << 6, mouse_handler, cube);
 #ifdef __linux__
 	mlx_mouse_hide(cube->mlx, cube->mlx_win);
 	mlx_mouse_move(cube->mlx, cube->mlx_win, WIDTH / 2, HEIGHT / 2);
@@ -55,6 +55,7 @@ void	init_map(t_cube *cube)
 	int	i;
 	int	j;
 
+	cube->nbr_doors = 0;
 	i = -1;
 	while (++i < MAP_Y)
 	{

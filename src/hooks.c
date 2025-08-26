@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 16:52:26 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/26 11:04:36 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	mouse_handler(int x, int y, t_cube *cube)
 			cube->p.player_direction -= 2 * PI;
 		cube->p.cam_x = cos(cube->p.player_direction);
 		cube->p.cam_y = sin(cube->p.player_direction);
-//		render_image(cube);
 	}
 	if (x != WIDTH / 2)
 	{

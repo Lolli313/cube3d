@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 17:53:17 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/26 15:58:01 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ typedef struct s_new_p
 	int			p_new_position_y;
 }				t_new_p;
 
+typedef struct s_door
+{
+	int 		door_x;
+	int			door_y;
+	bool		is_open;
+	struct s_door	*next;
+}				t_door;
+
 typedef struct s_tex
 {
 	int			tex_x;
@@ -156,6 +164,7 @@ typedef struct s_map
 	t_img		*SO;
 	t_img		*WE;
 	t_img		*EA;
+	t_img		*door;
 	int			floor;
 	int			ceiling;
 }				t_map;
@@ -184,12 +193,14 @@ typedef struct s_cube
 	void		*mlx;
 	void		*mlx_win;
 	int			color;
+	int			nbr_doors;
 	t_player	p;
 	t_img		img;
 	t_map		map;
 	t_keys		keys;
 	t_coord		coord;
 	t_tex		tex;
+	t_door		door;
 }				t_cube;
 
 void			render_image(t_cube *cube);
@@ -231,6 +242,11 @@ bool			check_wall_tile(t_cube *cube, int p_new_position_x,
 // texture functions
 t_img			*load_textures(t_cube *cube, char *path);
 int				get_texture_pixel(t_img *img, int x, int y);
+
+// door functions
+void			add_door(t_cube *cube, int row, int col);
+t_door			*find_door(t_cube *cube);
+bool			is_door_open(t_cube *cube);
 
 // check_maps.c
 char			*create_map_path(char *map_name);
