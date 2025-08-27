@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/26 15:58:01 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:51:35 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ typedef struct s_keys
 	int			a_pressed;
 	int			s_pressed;
 	int			d_pressed;
+	int			e_pressed;
 	int			esc_pressed;
 	int			left_pressed;
 	int			right_pressed;
@@ -183,8 +184,8 @@ typedef struct s_player
 	int			square_y;
 	double		cam_x;
 	double		cam_y;
-	double		distance;
 	int			height;
+	double		distance;
 	double		player_direction;
 }				t_player;
 
@@ -247,6 +248,7 @@ int				get_texture_pixel(t_img *img, int x, int y);
 void			add_door(t_cube *cube, int row, int col);
 t_door			*find_door(t_cube *cube);
 bool			is_door_open(t_cube *cube);
+void			handle_door(t_cube *cube);
 
 // check_maps.c
 char			*create_map_path(char *map_name);

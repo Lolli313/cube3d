@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/26 11:04:36 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:54:02 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	key_press_handler(int keysym, t_cube *cube)
 		cube->keys.s_pressed = 1;
 	else if (keysym == XK_d)
 		cube->keys.d_pressed = 1;
+	else if (keysym == XK_e)
+		cube->keys.e_pressed = 1;
 	else if (keysym == XK_Escape)
 		cube->keys.esc_pressed = 1;
 	else if (keysym == XK_Left)
@@ -41,6 +43,8 @@ int	key_release_handler(int keysym, t_cube *cube)
 		cube->keys.s_pressed = 0;
 	else if (keysym == XK_d)
 		cube->keys.d_pressed = 0;
+	else if (keysym == XK_e)
+		cube->keys.e_pressed = 0;
 	else if (keysym == XK_Escape)
 		cube->keys.esc_pressed = 0;
 	else if (keysym == XK_Left)
@@ -129,6 +133,8 @@ int	game_loop(t_cube *cube)
 		update_player_position(cube, DOWN);
 	if (cube->keys.d_pressed)
 		update_player_position(cube, RIGHT);
+	if (cube->keys.e_pressed)
+		handle_door(cube);
 	render_image(cube);
 	return (0);
 }

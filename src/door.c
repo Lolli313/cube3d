@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/26 16:00:59 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/27 11:11:24 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_door	*find_door(t_cube *cube)
 	temp = &cube->door;
 	if (!temp)
 		return (NULL);
-//	printf("pointer is %p\n", temp);
 	while (temp)
 	{
 		if (temp->door_x == cube->coord.map_x
