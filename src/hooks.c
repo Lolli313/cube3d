@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/27 10:54:02 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/27 17:39:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	mouse_handler(int x, int y, t_cube *cube)
 {
 	static int	prev_x = WIDTH / 2;
 	int			dx;
-	
+
 	(void)y;
 	dx = x - prev_x;
 	if (dx != 0)
@@ -133,8 +133,7 @@ int	game_loop(t_cube *cube)
 		update_player_position(cube, DOWN);
 	if (cube->keys.d_pressed)
 		update_player_position(cube, RIGHT);
-	if (cube->keys.e_pressed)
-		handle_door(cube);
+	handle_door(cube);
 	render_image(cube);
 	return (0);
 }
