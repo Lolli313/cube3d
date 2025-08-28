@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/27 11:21:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:38:38 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	add_door(t_cube *cube, int row, int col)
 	new_door->next = NULL;
 	if (cube->nbr_doors == 0)
 	{
-		cube->door = *new_door;
+		cube->door = new_door;
 		return ;
 	}
-	temp = &cube->door;
+	temp = cube->door;
 	while (temp)
 		temp = temp->next;
 	temp = new_door;
@@ -39,7 +39,7 @@ t_door	*find_door(t_cube *cube)
 {
 	t_door	*temp;
 
-	temp = &cube->door;
+	temp = cube->door;
 	if (!temp)
 		return (NULL);
 	while (temp)

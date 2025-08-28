@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_maps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/14 16:23:56 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/28 16:26:40 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ int load_map(int ac, char **argv, t_cube *cube)
         return (0);
     fd = find_map(ac, argv);
     if (fd < 0)
-        return (0);
-    if (!parse_map_file(fd, cube))
-    {
-        close(fd);
-        return (0);
-    }
+		return (0);
+	if (!parse_map_file(fd, cube))
+	{
+		close(fd);
+		return (0);
+	}
     close(fd);
     return (1);
 }

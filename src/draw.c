@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:36:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:19:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:03:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	render_image(t_cube *cube)
 			draw_pixel(&cube->img, x, y, cube->map.floor);
 	}
 	raycasting(cube);
+	draw_minimap(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img_addr, 0, 0);
 }

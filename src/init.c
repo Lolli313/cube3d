@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/27 17:38:38 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:35:43 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "Test");
+	cube->door = NULL;
 	init_map(cube);
 }

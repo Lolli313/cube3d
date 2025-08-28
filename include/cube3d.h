@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/27 17:37:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:08:01 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ typedef struct s_cube
 	t_keys		keys;
 	t_coord		coord;
 	t_tex		tex;
-	t_door		door;
+	t_door		*door;
 }				t_cube;
 
 void			render_image(t_cube *cube);
@@ -249,6 +249,9 @@ void			add_door(t_cube *cube, int row, int col);
 t_door			*find_door(t_cube *cube);
 bool			is_door_open(t_cube *cube);
 void			handle_door(t_cube *cube);
+
+// minimap functions
+void			draw_minimap(t_cube *cube);
 
 // check_maps.c
 char			*create_map_path(char *map_name);

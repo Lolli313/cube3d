@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/14 16:23:58 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/28 16:32:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int parse_map_file(int fd, t_cube *cube)
 	{
 		if (handle_empty_line(line))
 			continue;
-//	printf("line is %s", line);
+//		printf("line is %s", line);
 		result = process_line(line, cube, &textures_done, &texture_count, &map_row);
 		if (result == 0)
 		{
