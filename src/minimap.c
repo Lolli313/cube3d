@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 18:20:55 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:44:06 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	draw_minimap_player(t_cube *cube)
 	int	temp_x;
 	int	temp_y;
 
-	map_x = (cube->p.position_x * 5 / TILESIZE) + (PLAYERSIZE / 2);
-	map_y = (cube->p.position_y * 5 / TILESIZE) + (PLAYERSIZE / 2);
+	map_x = 5 + (cube->p.position_x * 5) / TILESIZE;
+	map_y = 5 + (cube->p.position_y * 5) / TILESIZE;
 	temp_y = -1;
 	while (++temp_y < 3)
 	{
@@ -73,7 +73,7 @@ void	draw_minimap(t_cube *cube)
 				draw_minimap_tile(cube, x, y, RED);
 			x += 5;
 		}
-		draw_minimap_player(cube);
 		y += 5;
 	}
+	draw_minimap_player(cube);
 }

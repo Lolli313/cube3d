@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 14:16:40 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:25:24 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:33:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,17 @@ void	handle_y_wall(t_cube *cube, double new_precise_y, int tile_y)
 {
 	int	potential_y;
 
+	(void)tile_y;
 	potential_y = (int)new_precise_y;
+//	printf("potential y is %d\n", potential_y);
 	if (cube->p.delta_y > 0)
 	{
 		if (check_wall_tile(cube, cube->p.position_x, potential_y, DOWN))
 		{
-			tile_y = (potential_y + PLAYERSIZE) / TILESIZE;
-			cube->p.precise_y = tile_y * TILESIZE - PLAYERSIZE;
-			cube->p.position_y = (int)cube->p.precise_y;
+//			printf("HELLO\n");
+//			tile_y = (potential_y - PLAYERSIZE / 2) / TILESIZE;
+//			cube->p.precise_y = (tile_y - PLAYERSIZE / 2) * TILESIZE;
+//			cube->p.position_y = (int)cube->p.precise_y;
 			return ;
 		}
 	}
@@ -57,9 +60,9 @@ void	handle_y_wall(t_cube *cube, double new_precise_y, int tile_y)
 	{
 		if (check_wall_tile(cube, cube->p.position_x, potential_y, UP))
 		{
-			tile_y = potential_y / TILESIZE;
-			cube->p.precise_y = (tile_y + 1) * TILESIZE;
-			cube->p.position_y = (int)cube->p.precise_y;
+//			tile_y = (potential_y + PLAYERSIZE / 2) / TILESIZE;
+//			cube->p.precise_y = (tile_y + PLAYERSIZE / 2) * TILESIZE;
+//			cube->p.position_y = (int)cube->p.precise_y;
 			return ;
 		}
 	}
@@ -71,14 +74,16 @@ void	handle_x_wall(t_cube *cube, double new_precise_x, int tile_x)
 {
 	int	potential_x;
 
+	(void)tile_x;
 	potential_x = (int)new_precise_x;
+//	printf("potential x is %d\n", potential_x);
 	if (cube->p.delta_x > 0)
 	{
 		if (check_wall_tile(cube, potential_x, cube->p.position_y, RIGHT))
 		{
-			tile_x = (potential_x + PLAYERSIZE) / TILESIZE;
-			cube->p.precise_x = tile_x * TILESIZE - PLAYERSIZE;
-			cube->p.position_x = (int)cube->p.precise_x;
+//			tile_x = (potential_x + PLAYERSIZE / 2) / TILESIZE;
+//			cube->p.precise_x = (tile_x + PLAYERSIZE / 2) * TILESIZE;
+//			cube->p.position_x = (int)cube->p.precise_x;
 			return ;
 		}
 	}
@@ -86,9 +91,9 @@ void	handle_x_wall(t_cube *cube, double new_precise_x, int tile_x)
 	{
 		if (check_wall_tile(cube, potential_x, cube->p.position_y, LEFT))
 		{
-			tile_x = potential_x / TILESIZE;
-			cube->p.precise_x = (tile_x + 1) * TILESIZE;
-			cube->p.position_x = (int)cube->p.precise_x;
+//			tile_x = (potential_x + PLAYERSIZE / 2) / TILESIZE;
+//			cube->p.precise_x = (tile_x + PLAYERSIZE / 2) * TILESIZE;
+//			cube->p.position_x = (int)cube->p.precise_x;
 			return ;
 		}
 	}
@@ -107,7 +112,9 @@ void	update_player_position(t_cube *cube, int dir)
 	tile_y = 0;
 	assign_direction(&cube->p, dir);
 	new_precise_x = cube->p.precise_x + cube->p.delta_x;
+	printf("old x is %f and new x is %f\n", cube->p.precise_x, new_precise_x);
 	handle_x_wall(cube, new_precise_x, tile_x);
 	new_precise_y = cube->p.precise_y + cube->p.delta_y;
+	printf("old y is %f and new y is %f\n", cube->p.precise_y, new_precise_y);
 	handle_y_wall(cube, new_precise_y, tile_y);
 }

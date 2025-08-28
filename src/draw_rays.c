@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/26 14:03:36 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:25:58 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	prepare_coords(t_cube *cube)
 	double	pos_x;
 	double	pos_y;
 
-	pos_x = (cube->p.precise_x + (PLAYERSIZE / 2.0)) / TILESIZE;
-	pos_y = (cube->p.precise_y + (PLAYERSIZE / 2.0)) / TILESIZE;
+	pos_x = cube->p.precise_x / TILESIZE;
+	pos_y = cube->p.precise_y / TILESIZE;
 	cube->coord.start_x = pos_x;
 	cube->coord.start_y = pos_y;
 	cube->coord.map_x = (int)pos_x;

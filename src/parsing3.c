@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/28 17:56:31 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:09:06 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	parse_map_line(char *line, t_cube *cube, int row)
 //			printf("HERE\n");
 			cube->map.map[row][col] = 2;
 //			printf("row is %d and col is %d\n", row, col);
-			cube->p.position_x = col * TILESIZE + TILESIZE / 2;
-			cube->p.position_y = row * TILESIZE + TILESIZE / 2;
+//			cube->p.position_x = col * TILESIZE + TILESIZE / 2;
+//			cube->p.position_y = row * TILESIZE + TILESIZE / 2;
 			set_player_position(cube, line[i], row, col);
 		}
 		else if (line[i] == 'D')
@@ -109,8 +109,8 @@ void	set_player_position(t_cube *cube, char direction, int row, int col)
 		cube->p.player_direction = PI;
 	cube->p.cam_x = cos(cube->p.player_direction);
 	cube->p.cam_y = sin(cube->p.player_direction);
-	cube->p.position_x = TILESIZE * col;
-	cube->p.position_y = TILESIZE * row;
+	cube->p.position_x = (TILESIZE * col + TILESIZE / 2) + (PLAYERSIZE / 2);
+	cube->p.position_y = (TILESIZE * row) + (PLAYERSIZE / 2);
 	cube->p.precise_x = (double)cube->p.position_x;
 	cube->p.precise_y = (double)cube->p.position_y;
 	cube->p.error_x = 0.0;
