@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/28 17:19:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:56:31 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ int	parse_map_line(char *line, t_cube *cube, int row)
 		}
 		else
 			cube->map.map[row][col] = 5;
+//		printf("%d", cube->map.map[row][col]);
 		col++;
 		i++;
 	}
+//	printf("\n");
 	return (1);
 }
 
