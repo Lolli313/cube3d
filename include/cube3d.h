@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 15:41:39 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:12:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,5 +334,9 @@ void			free_visited_map(int **visited, int height);
 int				is_external_wall(t_map *map, int x, int y);
 int				check_player_on_external_wall(t_map *map, 
 					int player_x, int player_y);
+
+// accessibility_map.c
+int				**create_accessibility_map(t_cube *cube);
+void			free_accessibility_map(int **accessibility_map, int height);
 
 #endif

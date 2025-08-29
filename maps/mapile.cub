@@ -1,7 +1,7 @@
-NO textures/cobble.xpm
-SO textures/stone.xpm
-WE textures/deepslate.xpm
-EA textures/stonebrick.xpm
+NO assets/tiled.xpm
+SO assets/tiled.xpm
+WE assets/tiled.xpm
+EA assets/tiled.xpm
 
 F 220,100,0
 C 225,30,0

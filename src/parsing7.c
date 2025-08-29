@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:41:34 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:12:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int check_width(int fd)
         }
         free(line);
     }
+    printf("DEBUG check_width: max_width = %d\n", max_width);
     return (max_width);
 }
 
@@ -53,7 +54,7 @@ int check_height(int fd)
     height = 0;
     while ((line = get_next_line(fd)))
     {
-        if (line[0] == ' ' || line[0] == '\n')
+        if (line[0] == '\n' || line[0] == '\0')
         {
             free(line);
             continue;
@@ -66,6 +67,7 @@ int check_height(int fd)
         }
         free(line);
     }
+    printf("DEBUG check_height: height = %d\n", height);
     return (height);
 }
 

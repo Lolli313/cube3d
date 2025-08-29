@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:39:48 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 15:52:57 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int allocate_map(t_map *map)
 
 	i = 0;
     if (!map || map->height <= 0 || map->width <= 0)
+    {
+        printf("DEBUG allocate_map: Invalid parameters - height=%d, width=%d\n", map ? map->height : -1, map ? map->width : -1);
         return (0);
+    }
+    printf("DEBUG allocate_map: Allocating map %dx%d\n", map->width, map->height);
     map->map = malloc(sizeof(int *) * map->height);
     if (!map->map)
         return (0);
@@ -35,6 +39,7 @@ int allocate_map(t_map *map)
         }
         i++;
     }
+    printf("DEBUG allocate_map: Successfully allocated map %dx%d\n", map->width, map->height);
     return (1);
 }
 

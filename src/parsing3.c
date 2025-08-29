@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:39:47 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:15:53 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	allocate_map_from_file(char *filename, t_cube *cube)
 {
-	int fd1, fd2;
+	int fd1;
+	int fd2;
 	
 	fd1 = open(filename, O_RDONLY);
 	if (fd1 < 0)
@@ -83,10 +84,12 @@ int	parse_map_line(char *line, t_cube *cube, int row)
 	int	col;
 	int	i;
 
+	printf("DEBUG parse_map_line: row=%d, line='%s', map dimensions=%dx%d\n", row, line, cube->map.width, cube->map.height);
+
 	col = 0;
 	i = 0;
 //	printf("line is %s\n", line);
-	while (line[i] && col < MAP_X)
+	while (line[i] && col < cube->map.width)
 	{
 		if (line[i] == '1')
 			cube->map.map[row][col] = 1;

@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 15:40:11 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:12:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	draw_minimap(t_cube *cube)
 	int	y;
 	int	map_x;
 	int	map_y;
+	int	**accessibility_map;
+
+	// Créer la map d'accessibilité
+	accessibility_map = create_accessibility_map(cube);
+	if (!accessibility_map)
+		return;
 
 	x = 5;
 	y = 5;
@@ -63,17 +69,25 @@ void	draw_minimap(t_cube *cube)
 		x = 5;
 		while (++map_x < cube->map.width)
 		{
-			if (cube->map.map[map_y][map_x] == 1)
-				draw_minimap_tile(cube, x, y, BLACK);
-			else if (cube->map.map[map_y][map_x] == 0 || cube->map.map[map_y][map_x] == 2)
-				draw_minimap_tile(cube, x, y, WHITE);
-			else if (cube->map.map[map_y][map_x] == 3)
-				draw_minimap_tile(cube, x, y, GREEN);
-			else if (cube->map.map[map_y][map_x] == 4)
-				draw_minimap_tile(cube, x, y, RED);
+			// Ne dessiner que les zones accessibles
+			if (accessibility_map[map_y][map_x] == 1)
+			{
+				if (cube->map.map[map_y][map_x] == 1)
+					draw_minimap_tile(cube, x, y, BLACK);
+				else if (cube->map.map[map_y][map_x] == 0 || cube->map.map[map_y][map_x] == 2)
+					draw_minimap_tile(cube, x, y, WHITE);
+				else if (cube->map.map[map_y][map_x] == 3)
+					draw_minimap_tile(cube, x, y, GREEN);
+				else if (cube->map.map[map_y][map_x] == 4)
+					draw_minimap_tile(cube, x, y, RED);
+			}
 			x += 5;
 		}
 		y += 5;
 	}
+	
+	// Libérer la map d'accessibilité
+	free_accessibility_map(accessibility_map, cube->map.height);
+	
 	draw_minimap_player(cube);
 }
