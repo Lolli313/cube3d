@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 15:39:56 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 19:04:23 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	prepare_coords(t_cube *cube)
 	double	pos_x;
 	double	pos_y;
 
-	pos_x = cube->p.precise_x / TILESIZE;
-	pos_y = cube->p.precise_y / TILESIZE;
+	pos_x = (cube->p.precise_x + (PLAYERSIZE / 2.0)) / TILESIZE;
+	pos_y = (cube->p.precise_y + (PLAYERSIZE / 2.0)) / TILESIZE;
 	cube->coord.start_x = pos_x;
 	cube->coord.start_y = pos_y;
 	cube->coord.map_x = (int)pos_x;
