@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/28 16:32:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:24:25 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	init_parse_vars(int *textures_done, int *map_row, int *texture_count
 	*texture_count = 0;
 }
 
-int parse_map_file(int fd, t_cube *cube)
+int parse_map_file(int fd, t_cube *cube, char *filename)
 {
 	char *line;
 	int textures_done;
@@ -62,8 +62,7 @@ int parse_map_file(int fd, t_cube *cube)
 	{
 		if (handle_empty_line(line))
 			continue;
-//		printf("line is %s", line);
-		result = process_line(line, cube, &textures_done, &texture_count, &map_row);
+		result = process_line(line, cube, &textures_done, &texture_count, &map_row, filename);
 		if (result == 0)
 		{
 			free(line);

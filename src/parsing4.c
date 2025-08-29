@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/25 17:10:38 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/29 15:40:09 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,23 @@ int validate_map_content(t_cube *cube)
     int j;
 
     player_count = 0;
+    if (cube->map.height > MAP_Y || cube->map.width > MAP_X)
+    {
+        printf("Error: Map exceeds maximum dimensions\n");
+        return (0);
+    }
     i = 0;
-    while (i < MAP_Y)
+    while (i < cube->map.height)
     {
         j = 0;
-        while (j < MAP_X)
+        while (j < cube->map.width)
         {
-//			printf("%d, ", cube->map.map[i][j]);
             if (cube->map.map[i][j] == 2)
                 player_count++;
             j++;
         }
-//		printf("\n");
         i++;
     }
-//	printf("player count is %d\n", player_count);
     if (player_count != 1)
     {
         printf("Error: Map must have exactly one player\n");

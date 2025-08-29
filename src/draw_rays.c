@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 20:25:58 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:39:56 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ void	draw_ray(t_cube *cube, int screen_x)
 			cube->coord.map_y += cube->coord.step_y;
 			cube->coord.side = 1;
 		}
+		if (cube->coord.map_x < 0 || cube->coord.map_x >= cube->map.width || 
+			cube->coord.map_y < 0 || cube->coord.map_y >= cube->map.height)
+			break ;
 		if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1)
 			break ;
 		else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3)

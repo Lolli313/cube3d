@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 20:34:12 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:41:39 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #  define XK_a 0       // A
 #  define XK_s 1       // S
 #  define XK_d 2       // D
+#  define XK_e 14      // E
 #  define XK_Escape 53 // Escape
 #  define XK_Left 123  // Left Arrow
 #  define XK_Right 124 // Right Arrow
@@ -63,8 +64,8 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define MAP_X 33
-# define MAP_Y 14
+# define MAP_X 200
+# define MAP_Y 200
 # define PLAYERSIZE 10
 # define PLAYERSPEED 1
 # define TURNSPEED PI / 2
@@ -160,15 +161,17 @@ typedef struct s_keys
 
 typedef struct s_map
 {
-	int			map[MAP_Y][MAP_X];
-	t_img		*NO;
-	t_img		*SO;
-	t_img		*WE;
-	t_img		*EA;
-	t_img		*door;
-	int			floor;
-	int			ceiling;
-}				t_map;
+    int     **map;
+    int     width;
+    int     height;
+    t_img   *NO;
+    t_img   *SO;
+    t_img   *WE;
+    t_img   *EA;
+	t_img 	*door;
+    int     floor;
+    int     ceiling;
+}           t_map;
 
 typedef struct s_player
 {
@@ -265,7 +268,7 @@ int				parse_rgb(char *line);
 int				parse_texture_line(char *line, t_cube *cube);
 
 // parsing2.c
-int				parse_map_file(int fd, t_cube *cube);
+int				parse_map_file(int fd, t_cube *cube, char *filename);
 int				process_texture_line(char *line, t_cube *cube,
 					int *texture_count);
 int				validate_textures_complete(int texture_count);
@@ -275,7 +278,7 @@ int				parse_map_line(char *line, t_cube *cube, int row);
 void			set_player_position(t_cube *cube, char direction, int row,
 					int col);
 int				process_line(char *line, t_cube *cube, int *textures_done,
-					int *texture_count, int *map_row);
+					int *texture_count, int *map_row, char *filename);
 int				process_map_line(char *line, t_cube *cube, int *map_row);
 
 // parsing4.c
@@ -304,24 +307,32 @@ int				check_map_characters(char *line);
 
 // parsing_main.c
 int				parse_game(int ac, char **argv, t_cube *cube);
+int				allocate_map(t_map *map);
+
+// parsing7.c
+int				check_width(int fd);
+int				check_height(int fd);
+int				load_map_with_dimensions(char *filename, t_cube *cube);
 
 // flood_fill.c
-int				is_valid_position(int x, int y);
-int				is_accessible(int map[MAP_Y][MAP_X], int x, int y);
-int				is_border_accessible(int visited[MAP_Y][MAP_X]);
-void			flood_fill_recursive(int map[MAP_Y][MAP_X], 
-					int visited[MAP_Y][MAP_X], int x, int y);
+int				is_valid_position(int x, int y, t_map *map);
+int				is_accessible(t_map *map_struct, int x, int y);
+int				is_border_accessible(int **visited, t_map *map);
+void			flood_fill_recursive(t_map *map_struct, int **visited,
+					int x, int y);
 
 // flood_fill1.c
-void			init_visited_map(int visited[MAP_Y][MAP_X]);
-int				find_player_position(int map[MAP_Y][MAP_X], int *player_x, 
+void			init_visited_map(int **visited, t_map *map);
+int				find_player_position(t_map *map, int *player_x, 
 					int *player_y);
-int				check_player_on_border(int player_x, int player_y);
+int				check_player_on_border(int player_x, int player_y, t_map *map);
 int				validate_map_boundaries(t_cube *cube);
+int				**allocate_visited_map(t_map *map);
+void			free_visited_map(int **visited, int height);
 
-// flood_fill3.c
-int				is_external_wall(int map[MAP_Y][MAP_X], int x, int y);
-int				check_player_on_external_wall(int map[MAP_Y][MAP_X], 
+// flood_fill2.c
+int				is_external_wall(t_map *map, int x, int y);
+int				check_player_on_external_wall(t_map *map, 
 					int player_x, int player_y);
 
 #endif

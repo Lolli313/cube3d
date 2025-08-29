@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   parsing3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/08/28 20:09:06 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:39:47 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static int	allocate_map_from_file(char *filename, t_cube *cube)
+{
+	int fd1, fd2;
+	
+	fd1 = open(filename, O_RDONLY);
+	if (fd1 < 0)
+		return (0);
+	cube->map.width = check_width(fd1);
+	close(fd1);
+	fd2 = open(filename, O_RDONLY);
+	if (fd2 < 0)
+		return (0);
+	cube->map.height = check_height(fd2);
+	close(fd2);
+	if (!allocate_map(&cube->map))
+		return (0);
+	return (1);
+}
 
 static int	handle_texture_phase(char *line, t_cube *cube, int *texture_count,
 		int *textures_done)
@@ -24,7 +43,7 @@ static int	handle_texture_phase(char *line, t_cube *cube, int *texture_count,
 }
 
 int	process_line(char *line, t_cube *cube, int *textures_done,
-		int *texture_count, int *map_row)
+		int *texture_count, int *map_row, char *filename)
 {
 	int	result;
 
@@ -35,6 +54,8 @@ int	process_line(char *line, t_cube *cube, int *textures_done,
 			return (0);
 		if (result == 1)
 			return (1);
+		if (result == 2 && !allocate_map_from_file(filename, cube))
+			return (0);
 	}
 	if (*textures_done)
 	{

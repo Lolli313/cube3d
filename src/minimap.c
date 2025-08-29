@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 20:44:06 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:40:11 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	draw_minimap(t_cube *cube)
 	x = 5;
 	y = 5;
 	map_y = -1;
-	while (++map_y < MAP_Y)
+	while (++map_y < cube->map.height)
 	{
 		map_x = -1;
 		x = 5;
-		while (++map_x < MAP_X)
+		while (++map_x < cube->map.width)
 		{
 			if (cube->map.map[map_y][map_x] == 1)
 				draw_minimap_tile(cube, x, y, BLACK);

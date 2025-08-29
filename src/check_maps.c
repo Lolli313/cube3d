@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_maps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/28 16:26:40 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:41:41 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,26 @@ static int validate_file_checks(int ac, char **argv)
 int load_map(int ac, char **argv, t_cube *cube)
 {
     int fd;
+    char *map_path;
 
     if (!validate_file_checks(ac, argv))
         return (0);
     fd = find_map(ac, argv);
     if (fd < 0)
 		return (0);
-	if (!parse_map_file(fd, cube))
+	map_path = create_map_path(argv[1]);
+	if (!map_path)
 	{
 		close(fd);
 		return (0);
 	}
+	if (!parse_map_file(fd, cube, map_path))
+	{
+		close(fd);
+		free(map_path);
+		return (0);
+	}
     close(fd);
+    free(map_path);
     return (1);
 }

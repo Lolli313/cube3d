@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 16:35:43 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:21:46 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,10 @@ void	init_hooks(t_cube *cube)
 	mlx_hook(cube->mlx_win, DESTROY_WINDOW, 0L, cleanup, cube);
 }
 
-void	init_map(t_cube *cube)
-{
-	int	i;
-	int	j;
-
-	cube->nbr_doors = 0;
-	i = -1;
-	while (++i < MAP_Y)
-	{
-		j = -1;
-		while (++j < MAP_X)
-			cube->map.map[i][j] = 0;
-	}
-}
-
 void	init_cube(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "Test");
 	cube->door = NULL;
-	init_map(cube);
+	cube->nbr_doors = 0;
 }
