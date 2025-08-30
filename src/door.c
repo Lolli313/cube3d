@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/28 16:38:38 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/30 18:16:06 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ bool	is_door_open(t_cube *cube)
 
 	temp = find_door(cube);
 	return (temp->is_open);
+}
+
+void	parse_door(t_cube *cube, int row, int col)
+{
+	cube->map.map[row][col] = 3;
+	add_door(cube, row, col);
+	cube->nbr_doors++;
 }

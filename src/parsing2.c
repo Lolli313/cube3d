@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:24:25 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/30 17:38:03 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,38 +42,33 @@ static int	handle_empty_line(char *line)
 	return (0);
 }
 
-static void	init_parse_vars(int *textures_done, int *map_row, int *texture_count) // thx norme
+static void	init_parse_vars(t_parse *parse)
 {
-	*textures_done = 0;
-	*map_row = 0;
-	*texture_count = 0;
+	parse->textures_done = 0;
+	parse->map_row = 0;
+	parse->texture_count = 0;
 }
 
-int parse_map_file(int fd, t_cube *cube, char *filename)
+int	parse_map_file(int fd, t_cube *cube, char *filename)
 {
-	char *line;
-	int textures_done;
-	int map_row;
-	int texture_count;
-	int result;
+	char	*line;
+	int		result;
+	t_parse	parse;
 
-	init_parse_vars(&textures_done, &map_row, &texture_count);
-	while ((line = get_next_line(fd)))
+	init_parse_vars(&parse);
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (handle_empty_line(line))
-			continue;
-		result = process_line(line, cube, &textures_done, &texture_count, &map_row, filename);
+		{
+			line = get_next_line(fd);
+			continue ;
+		}
+		result = process_line(line, cube, filename, &parse);
 		if (result == 0)
-		{
-			free(line);
-			return (0);
-		}
-		if (result == 1)
-		{
-			free(line);
-			continue;
-		}
+			return (free(line), 0);
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (1);
 }

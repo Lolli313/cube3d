@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 19:04:23 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/30 18:16:55 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,14 @@ void	draw_ray(t_cube *cube, int screen_x)
 			cube->coord.map_y += cube->coord.step_y;
 			cube->coord.side = 1;
 		}
-		if (cube->coord.map_x < 0 || cube->coord.map_x >= cube->map.width || 
-			cube->coord.map_y < 0 || cube->coord.map_y >= cube->map.height)
+		if (cube->coord.map_x < 0 || cube->coord.map_x >= cube->map.width
+			|| cube->coord.map_y < 0 || cube->coord.map_y >= cube->map.height)
 			break ;
 		if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1)
 			break ;
-		else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3)
-		{
-			if (!is_door_open(cube))
-				break ;
-		}
+		else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3
+				&& !is_door_open(cube))
+			break ;
 	}
-	if (!DEBUG)
-		draw_wall(cube, screen_x);
+	draw_wall(cube, screen_x);
 }

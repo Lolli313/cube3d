@@ -18,7 +18,8 @@ SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c $(SRCDIR)check.c $(SRCDIR
 		$(SRCDIR)parsing.c $(SRCDIR)parsing2.c $(SRCDIR)parsing3.c $(SRCDIR)parsing4.c \
 		$(SRCDIR)parsing5.c $(SRCDIR)parsing6.c $(SRCDIR)parsing7.c $(SRCDIR)parsing_main.c $(SRCDIR)draw_wall.c \
 		$(SRCDIR)check_wall_side.c $(SRCDIR)cleanup.c $(SRCDIR)flood_fill.c $(SRCDIR)flood_fill1.c \
-		$(SRCDIR)flood_fill2.c $(SRCDIR)door.c $(SRCDIR)handle_door.c $(SRCDIR)minimap.c $(SRCDIR)accessibility_map.c
+		$(SRCDIR)flood_fill2.c $(SRCDIR)door.c $(SRCDIR)handle_door.c $(SRCDIR)minimap.c $(SRCDIR)accessibility_map.c \
+		$(SRCDIR)miscallenous.c $(SRCDIR)handle_door2.c
 LIBFTDIR = libft/
 LIBFT = $(LIBFTDIR)libft.a
 OBJDIR = obj/

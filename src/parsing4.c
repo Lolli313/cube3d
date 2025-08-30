@@ -3,108 +3,104 @@
 /*                                                        :::      ::::::::   */
 /*   parsing4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:40:09 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/30 17:19:46 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int check_xpm_extension(char *texture)
+int	check_xpm_extension(char *texture)
 {
-    size_t len;
-    
-    len = ft_strlen(texture);
-    if (len < 4)
-    {
+	size_t	len;
+
+	len = ft_strlen(texture);
+	if (len < 4)
+	{
 		printf("Error: Wrong texture extension\n");
-        return (0);
-    }
-    if (texture[len - 4] == '.' && texture[len - 3] == 'x' && 
-        texture[len - 2] == 'p' && texture[len - 1] == 'm')
-        return (1);
-    printf("Error: Wrong texture extension\n");
-    return (0);
+		return (0);
+	}
+	if (texture[len - 4] == '.' && texture[len - 3] == 'x'
+		&& texture[len - 2] == 'p' && texture[len - 1] == 'm')
+		return (1);
+	printf("Error: Wrong texture extension\n");
+	return (0);
 }
 
-int check_texture_file(char *path)
+int	check_texture_file(char *path)
 {
-    int fd;
-    
-    fd = open(path, O_RDONLY);
-    if (fd == -1)
-    {
-        printf("Error: While loading textures\n");
-        return (0);
-    }
-    close(fd);
-    return (1);
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error: While loading textures\n");
+		return (0);
+	}
+	close(fd);
+	return (1);
 }
 
-int validate_textures(t_map *map)
+int	validate_textures(t_map *map)
 {
-    if (!map->NO || !map->SO || !map->WE || !map->EA)
-    {
-        printf("Error: Missing texture(s)\n");
-        return (0);
-    }
-    if (map->floor == -1 || map->ceiling == -1)
-    {
-        printf("Error: Missing floor or ceiling color\n");
-        return (0);
-    }
-    return (1);
+	if (!map->NO || !map->SO || !map->WE || !map->EA)
+	{
+		printf("Error: Missing texture(s)\n");
+		return (0);
+	}
+	if (map->floor == -1 || map->ceiling == -1)
+	{
+		printf("Error: Missing floor or ceiling color\n");
+		return (0);
+	}
+	return (1);
 }
 
-int validate_map_content(t_cube *cube)
+int	validate_map_content(t_cube *cube)
 {
-    int player_count;
-    int i;
-    int j;
+	int	player_count;
+	int	i;
+	int	j;
 
-    player_count = 0;
-    if (cube->map.height > MAP_Y || cube->map.width > MAP_X)
-    {
-        printf("Error: Map exceeds maximum dimensions\n");
-        return (0);
-    }
-    i = 0;
-    while (i < cube->map.height)
-    {
-        j = 0;
-        while (j < cube->map.width)
-        {
-            if (cube->map.map[i][j] == 2)
-                player_count++;
-            j++;
-        }
-        i++;
-    }
-    if (player_count != 1)
-    {
-        printf("Error: Map must have exactly one player\n");
-        return (0);
-    }
-    return (1);
+	player_count = 0;
+	if (cube->map.height > MAP_Y || cube->map.width > MAP_X)
+		return (printf("Error: Map exceeds maximum dimensions\n"), 0);
+	i = 0;
+	while (i < cube->map.height)
+	{
+		j = 0;
+		while (j < cube->map.width)
+		{
+			if (cube->map.map[i][j] == 2)
+				player_count++;
+			j++;
+		}
+		i++;
+	}
+	if (player_count != 1)
+		return (printf("Error: Map must have exactly one player\n"), 0);
+	return (1);
 }
 
-int validate_element_order(int fd)
+int	validate_element_order(int fd)
 {
-    char *line;
-    int texture_count;
-    int map_started;
-    int result;
+	char	*line;
+	int		texture_count;
+	int		map_started;
+	int		result;
 
-    texture_count = 0;
-    map_started = 0;
-    while ((line = get_next_line(fd)))
-    {
-        result = process_order_line(line, &texture_count, &map_started);
-        free(line);
-        if (!result)
-            return (0);
-    }
-    return (1);
+	texture_count = 0;
+	map_started = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		result = process_order_line(line, &texture_count, &map_started);
+		free(line);
+		if (!result)
+			return (0);
+		line = get_next_line(fd);
+	}
+	return (1);
 }

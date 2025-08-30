@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:26 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 19:09:31 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/30 17:15:39 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ bool	check_up_wall(t_cube *cube, int new_y)
 	tile_x = cube->p.position_x / TILESIZE;
 	tile_x2 = (cube->p.position_x + PLAYERSIZE - 1) / TILESIZE;
 	tile_y = new_y / TILESIZE;
-	if (tile_x <= 0 || tile_x >= cube->map.width || tile_x2 <= 0 || tile_x2 >= cube->map.width
-		|| tile_y <= 0 || tile_y >= cube->map.height)
+	if (tile_x <= 0 || tile_x >= cube->map.width || tile_x2 <= 0
+		|| tile_x2 >= cube->map.width || tile_y <= 0
+		|| tile_y >= cube->map.height)
 		return (true);
 	return (cube->map.map[tile_y][tile_x] == 1
-			|| cube->map.map[tile_y][tile_x2] == 1
-			|| cube->map.map[tile_y][tile_x] == 3
-			|| cube->map.map[tile_y][tile_x2] == 3);
+		|| cube->map.map[tile_y][tile_x2] == 1
+		|| cube->map.map[tile_y][tile_x] == 3
+		|| cube->map.map[tile_y][tile_x2] == 3);
 }
 
 bool	check_down_wall(t_cube *cube, int new_y)
@@ -39,13 +40,14 @@ bool	check_down_wall(t_cube *cube, int new_y)
 	tile_x = cube->p.position_x / TILESIZE;
 	tile_x2 = (cube->p.position_x + PLAYERSIZE - 1) / TILESIZE;
 	tile_y = (new_y + PLAYERSIZE) / TILESIZE;
-	if (tile_x <= 0 || tile_x >= cube->map.width || tile_x2 <= 0 || tile_x2 >= cube->map.width
-		|| tile_y <= 0 || tile_y >= cube->map.height)
+	if (tile_x <= 0 || tile_x >= cube->map.width || tile_x2 <= 0
+		|| tile_x2 >= cube->map.width || tile_y <= 0
+		|| tile_y >= cube->map.height)
 		return (true);
 	return (cube->map.map[tile_y][tile_x] == 1
-			|| cube->map.map[tile_y][tile_x2] == 1
-			|| cube->map.map[tile_y][tile_x] == 3
-			|| cube->map.map[tile_y][tile_x2] == 3);
+		|| cube->map.map[tile_y][tile_x2] == 1
+		|| cube->map.map[tile_y][tile_x] == 3
+		|| cube->map.map[tile_y][tile_x2] == 3);
 }
 
 bool	check_left_wall(t_cube *cube, int new_x)
@@ -57,13 +59,14 @@ bool	check_left_wall(t_cube *cube, int new_x)
 	tile_x = new_x / TILESIZE;
 	tile_y = cube->p.position_y / TILESIZE;
 	tile_y2 = (cube->p.position_y + PLAYERSIZE - 1) / TILESIZE;
-	if (tile_x <= 0 || tile_x >= cube->map.width || tile_y <= 0 || tile_y >= cube->map.height
-		|| tile_y2 <= 0 || tile_y2 >= cube->map.height)
+	if (tile_x <= 0 || tile_x >= cube->map.width || tile_y <= 0
+		|| tile_y >= cube->map.height || tile_y2 <= 0
+		|| tile_y2 >= cube->map.height)
 		return (true);
 	return (cube->map.map[tile_y][tile_x] == 1
-			|| cube->map.map[tile_y2][tile_x] == 1
-			|| cube->map.map[tile_y][tile_x] == 3
-			|| cube->map.map[tile_y2][tile_x] == 3);
+		|| cube->map.map[tile_y2][tile_x] == 1
+		|| cube->map.map[tile_y][tile_x] == 3
+		|| cube->map.map[tile_y2][tile_x] == 3);
 }
 
 bool	check_right_wall(t_cube *cube, int new_x)
@@ -75,13 +78,14 @@ bool	check_right_wall(t_cube *cube, int new_x)
 	tile_x = (new_x + PLAYERSIZE) / TILESIZE;
 	tile_y = cube->p.position_y / TILESIZE;
 	tile_y2 = (cube->p.position_y + PLAYERSIZE - 1) / TILESIZE;
-	if (tile_x <= 0 || tile_x >= cube->map.width || tile_y <= 0 || tile_y >= cube->map.height
-		|| tile_y2 <= 0 || tile_y2 >= cube->map.height)
+	if (tile_x <= 0 || tile_x >= cube->map.width || tile_y <= 0
+		|| tile_y >= cube->map.height || tile_y2 <= 0
+		|| tile_y2 >= cube->map.height)
 		return (true);
 	return (cube->map.map[tile_y][tile_x] == 1
-			|| cube->map.map[tile_y2][tile_x] == 1
-			|| cube->map.map[tile_y][tile_x] == 3
-			|| cube->map.map[tile_y2][tile_x] == 3);
+		|| cube->map.map[tile_y2][tile_x] == 1
+		|| cube->map.map[tile_y][tile_x] == 3
+		|| cube->map.map[tile_y2][tile_x] == 3);
 }
 
 bool	check_wall_tile(t_cube *cube, int new_x, int new_y, int a)

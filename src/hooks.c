@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/27 17:39:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:06:53 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,6 @@ void	update_player_direction(t_cube *cube, double delta_time)
 		cube->p.cam_x = cos(cube->p.player_direction);
 		cube->p.cam_y = sin(cube->p.player_direction);
 	}
-}
-
-double	get_delta_time(void)
-{
-	static struct timeval	last;
-	struct timeval			now;
-	double					delta;
-
-	gettimeofday(&now, NULL);
-	if (last.tv_sec == 0)
-		last = now;
-	delta = (now.tv_sec - last.tv_sec) + (now.tv_usec - last.tv_usec) / 1e6;
-	last = now;
-	return (delta);
 }
 
 int	game_loop(t_cube *cube)

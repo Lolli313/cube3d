@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/29 16:12:01 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/30 18:16:32 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,23 @@ typedef struct s_new_p
 	int			p_new_position_x;
 	int			p_new_position_y;
 }				t_new_p;
+
+typedef struct s_parse
+{
+	int		textures_done;
+	int		map_row;
+	int		texture_count;
+}			t_parse;
+
+typedef struct s_count
+{
+	int		no_count;
+	int		so_count;
+	int		we_count;
+	int		ea_count;
+	int		f_count;
+	int		c_count;
+}			t_count;
 
 typedef struct s_door
 {
@@ -211,6 +228,7 @@ void			render_image(t_cube *cube);
 void			update_player_position(t_cube *cube, int dir);
 
 // init functions
+void			init_visited_map(int **visited, t_map *map);
 void			init_image(t_cube *cube);
 void			init_keys(t_cube *cube);
 void			init_hooks(t_cube *cube);
@@ -252,9 +270,19 @@ void			add_door(t_cube *cube, int row, int col);
 t_door			*find_door(t_cube *cube);
 bool			is_door_open(t_cube *cube);
 void			handle_door(t_cube *cube);
+void			parse_door(t_cube *cube, int row, int col);
+
+// handle door2 functions
+int				*get_key_pressed(void);
+int				get_map_value(t_cube *cube, int x, int y);
+void			open_door(t_cube *cube, int tile_x, int tile_y);
+void			close_door(t_cube *cube, int tile_x, int tile_y);
 
 // minimap functions
 void			draw_minimap(t_cube *cube);
+
+// miscallenous functions
+double			get_delta_time(void);
 
 // check_maps.c
 char			*create_map_path(char *map_name);
@@ -277,8 +305,7 @@ int				validate_textures_complete(int texture_count);
 int				parse_map_line(char *line, t_cube *cube, int row);
 void			set_player_position(t_cube *cube, char direction, int row,
 					int col);
-int				process_line(char *line, t_cube *cube, int *textures_done,
-					int *texture_count, int *map_row, char *filename);
+int				process_line(char *line, t_cube *cube, char *filename, t_parse *parse);
 int				process_map_line(char *line, t_cube *cube, int *map_row);
 
 // parsing4.c
@@ -294,16 +321,17 @@ int				is_player_rotation(char c);
 int				is_map_element(char c);
 int				process_order_line(char *line, int *texture_count,
 					int *map_started);
-void			init_texture_counters(int *no, int *so, int *we, int *ea);
-void			init_color_counters(int *f, int *c);
+void			init_counters(t_count *counter);
 
 // parsing6.c
 int				check_duplicates(int fd);
-int				count_elements(char *line, int *no, int *so, int *we, int *ea,
-					int *f, int *c);
-int				check_and_increment(int *count, char *element_name);
+int				count_elements(char *line, t_count *count);
+int				check_and_increment(int count, char *element_name);
 int				check_map_before_textures(int texture_count, char first_char);
 int				check_map_characters(char *line);
+
+// parsing7.c
+int				check_arg(int ac);
 
 // parsing_main.c
 int				parse_game(int ac, char **argv, t_cube *cube);

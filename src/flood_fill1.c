@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:02:39 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 15:40:16 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/30 16:43:39 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-void	init_visited_map(int **visited, t_map *map)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			visited[y][x] = 0;
-			x++;
-		}
-		y++;
-	}
-}
 
 int	find_player_position(t_map *map, int *player_x, int *player_y)
 {
@@ -65,8 +47,8 @@ int	check_player_on_border(int player_x, int player_y, t_map *map)
 
 int	**allocate_visited_map(t_map *map)
 {
-	int **visited;
-	int i;
+	int	**visited;
+	int	i;
 
 	visited = malloc(sizeof(int *) * map->height);
 	if (!visited)
@@ -89,10 +71,10 @@ int	**allocate_visited_map(t_map *map)
 
 void	free_visited_map(int **visited, int height)
 {
-	int i;
+	int	i;
 
 	if (!visited)
-		return;
+		return ;
 	i = 0;
 	while (i < height)
 	{
@@ -124,9 +106,8 @@ int	validate_map_boundaries(t_cube *cube)
 	flood_fill_recursive(&cube->map, visited, player_x, player_y);
 	if (is_border_accessible(visited, &cube->map))
 	{
-		printf("Error: Map is not enclosed by walls\n");
 		free_visited_map(visited, cube->map.height);
-		return (0);
+		return (printf("Error: Map is not enclosed by walls\n"), 0);
 	}
 	free_visited_map(visited, cube->map.height);
 	return (1);
