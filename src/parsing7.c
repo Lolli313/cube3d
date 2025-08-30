@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 18:24:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/08/30 18:57:03 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,23 @@ int	check_width(int fd)
 {
 	char	*line;
 	int		max_width;
-	int		current_width;
 	int		map_started;
 
 	max_width = 0;
 	map_started = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
-		if (line[0] == '\n' || line[0] == '\0')
+		if (line[0] != '\n' || line[0] != '\0')
 		{
-			free(line);
-			continue ;
-		}
-		if (!map_started && (line[0] == '1' || line[0] == '0'
-				|| line[0] == ' '))
-			map_started = 1;
-		if (map_started)
-		{
-			current_width = ft_strlen(line);
-			if (line[current_width - 1] == '\n')
-				current_width--;
-			if (current_width > max_width)
-				max_width = current_width;
+			if (!map_started && (line[0] == '1' || line[0] == '0'
+					|| line[0] == ' '))
+				map_started = 1;
+			else if (map_started)
+				assign_max_width(line, &max_width);
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	printf("DEBUG check_width: max_width = %d\n", max_width);
 	return (max_width);
@@ -63,21 +56,22 @@ int	check_height(int fd)
 
 	map_started = 0;
 	height = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (line[0] == '\n' || line[0] == '\0')
 		{
 			free(line);
+			line = get_next_line(fd);
 			continue ;
 		}
 		if (!map_started && (line[0] == '0' || line[0] == '1'
 				|| line[0] == ' '))
 			map_started = 1;
 		if (map_started)
-		{
 			height++;
-		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	printf("DEBUG check_height: height = %d\n", height);
 	return (height);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   accessibility_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:50:57 by njung             #+#    #+#             */
-/*   Updated: 2025/08/29 17:47:24 by njung            ###   ########.fr       */
+/*   Updated: 2025/08/30 19:08:53 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static void	init_row_to_zero(int *row, int width)
 	}
 }
 
-static int **allocate_accessibility_map(int width, int height)
+static int	**allocate_accessibility_map(int width, int height)
 {
-	int **accessibility_map;
-	int i;
+	int	**accessibility_map;
+	int	i;
 
 	accessibility_map = malloc(sizeof(int *) * height);
 	if (!accessibility_map)
@@ -49,46 +49,49 @@ static int **allocate_accessibility_map(int width, int height)
 	return (accessibility_map);
 }
 
-static void flood_fill_accessibility(t_cube *cube, int **accessibility_map, int x, int y)
+static void	flood_fill_accessibility(t_cube *cube, int **accessibility_map,
+		int x, int y)
 {
-    if (x < 0 || x >= cube->map.width || y < 0 || y >= cube->map.height)
-        return;
-    if (accessibility_map[y][x] == 1)
-        return;
-    if (cube->map.map[y][x] == 1 || cube->map.map[y][x] == 5)
-        return;
-    accessibility_map[y][x] = 1;
-    flood_fill_accessibility(cube, accessibility_map, x + 1, y);
-    flood_fill_accessibility(cube, accessibility_map, x - 1, y);
-    flood_fill_accessibility(cube, accessibility_map, x, y + 1);
-    flood_fill_accessibility(cube, accessibility_map, x, y - 1);
+	if (x < 0 || x >= cube->map.width || y < 0 || y >= cube->map.height)
+		return ;
+	if (accessibility_map[y][x] == 1)
+		return ;
+	if (cube->map.map[y][x] == 1 || cube->map.map[y][x] == 5)
+		return ;
+	accessibility_map[y][x] = 1;
+	flood_fill_accessibility(cube, accessibility_map, x + 1, y);
+	flood_fill_accessibility(cube, accessibility_map, x - 1, y);
+	flood_fill_accessibility(cube, accessibility_map, x, y + 1);
+	flood_fill_accessibility(cube, accessibility_map, x, y - 1);
 }
 
-int **create_accessibility_map(t_cube *cube)
+int	**create_accessibility_map(t_cube *cube)
 {
-    int **accessibility_map;
-    int player_x, player_y;
-    accessibility_map = allocate_accessibility_map(cube->map.width, cube->map.height);
-    if (!accessibility_map)
-        return (NULL);
-    player_x = cube->p.position_x / TILESIZE;
-    player_y = cube->p.position_y / TILESIZE;
-    flood_fill_accessibility(cube, accessibility_map, player_x, player_y);
-    return (accessibility_map);
+	int	**accessibility_map;
+	int	player_x;
+	int	player_y;
+
+	accessibility_map = allocate_accessibility_map(cube->map.width,
+			cube->map.height);
+	if (!accessibility_map)
+		return (NULL);
+	player_x = cube->p.position_x / TILESIZE;
+	player_y = cube->p.position_y / TILESIZE;
+	flood_fill_accessibility(cube, accessibility_map, player_x, player_y);
+	return (accessibility_map);
 }
 
-void free_accessibility_map(int **accessibility_map, int height)
+void	free_accessibility_map(int **accessibility_map, int height)
 {
-    int i;
-    
-    if (!accessibility_map)
-        return;
-    
-    i = 0;
-    while (i < height)
-    {
-        free(accessibility_map[i]);
-        i++;
-    }
-    free(accessibility_map);
+	int	i;
+
+	if (!accessibility_map)
+		return ;
+	i = 0;
+	while (i < height)
+	{
+		free(accessibility_map[i]);
+		i++;
+	}
+	free(accessibility_map);
 }
