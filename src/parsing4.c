@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 17:19:46 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_texture_file(char *path)
 
 int	validate_textures(t_map *map)
 {
-	if (!map->NO || !map->SO || !map->WE || !map->EA)
+	if (!map->no || !map->so || !map->we || !map->ea)
 	{
 		printf("Error: Missing texture(s)\n");
 		return (0);

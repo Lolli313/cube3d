@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 17:15:20 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,22 @@ static int	parse_direction_texture(char *line, t_cube *cube)
 {
 	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
 	{
-		cube->map.NO = load_textures(cube, line + 3);
+		cube->map.no = load_textures(cube, line + 3);
 		return (1);
 	}
 	else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
 	{
-		cube->map.SO = load_textures(cube, line + 3);
+		cube->map.so = load_textures(cube, line + 3);
 		return (1);
 	}
 	else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
 	{
-		cube->map.WE = load_textures(cube, line + 3);
+		cube->map.we = load_textures(cube, line + 3);
 		return (1);
 	}
 	else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
 	{
-		cube->map.EA = load_textures(cube, line + 3);
+		cube->map.ea = load_textures(cube, line + 3);
 		return (1);
 	}
 	cube->map.door = load_textures(cube, "assets/glass_tile.xpm");

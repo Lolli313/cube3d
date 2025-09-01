@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/25 18:02:31 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	free_textures(t_cube *cube)
 {
-	mlx_destroy_image(cube->mlx, cube->map.EA->img_addr);
-	free(cube->map.EA);
-	mlx_destroy_image(cube->mlx, cube->map.WE->img_addr);
-	free(cube->map.WE);
-	mlx_destroy_image(cube->mlx, cube->map.NO->img_addr);
-	free(cube->map.NO);
-	mlx_destroy_image(cube->mlx, cube->map.SO->img_addr);
-	free(cube->map.SO);
+	mlx_destroy_image(cube->mlx, cube->map.ea->img_addr);
+	free(cube->map.ea);
+	mlx_destroy_image(cube->mlx, cube->map.we->img_addr);
+	free(cube->map.we);
+	mlx_destroy_image(cube->mlx, cube->map.no->img_addr);
+	free(cube->map.no);
+	mlx_destroy_image(cube->mlx, cube->map.so->img_addr);
+	free(cube->map.so);
 }
 
 int	cleanup(t_cube *cube)

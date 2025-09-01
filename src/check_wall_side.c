@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:37:30 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/30 18:17:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ t_img	*check_wall_side_2(t_cube *cube)
 	if (cube->coord.side == 1)
 	{
 		if (cube->coord.ray_dir_y > 0)
-			return (cube->map.SO);
+			return (cube->map.so);
 		else
-			return (cube->map.NO);
+			return (cube->map.no);
 	}
 	else
 	{
 		if (cube->coord.ray_dir_x > 0)
-			return (cube->map.EA);
+			return (cube->map.ea);
 		else
-			return (cube->map.WE);
+			return (cube->map.we);
 	}
 }
 
@@ -40,24 +40,24 @@ void	check_wall_side(t_cube *cube, int *tex_height, int *tex_width)
 	cube->coord.side_detailed = check_wall_side_2(cube);
 	*tex_height = cube->map.door->height;
 	*tex_width = cube->map.door->width;
-	if (cube->coord.side_detailed == cube->map.SO)
+	if (cube->coord.side_detailed == cube->map.so)
 	{
-		*tex_height = cube->map.SO->height;
-		*tex_width = cube->map.SO->width;
+		*tex_height = cube->map.so->height;
+		*tex_width = cube->map.so->width;
 	}
-	else if (cube->coord.side_detailed == cube->map.NO)
+	else if (cube->coord.side_detailed == cube->map.no)
 	{
-		*tex_height = cube->map.NO->height;
-		*tex_width = cube->map.NO->width;
+		*tex_height = cube->map.no->height;
+		*tex_width = cube->map.no->width;
 	}
-	else if (cube->coord.side_detailed == cube->map.WE)
+	else if (cube->coord.side_detailed == cube->map.we)
 	{
-		*tex_height = cube->map.WE->height;
-		*tex_width = cube->map.WE->width;
+		*tex_height = cube->map.we->height;
+		*tex_width = cube->map.we->width;
 	}
-	else if (cube->coord.side_detailed == cube->map.EA)
+	else if (cube->coord.side_detailed == cube->map.ea)
 	{
-		*tex_height = cube->map.EA->height;
-		*tex_width = cube->map.EA->width;
+		*tex_height = cube->map.ea->height;
+		*tex_width = cube->map.ea->width;
 	}
 }
