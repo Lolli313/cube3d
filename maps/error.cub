@@ -1,10 +1,9 @@
-NO ./textures/wall_north.xpm
-SO ./textures/wall_south.xpm
-WE ./textures/wall_west.xpm
-EA ./textures/wall_east.xpm
-B 220,100,0
-W 225,30,0
-
+NO assets/tile.xpm
+SO assets/metal_wire.xpm
+WE assets/fire.xpm
+EA assets/brick.xpm
+F 220,100,0
+C 225,30,0
 111111111111
 100000000001
 100000000001

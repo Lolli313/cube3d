@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/04 14:47:45 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:56:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	draw_minimap_player(t_cube *cube, int tile_size)
 	player_size = tile_size / 2;
 	if (player_size < 1)
 		player_size = 1;
+	else if (player_size > 7)
+		player_size = 7;
 	while (++temp_y < player_size)
 	{
 		temp_x = -1;
