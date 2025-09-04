@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/09/04 17:04:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:58:25 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,7 @@ int	parse_map_line(char *line, t_cube *cube, int row)
 			cube->map.map[row][col] = 0;
 		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W')
-		{
-			cube->map.map[row][col] = 2;
 			set_player_position(cube, line[i], row, col);
-		}
 		else if (line[i] == 'D')
 			parse_door(cube, row, col);
 		else

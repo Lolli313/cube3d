@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 18:57:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:58:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	load_map_with_dimensions(char *filename, t_cube *cube)
 
 void	set_player_position(t_cube *cube, char direction, int row, int col)
 {
+	cube->map.map[row][col] = 2;
 	if (direction == 'N')
 		cube->p.player_direction = 3 * PI / 2;
 	else if (direction == 'S')

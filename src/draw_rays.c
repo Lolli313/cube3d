@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/04 17:35:56 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:54:53 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ void	prepare_coords(t_cube *cube)
 	prepare_coords_2(cube, pos_x, pos_y);
 }
 
+bool	check_door(t_cube *cube)
+{
+	if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3
+				&& !is_door_open(cube))
+		return (true);
+	return (false);
+}
+
 void	draw_ray(t_cube *cube, int screen_x)
 {
 	prepare_coords(cube);
@@ -85,8 +93,7 @@ void	draw_ray(t_cube *cube, int screen_x)
 		if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1
 			|| cube->map.map[cube->coord.map_y][cube->coord.map_x] == 5)
 			break ;
-		else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3
-				&& !is_door_open(cube))
+		else if (check_door(cube))
 			break ;
 	}
 	draw_wall(cube, screen_x);
