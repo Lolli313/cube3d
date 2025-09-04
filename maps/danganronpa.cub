@@ -1,7 +1,7 @@
-NO textures/dangan4.xpm
-SO textures/dangan4.xpm
-WE textures/dangan4.xpm
-EA textures/dangan4.xpm
+NO assets/tile.xpm
+SO assets/metal_wire.xpm
+WE assets/fire.xpm
+EA assets/brick.xpm
 
 F 200,200,205
 C 15,0,15

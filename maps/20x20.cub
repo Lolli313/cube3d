@@ -1,3 +1,11 @@
+NO assets/tile.xpm
+SO assets/metal_wire.xpm
+WE assets/fire.xpm
+EA assets/brick.xpm
+
+F 220,100,0
+C 225,30,0
+
 11111111111111111111
 10000000000000000001
 10N00000000000000001

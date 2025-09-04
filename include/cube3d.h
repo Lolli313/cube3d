@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:08:45 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@
 # define PLAYERSPEED 1
 # define TURNSPEED 1.570796327
 # define MOUSE_SENSITIVITY 0.002
+# define MINIMAP_SIZE 200
+# define PAINTINGVALUE 10
 # define DEBUG 0
 # define TILESIZE 64
 
@@ -110,6 +112,13 @@ typedef struct s_count
 	int				f_count;
 	int				c_count;
 }					t_count;
+
+typedef struct s_paint
+{
+	int				painting_x;
+	int				painting_y;
+	struct s_paint	*next;
+}					t_paint;
 
 typedef struct s_door
 {
@@ -179,8 +188,11 @@ typedef struct s_keys
 typedef struct s_map
 {
 	int				**map;
+	int				**accessibility_map;
 	int				width;
 	int				height;
+	int				nbr_doors;
+	int				nbr_paintings;
 	t_img			*no;
 	t_img			*so;
 	t_img			*we;
@@ -214,7 +226,6 @@ typedef struct s_cube
 	void			*mlx;
 	void			*mlx_win;
 	int				color;
-	int				nbr_doors;
 	t_player		p;
 	t_img			img;
 	t_map			map;
@@ -222,6 +233,7 @@ typedef struct s_cube
 	t_coord			coord;
 	t_tex			tex;
 	t_door			*door;
+	t_paint			*paint;
 }					t_cube;
 
 void				render_image(t_cube *cube);
@@ -373,5 +385,9 @@ int					check_player_on_external_wall(t_map *map, int player_x,
 // accessibility_map.c
 int					**create_accessibility_map(t_cube *cube);
 void				free_accessibility_map(int **accessibility_map, int height);
+
+// painting.c
+void				handle_paintings(t_cube *cube);
+void				check_painting(t_cube *cube);
 
 #endif

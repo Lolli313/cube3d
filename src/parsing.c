@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:31:36 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	parse_direction_texture(char *line, t_cube *cube)
 		cube->map.ea = load_textures(cube, line + 3);
 		return (1);
 	}
-	cube->map.door = load_textures(cube, "assets/glass_tile.xpm");
+	cube->map.door = load_textures(cube, "assets/someyt_5x5.xpm");
 	if (!cube->map.door)
 		return (1);
 	return (0);

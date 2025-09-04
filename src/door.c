@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/30 18:16:06 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:24:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_door(t_cube *cube, int row, int col)
 	new_door->door_y = row;
 	new_door->is_open = false;
 	new_door->next = NULL;
-	if (cube->nbr_doors == 0)
+	if (cube->map.nbr_doors == 0)
 	{
 		cube->door = new_door;
 		return ;
@@ -64,5 +64,5 @@ void	parse_door(t_cube *cube, int row, int col)
 {
 	cube->map.map[row][col] = 3;
 	add_door(cube, row, col);
-	cube->nbr_doors++;
+	cube->map.nbr_doors++;
 }
