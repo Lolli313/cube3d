@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing6.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/09/05 16:34:00 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_and_increment(int count, char *element_name)
 	count++;
 	if (count > 1)
 	{
-		printf("Error\n Duplicate %s\n", element_name);
+		printf("Error\nDuplicate %s\n", element_name);
 		return (0);
 	}
 	return (1);
@@ -71,7 +71,7 @@ int	check_map_before_textures(int texture_count, char first_char)
 {
 	if (texture_count < 6 && is_map_element(first_char))
 	{
-		printf("Error\n Map found before all textures defined\n");
+		printf("Error\nMap found before all textures defined\n");
 		return (0);
 	}
 	return (1);
@@ -88,7 +88,7 @@ int	check_map_characters(char *line)
 			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' '
 			&& line[i] != '\n' && line[i] != 'D')
 		{
-			printf("Error\n Map invalid (wrong character)\n");
+			printf("Error\nMap invalid (wrong character)\n");
 			return (0);
 		}
 		i++;

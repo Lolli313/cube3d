@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/06 13:42:28 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	validate_doors(t_cube *cube)
 			{
 				if (i == 0 || i == cube->map.height - 1 || j == 0 || j == cube->map.width - 1)
 				{
-					printf("Error\n Door cannot be placed at map border\n");
+					printf("Error\nDoor cannot be placed at map border\n");
 					return (0);
 				}
 			}

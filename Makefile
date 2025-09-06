@@ -1,4 +1,4 @@
-NAME = cube3d
+NAME = cub3d
 CFLAGS = -g -Wall -Wextra -Werror
 
 UNAME_S := $(shell uname -s)

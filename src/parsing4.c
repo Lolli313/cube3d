@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/09/06 13:42:12 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	check_xpm_extension(char *texture)
 	len = ft_strlen(texture);
 	if (len < 4)
 	{
-		printf("Error\n Wrong texture extension\n");
+		printf("Error\nWrong texture extension\n");
 		return (0);
 	}
 	if (texture[len - 4] == '.' && texture[len - 3] == 'x'
 		&& texture[len - 2] == 'p' && texture[len - 1] == 'm')
 		return (1);
-	printf("Error\n Wrong texture extension\n");
+	printf("Error\nWrong texture extension\n");
 	return (0);
 }
 
@@ -36,7 +36,7 @@ int	check_texture_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error\n While loading textures\n");
+		printf("Error\nWhile loading textures\n");
 		return (0);
 	}
 	close(fd);
@@ -47,12 +47,12 @@ int	validate_textures(t_map *map)
 {
 	if (!map->no || !map->so || !map->we || !map->ea)
 	{
-		printf("Error\n Missing texture(s)\n");
+		printf("Error\nMissing texture(s)\n");
 		return (0);
 	}
 	if (map->floor == -1 || map->ceiling == -1)
 	{
-		printf("Error\n Missing floor or ceiling color\n");
+		printf("Error\nMissing floor or ceiling color\n");
 		return (0);
 	}
 	return (1);
@@ -66,7 +66,7 @@ int	validate_map_content(t_cube *cube)
 
 	player_count = 0;
 	if (cube->map.height > MAP_Y || cube->map.width > MAP_X)
-		return (printf("Error\n Map exceeds maximum dimensions\n"), 0);
+		return (printf("Error\nMap exceeds maximum dimensions\n"), 0);
 	i = 0;
 	while (i < cube->map.height)
 	{
@@ -80,7 +80,7 @@ int	validate_map_content(t_cube *cube)
 		i++;
 	}
 	if (player_count != 1)
-		return (printf("Error\n Map must have exactly one player\n"), 0);
+		return (printf("Error\nMap must have exactly one player\n"), 0);
 	return (1);
 }
 
