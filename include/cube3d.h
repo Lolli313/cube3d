@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/04 14:08:45 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:42:48 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,7 @@ t_door				*find_door(t_cube *cube);
 bool				is_door_open(t_cube *cube);
 void				handle_door(t_cube *cube);
 void				parse_door(t_cube *cube, int row, int col);
+int					validate_doors(t_cube *cube);
 
 // handle door2 functions
 int					*get_key_pressed(void);

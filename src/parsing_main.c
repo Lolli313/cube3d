@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/05 16:34:00 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/06 13:42:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	parse_game(int ac, char **argv, t_cube *cube)
 	if (!validate_textures(&cube->map))
 		return (0);
 	if (!validate_map_content(cube))
+		return (0);
+	if (!validate_doors(cube))
 		return (0);
 	if (!validate_map_boundaries(cube))
 		return (0);
