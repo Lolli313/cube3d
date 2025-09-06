@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:02:39 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 16:43:39 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:34:02 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	validate_map_boundaries(t_cube *cube)
 		return (0);
 	if (check_player_on_border(player_x, player_y, &cube->map))
 	{
-		printf("Error: Player is on map border\n");
+		printf("Error\n Player is on map border\n");
 		return (0);
 	}
 	if (check_player_on_external_wall(&cube->map, player_x, player_y))
@@ -107,7 +107,7 @@ int	validate_map_boundaries(t_cube *cube)
 	if (is_border_accessible(visited, &cube->map))
 	{
 		free_visited_map(visited, cube->map.height);
-		return (printf("Error: Map is not enclosed by walls\n"), 0);
+		return (printf("Error\n Map is not enclosed by walls\n"), 0);
 	}
 	free_visited_map(visited, cube->map.height);
 	return (1);

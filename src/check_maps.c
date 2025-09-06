@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_maps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 18:33:24 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:33:21 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	find_map(int ac, char **argv)
 		map_path = create_map_path(argv[1]);
 		if (!map_path)
 		{
-			printf("Error: Map not found\n");
+			printf("Error\n Map not found\n");
 			return (-1);
 		}
 		fd = open(map_path, O_RDONLY);

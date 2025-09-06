@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 17:51:43 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 18:32:50 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:34:00 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_player_on_external_wall(t_map *map, int player_x, int player_y)
 {
 	if (is_external_wall(map, player_x, player_y))
 	{
-		printf("Error: Player cannot be placed on external walls\n");
+		printf("Error\n Player cannot be placed on external walls\n");
 		return (1);
 	}
 	return (0);

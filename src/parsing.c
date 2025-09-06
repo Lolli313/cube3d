@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/01 15:31:36 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:34:00 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	check_name(char **argv)
 
 	len = 0;
 	if (!argv || !argv[1])
-		printf("Error: Please put a valid map name\n");
+		printf("Error\n Please put a valid map name\n");
 	while (argv[1][len])
 		len++;
 	if (len < 5)
-		printf("Error: Wrong file name\n");
+		printf("Error\n Wrong file name\n");
 	if (argv[1][len - 4] == '.' && argv[1][len - 3] == 'c' && argv[1][len
 		- 2] == 'u' && argv[1][len - 1] == 'b')
 		return (1);
-	printf("Error: Wrong file name\n");
+	printf("Error\n Wrong file name\n");
 	return (0);
 }
 
@@ -47,7 +47,7 @@ int	parse_rgb(char *line)
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		free_matrix(rgb_values);
-		printf("Error: Wrong RGB value(s)");
+		printf("Error\n Wrong RGB value(s)");
 		return (-1);
 	}
 	color = (r << 16) | (g << 8) | b;

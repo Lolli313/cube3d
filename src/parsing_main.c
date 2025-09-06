@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 15:32:47 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:34:00 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int	allocate_each_row(t_map *map)
 
 int	allocate_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
 	if (!map || map->height <= 0 || map->width <= 0)
 	{
 		printf("DEBUG allocate_map: Invalid parameters - ");
@@ -63,7 +60,7 @@ int	parse_game(int ac, char **argv, t_cube *cube)
 {
 	if (!load_map(ac, argv, cube))
 	{
-		printf("Error: Failed to load map\n");
+		printf("Error\n Failed to load map\n");
 		return (0);
 	}
 	if (!validate_textures(&cube->map))
