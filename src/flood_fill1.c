@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:02:39 by njung             #+#    #+#             */
-/*   Updated: 2025/09/06 16:31:38 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:50:05 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	validate_map_boundaries(t_cube *cube)
 		return (0);
 	init_visited_map(visited, &cube->map);
 	flood_fill_recursive(&cube->map, visited, player_x, player_y);
-	if (is_border_accessible(visited, &cube->map))
+	if (check_open_walls(visited, &cube->map))
 	{
 		free_visited_map(visited, cube->map.height);
 		return (printf("Error\nMap is not enclosed by walls\n"), 0);

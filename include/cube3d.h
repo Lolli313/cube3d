@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/06 13:42:48 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:49:39 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,7 +364,7 @@ int					load_map_with_dimensions(char *filename, t_cube *cube);
 // flood_fill.c
 int					is_valid_position(int x, int y, t_map *map);
 int					is_accessible(t_map *map_struct, int x, int y);
-int					is_border_accessible(int **visited, t_map *map);
+int					check_open_walls(int **visited, t_map *map);
 void				flood_fill_recursive(t_map *map_struct, int **visited,
 						int x, int y);
 
