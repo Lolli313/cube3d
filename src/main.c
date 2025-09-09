@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	t_cube	cube;
 
 	if (ac != 2)
-		return (printf("Error\nWrong number of arguments\n"), 1);
+		return (printf("Error: Wrong number of arguments\n"), 1);
 	init_cube(&cube);
 	if (!parse_game(ac, av, &cube))
 		return (1);

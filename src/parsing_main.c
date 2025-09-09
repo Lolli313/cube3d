@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/09 14:41:43 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	parse_game(int ac, char **argv, t_cube *cube)
 {
 	if (!load_map(ac, argv, cube))
 	{
-		printf("Error\nFailed to load map\n");
+//		printf("Error: Failed to load map\n");
 		return (0);
 	}
 	if (!validate_textures(&cube->map))

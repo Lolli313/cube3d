@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmick <fmick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:57:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/04/01 10:02:14 by fmick            ###   ########.fr       */
+/*   Updated: 2025/09/09 13:42:00 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 void	ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	free_matrix(char **matrix);

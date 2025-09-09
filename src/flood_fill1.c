@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:02:39 by njung             #+#    #+#             */
-/*   Updated: 2025/09/08 14:50:05 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	validate_map_boundaries(t_cube *cube)
 		return (0);
 	if (check_player_on_border(player_x, player_y, &cube->map))
 	{
-		printf("Error\nPlayer is on map border\n");
+		printf("Error: Player is on map border\n");
 		return (0);
 	}
 	if (check_player_on_external_wall(&cube->map, player_x, player_y))
@@ -107,7 +107,7 @@ int	validate_map_boundaries(t_cube *cube)
 	if (check_open_walls(visited, &cube->map))
 	{
 		free_visited_map(visited, cube->map.height);
-		return (printf("Error\nMap is not enclosed by walls\n"), 0);
+		return (printf("Error: Map is not enclosed by walls\n"), 0);
 	}
 	free_visited_map(visited, cube->map.height);
 	return (1);

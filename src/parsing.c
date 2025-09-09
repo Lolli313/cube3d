@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/09 14:43:12 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	check_name(char **argv)
 
 	len = 0;
 	if (!argv || !argv[1])
-		printf("Error\nPlease put a valid map name\n");
+		printf("Error: Please put a valid map name\n");
 	while (argv[1][len])
 		len++;
 	if (len < 5)
-		printf("Error\nWrong file name\n");
+		printf("Error: Wrong file name\n");
 	if (argv[1][len - 4] == '.' && argv[1][len - 3] == 'c' && argv[1][len
 		- 2] == 'u' && argv[1][len - 1] == 'b')
 		return (1);
-	printf("Error\nWrong file name\n");
+	printf("Error: Wrong file name\n");
 	return (0);
 }
 
@@ -40,14 +40,16 @@ int	parse_rgb(char *line)
 
 	rgb_values = ft_split(line, ',');
 	if (!rgb_values || !rgb_values[0] || !rgb_values[1] || !rgb_values[2])
-		return (-1);
+		return (printf("Error: Wrong RGB value(s)\n"), -1);
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	if (ft_strlen(rgb_values[0]) > 3 || r < 0 || r > 255
+		|| ft_strlen(rgb_values[1]) > 3 || g < 0 || g > 255
+		|| ft_strlen(rgb_values[2]) > 3 || b < 0 || b > 255 || rgb_values[3])
 	{
 		free_matrix(rgb_values);
-		printf("Error\nWrong RGB value(s)");
+		printf("Error: Wrong RGB value(s)\n");
 		return (-1);
 	}
 	color = (r << 16) | (g << 8) | b;

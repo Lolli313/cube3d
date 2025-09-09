@@ -1,7 +1,7 @@
-no textures/cobble.xpm
-so textures/stone.xpm
-we textures/deepslate.xpm
-ea textures/stonebrick.xpm
+no assets/tile.xpm
+so assets/metal_wire.xpm
+we assets/fire.xpm
+ea assets/brick.xpm
 
 F 220,100,0
 C 225,30,0

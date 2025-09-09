@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing7.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/06 16:31:37 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_arg(int ac)
 {
 	if (ac != 2)
 	{
-		printf("Error\nChoose a map\n");
+		printf("Error: Choose a map\n");
 		return (0);
 	}
 	return (1);

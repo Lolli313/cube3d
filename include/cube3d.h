@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/08 14:49:39 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:36:03 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -74,6 +75,7 @@
 # define PAINTINGVALUE 10
 # define DEBUG 0
 # define TILESIZE 64
+# define DOOR_TEXTURE "assets/someyt_5x5.xpm"
 
 # define LEFT 1
 # define RIGHT 2
