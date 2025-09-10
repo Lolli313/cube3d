@@ -4,7 +4,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	MLXDIR = mlx_linux
-	MLXFLAGS = -L$(MLXDIR) -lmlx -lXext -lX11 -lm
+	MLXFLAGS = -L$(MLXDIR) -lmlx -lXext -lX11 -lXfixes -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	MLXDIR = mlx_macos

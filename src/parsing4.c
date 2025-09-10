@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/09/09 13:54:30 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:01:32 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,17 @@ int	validate_element_order(int fd)
 	texture_count = 0;
 	map_started = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+		return (printf("Error: Map file is empty\n"), 0);
 	while (line)
 	{
 		result = process_order_line(line, &texture_count, &map_started);
 		free(line);
 		if (!result)
-			return (0);
+			return (finish_file_reading(fd), 0);
 		line = get_next_line(fd);
 	}
+	if (texture_count != 6)
+		return (0);
 	return (1);
 }

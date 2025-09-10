@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:41:00 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 14:06:57 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (printf("Error: Wrong number of arguments\n"), 1);
 	init_cube(&cube);
+	init_image(&cube);
 	if (!parse_game(ac, av, &cube))
-		return (1);
+		return (cleanup(&cube), 1);
 	init_keys(&cube);
 	init_hooks(&cube);
-	init_image(&cube);
 	render_image(&cube);
 	mlx_loop(cube.mlx);
 }

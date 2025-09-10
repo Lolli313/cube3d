@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/09 14:36:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:35:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <X11/Xlib.h>
+# include <X11/extensions/Xfixes.h>
 
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -343,7 +345,7 @@ void				init_counters(t_count *counter);
 // parsing6.c
 int					check_duplicates(int fd);
 int					count_elements(char *line, t_count *count);
-int					check_and_increment(int count, char *element_name);
+int					check_and_increment(int *count, char *element_name);
 int					check_map_before_textures(int texture_count,
 						char first_char);
 int					check_map_characters(char *line);
@@ -362,6 +364,9 @@ int					allocate_map(t_map *map);
 int					check_width(int fd);
 int					check_height(int fd);
 int					load_map_with_dimensions(char *filename, t_cube *cube);
+
+// parsing8.c
+void				finish_file_reading(int fd);
 
 // flood_fill.c
 int					is_valid_position(int x, int y, t_map *map);

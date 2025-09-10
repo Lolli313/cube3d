@@ -6,11 +6,23 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:48:33 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/30 18:53:40 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:28:16 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+void	finish_file_reading(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+}
 
 void	assign_max_width(char *line, int *max_width)
 {

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:15:03 by njung             #+#    #+#             */
-/*   Updated: 2025/09/04 17:58:25 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:33:22 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	process_map_line(char *line, t_cube *cube, int *map_row)
 		(*map_row)++;
 		return (1);
 	}
+	printf("Error: Map too big\n");
 	return (0);
 }
 

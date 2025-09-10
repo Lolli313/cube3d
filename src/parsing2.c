@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:04:30 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	parse_map_file(int fd, t_cube *cube, char *filename)
 		}
 		result = process_line(line, cube, filename, &parse);
 		if (result == 0)
-			return (free(line), 0);
+			return (free(line), finish_file_reading(fd), 0);
 		free(line);
 		line = get_next_line(fd);
 	}

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:12:24 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	check_duplicates(int fd)
 		else if (!count_elements(line, &count))
 		{
 			free(line);
-			line = get_next_line(fd);
-			return (0);
+			return (finish_file_reading(fd), 0);
 		}
 		free(line);
 		line = get_next_line(fd);
@@ -39,10 +38,10 @@ int	check_duplicates(int fd)
 	return (1);
 }
 
-int	check_and_increment(int count, char *element_name)
+int	check_and_increment(int *count, char *element_name)
 {
-	count++;
-	if (count > 1)
+	*count += 1;
+	if (*count > 1)
 	{
 		printf("Error: Duplicate %s\n", element_name);
 		return (0);
@@ -53,17 +52,17 @@ int	check_and_increment(int count, char *element_name)
 int	count_elements(char *line, t_count *count)
 {
 	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
-		return (check_and_increment(count->no_count, "NO texture"));
+		return (check_and_increment(&count->no_count, "NO texture"));
 	else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
-		return (check_and_increment(count->so_count, "SO texture"));
+		return (check_and_increment(&count->so_count, "SO texture"));
 	else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
-		return (check_and_increment(count->we_count, "WE texture"));
+		return (check_and_increment(&count->we_count, "WE texture"));
 	else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
-		return (check_and_increment(count->ea_count, "EA texture"));
+		return (check_and_increment(&count->ea_count, "EA texture"));
 	else if (line[0] == 'F' && line[1] == ' ')
-		return (check_and_increment(count->f_count, "F color"));
+		return (check_and_increment(&count->f_count, "F color"));
 	else if (line[0] == 'C' && line[1] == ' ')
-		return (check_and_increment(count->c_count, "C color"));
+		return (check_and_increment(&count->c_count, "C color"));
 	return (1);
 }
 
