@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/08 14:11:03 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:33:45 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	draw_minimap_tile(t_cube *cube, int x, int y, int tile_size)
+static void	draw_minimap_tile(t_cube *cube, int x, int y, int tile_size)
 {
 	int	temp_x;
 	int	temp_y;
@@ -27,7 +27,7 @@ void	draw_minimap_tile(t_cube *cube, int x, int y, int tile_size)
 	}
 }
 
-void	draw_minimap_player(t_cube *cube, int tile_size)
+static void	draw_minimap_player(t_cube *cube, int tile_size)
 {
 	double	map_x;
 	double	map_y;
@@ -51,7 +51,7 @@ void	draw_minimap_player(t_cube *cube, int tile_size)
 	}
 }
 
-void	draw_minimap_row(t_cube *cube, int map_y, int y,
+static void	draw_minimap_row(t_cube *cube, int map_y, int y,
 			int tile_size)
 {
 	int	x;
@@ -76,7 +76,7 @@ void	draw_minimap_row(t_cube *cube, int map_y, int y,
 	}
 }
 
-int	max(int a, int b)
+static int	max(int a, int b)
 {
 	if (a > b)
 		return (a);

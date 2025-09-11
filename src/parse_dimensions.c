@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 13:47:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:05:01 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,4 @@ int	check_height(int fd)
 	}
 	printf("DEBUG check_height: height = %d\n", height);
 	return (height);
-}
-
-int	load_map_with_dimensions(char *filename, t_cube *cube)
-{
-	int	fd1;
-	int	fd2;
-
-	fd1 = open(filename, O_RDONLY);
-	cube->map.width = check_width(fd1);
-	close(fd1);
-	fd2 = open(filename, O_RDONLY);
-	cube->map.height = check_height(fd2);
-	close(fd2);
-	if (!allocate_map(&cube->map))
-		return (0);
-	return (1);
 }

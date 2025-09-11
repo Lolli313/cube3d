@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:37:30 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/01 11:48:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:11:17 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_img	*check_wall_side_2(t_cube *cube)
+static t_img	*check_wall_side_2(t_cube *cube)
 {
 	t_door	*door;
 

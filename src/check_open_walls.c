@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:59:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/08 15:36:11 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:10:32 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	check_open_north(t_map *map)
+static int	check_open_north(t_map *map)
 {
 	int		x;
 	int		y;
@@ -38,7 +38,7 @@ int	check_open_north(t_map *map)
 	return (0);	
 }
 
-int	check_open_south(t_map *map)
+static int	check_open_south(t_map *map)
 {
 	int		x;
 	int		y;
@@ -64,7 +64,7 @@ int	check_open_south(t_map *map)
 	return (0);	
 }
 
-int	check_open_west(t_map *map)
+static int	check_open_west(t_map *map)
 {
 	int		x;
 	int		y;
@@ -90,7 +90,7 @@ int	check_open_west(t_map *map)
 	return (0);
 }
 
-int	check_open_east(t_map *map)
+static int	check_open_east(t_map *map)
 {
 	int		x;
 	int		y;

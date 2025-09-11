@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/30 15:06:53 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:30:53 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	mouse_handler(int x, int y, t_cube *cube)
 	return (0);
 }
 
-void	update_player_direction(t_cube *cube, double delta_time)
+static void	update_player_direction(t_cube *cube, double delta_time)
 {
 	if (cube->keys.left_pressed)
 	{

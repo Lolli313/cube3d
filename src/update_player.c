@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 14:16:40 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:25:24 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:19:10 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	assign_direction(t_player *p, int dir)
+static void	assign_direction(t_player *p, int dir)
 {
 	p->cam_x = cos(p->player_direction);
 	p->cam_y = sin(p->player_direction);
@@ -38,7 +38,7 @@ void	assign_direction(t_player *p, int dir)
 	}
 }
 
-void	handle_y_wall(t_cube *cube, double new_precise_y, int tile_y)
+static void	handle_y_wall(t_cube *cube, double new_precise_y, int tile_y)
 {
 	int	potential_y;
 
@@ -67,7 +67,7 @@ void	handle_y_wall(t_cube *cube, double new_precise_y, int tile_y)
 	cube->p.position_y = (int)cube->p.precise_y;
 }
 
-void	handle_x_wall(t_cube *cube, double new_precise_x, int tile_x)
+static void	handle_x_wall(t_cube *cube, double new_precise_x, int tile_x)
 {
 	int	potential_x;
 

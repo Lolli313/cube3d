@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:06:06 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/30 18:31:26 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:28:59 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	handle_open_door(t_cube *cube, int tile_x, int tile_y)
+static bool	handle_open_door(t_cube *cube, int tile_x, int tile_y)
 {
 	if (get_map_value(cube, tile_x + 1, tile_y) == 3)
 		open_door(cube, tile_x + 1, tile_y);
@@ -35,7 +35,7 @@ bool	handle_open_door(t_cube *cube, int tile_x, int tile_y)
 	return (true);
 }
 
-void	handle_closed_door(t_cube *cube, int tile_x, int tile_y)
+static void	handle_closed_door(t_cube *cube, int tile_x, int tile_y)
 {
 	if (get_map_value(cube, tile_x + 1, tile_y) == 4)
 		close_door(cube, tile_x + 1, tile_y);

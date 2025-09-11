@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:26 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/04 17:34:51 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:12:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	check_up_wall(t_cube *cube, int new_y)
+static bool	check_up_wall(t_cube *cube, int new_y)
 {
 	int	tile_x;
 	int	tile_y;
@@ -33,7 +33,7 @@ bool	check_up_wall(t_cube *cube, int new_y)
 		|| cube->map.map[tile_y][tile_x2] == 5);
 }
 
-bool	check_down_wall(t_cube *cube, int new_y)
+static bool	check_down_wall(t_cube *cube, int new_y)
 {
 	int	tile_x;
 	int	tile_y;
@@ -54,7 +54,7 @@ bool	check_down_wall(t_cube *cube, int new_y)
 		|| cube->map.map[tile_y][tile_x2] == 5);
 }
 
-bool	check_left_wall(t_cube *cube, int new_x)
+static bool	check_left_wall(t_cube *cube, int new_x)
 {
 	int	tile_x;
 	int	tile_y;
@@ -75,7 +75,7 @@ bool	check_left_wall(t_cube *cube, int new_x)
 		|| cube->map.map[tile_y2][tile_x] == 5);
 }
 
-bool	check_right_wall(t_cube *cube, int new_x)
+static bool	check_right_wall(t_cube *cube, int new_x)
 {
 	int	tile_x;
 	int	tile_y;

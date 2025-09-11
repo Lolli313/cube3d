@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing5.c                                         :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:17:39 by njung             #+#    #+#             */
-/*   Updated: 2025/08/30 17:11:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:47:27 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,27 @@ int	is_map_element(char c)
 	return (c == '1' || c == '0' || c == ' ');
 }
 
-int	process_order_line(char *line, int *texture_count, int *map_started)
+void	set_player_position(t_cube *cube, char direction, int row, int col)
 {
-	if (line[0] == '\n' || line[0] == '\0')
-		return (1);
-	if (!*map_started && is_texture_element(line[0]))
-	{
-		(*texture_count)++;
-		return (1);
-	}
-	if (!check_map_before_textures(*texture_count, line[0]))
-		return (0);
-	*map_started = 1;
-	return (1);
+	cube->map.map[row][col] = 2;
+	if (direction == 'N')
+		cube->p.player_direction = 3 * PI / 2;
+	else if (direction == 'S')
+		cube->p.player_direction = PI / 2;
+	else if (direction == 'E')
+		cube->p.player_direction = 0;
+	else if (direction == 'W')
+		cube->p.player_direction = PI;
+	cube->p.cam_x = cos(cube->p.player_direction);
+	cube->p.cam_y = sin(cube->p.player_direction);
+	cube->p.position_x = (TILESIZE * col + TILESIZE / 2) + (PLAYERSIZE / 2);
+	cube->p.position_y = (TILESIZE * row) + (PLAYERSIZE / 2);
+	cube->p.precise_x = (double)cube->p.position_x;
+	cube->p.precise_y = (double)cube->p.position_y;
+	cube->p.error_x = 0.0;
+	cube->p.error_y = 0.0;
+	cube->p.square_x = row;
+	cube->p.square_y = row;
 }
 
 void	init_counters(t_count *counter)

@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/10 16:23:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:15:20 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	free_textures(t_cube *cube)
+static void	free_textures(t_cube *cube)
 {
 	if (cube->map.ea)
 	{
@@ -41,7 +41,7 @@ void	free_textures(t_cube *cube)
 	}
 }
 
-void	free_map(t_map *map)
+static void	free_map(t_map *map)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ void	free_map(t_map *map)
 	}
 }
 
-void	free_doors(t_door *door)
+static void	free_doors(t_door *door)
 {
 	t_door	*temp;
 

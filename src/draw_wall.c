@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:17:56 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/21 18:40:16 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:18:55 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	draw_line_3(t_cube *cube, int screen_x, int wall_height, int draw_start)
+static void	draw_line_3(t_cube *cube, int screen_x, int wall_height, int draw_start)
 {
 	int	y;
 
@@ -33,7 +33,7 @@ void	draw_line_3(t_cube *cube, int screen_x, int wall_height, int draw_start)
 	}
 }
 
-void	draw_line_2(t_cube *cube, int wall_height, int draw_start)
+static void	draw_line_2(t_cube *cube, int wall_height, int draw_start)
 {
 	double	zoom_factor;
 
@@ -55,7 +55,7 @@ void	draw_line_2(t_cube *cube, int wall_height, int draw_start)
 	}
 }
 
-void	draw_line(t_cube *cube, int screen_x, int wall_height, int wall_y)
+static void	draw_line(t_cube *cube, int screen_x, int wall_height, int wall_y)
 {
 	double	wall_x;
 

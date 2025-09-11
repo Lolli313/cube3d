@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/04 17:54:53 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:18:13 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	prepare_coords_2(t_cube *cube, double pos_x, double pos_y)
+static void	prepare_coords_2(t_cube *cube, double pos_x, double pos_y)
 {
 	if (cube->coord.ray_dir_x < 0)
 	{
@@ -40,7 +40,7 @@ void	prepare_coords_2(t_cube *cube, double pos_x, double pos_y)
 	}
 }
 
-void	prepare_coords(t_cube *cube)
+static void	prepare_coords(t_cube *cube)
 {
 	double	pos_x;
 	double	pos_y;
@@ -62,7 +62,7 @@ void	prepare_coords(t_cube *cube)
 	prepare_coords_2(cube, pos_x, pos_y);
 }
 
-bool	check_door(t_cube *cube)
+static bool	check_door(t_cube *cube)
 {
 	if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 3
 				&& !is_door_open(cube))

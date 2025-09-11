@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:53:00 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 13:31:28 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:56:30 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-char	*create_map_path(char *map_name)
+static char	*create_map_path(char *map_name)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,7 @@ char	*create_map_path(char *map_name)
 	return (full_path);
 }
 
-int	find_map(int ac, char **argv)
+static int	find_map(int ac, char **argv)
 {
 	char	*map_path;
 	int		fd;

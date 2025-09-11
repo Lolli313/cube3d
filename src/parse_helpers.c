@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:48:33 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 13:18:25 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:42:25 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,22 @@ int	check_arg(int ac)
 		return (0);
 	}
 	return (1);
+}
+
+int	check_name(char **argv)
+{
+	int	len;
+
+	len = 0;
+	if (!argv || !argv[1])
+		printf("Error: Please put a valid map name\n");
+	while (argv[1][len])
+		len++;
+	if (len < 5)
+		printf("Error: Wrong file name\n");
+	if (argv[1][len - 4] == '.' && argv[1][len - 3] == 'c' && argv[1][len
+		- 2] == 'u' && argv[1][len - 1] == 'b')
+		return (1);
+	printf("Error: Wrong file name\n");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:02:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/08 15:08:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:20:48 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_valid_position(int x, int y, t_map *map)
 	return (x >= 0 && x < map->width && y >= 0 && y < map->height);
 }
 
-int	is_accessible(t_map *map_struct, int x, int y)
+static int	is_accessible(t_map *map_struct, int x, int y)
 {
 	if (!is_valid_position(x, y, map_struct))
 		return (0);

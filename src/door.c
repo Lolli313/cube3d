@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/09 13:18:49 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:16:56 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	add_door(t_cube *cube, int row, int col)
+static void	add_door(t_cube *cube, int row, int col)
 {
 	t_door	*temp;
 	t_door	*new_door;

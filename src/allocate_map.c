@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 13:23:00 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:06:24 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	allocate_each_row(t_map *map)
+static int	allocate_each_row(t_map *map)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ int	allocate_each_row(t_map *map)
 	return (1);
 }
 
-int	allocate_map(t_map *map)
+static int	allocate_map(t_map *map)
 {
 	if (!map || map->height <= 0 || map->width <= 0)
 	{

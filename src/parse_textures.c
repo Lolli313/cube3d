@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/10 15:29:13 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:42:20 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	check_name(char **argv)
-{
-	int	len;
-
-	len = 0;
-	if (!argv || !argv[1])
-		printf("Error: Please put a valid map name\n");
-	while (argv[1][len])
-		len++;
-	if (len < 5)
-		printf("Error: Wrong file name\n");
-	if (argv[1][len - 4] == '.' && argv[1][len - 3] == 'c' && argv[1][len
-		- 2] == 'u' && argv[1][len - 1] == 'b')
-		return (1);
-	printf("Error: Wrong file name\n");
-	return (0);
-}
-
-int	parse_rgb(char *line)
+static int	parse_rgb(char *line)
 {
 	char	**rgb_values;
 	int		r;
