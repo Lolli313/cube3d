@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing4.c                                         :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:18:53 by njung             #+#    #+#             */
-/*   Updated: 2025/09/10 15:01:32 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:44:50 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,31 @@ int	validate_textures(t_map *map)
 	return (1);
 }
 
+int	validate_element_order(int fd)
+{
+	char	*line;
+	int		texture_count;
+	int		map_started;
+	int		result;
+
+	texture_count = 0;
+	map_started = 0;
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (printf("Error: Map file is empty\n"), 0);
+	while (line)
+	{
+		result = process_order_line(line, &texture_count, &map_started);
+		free(line);
+		if (!result)
+			return (finish_file_reading(fd), 0);
+		line = get_next_line(fd);
+	}
+	if (texture_count != 6)
+		return (0);
+	return (1);
+}
+
 int	validate_map_content(t_cube *cube)
 {
 	int	player_count;
@@ -81,30 +106,5 @@ int	validate_map_content(t_cube *cube)
 	}
 	if (player_count != 1)
 		return (printf("Error: Map must have exactly one player\n"), 0);
-	return (1);
-}
-
-int	validate_element_order(int fd)
-{
-	char	*line;
-	int		texture_count;
-	int		map_started;
-	int		result;
-
-	texture_count = 0;
-	map_started = 0;
-	line = get_next_line(fd);
-	if (line == NULL)
-		return (printf("Error: Map file is empty\n"), 0);
-	while (line)
-	{
-		result = process_order_line(line, &texture_count, &map_started);
-		free(line);
-		if (!result)
-			return (finish_file_reading(fd), 0);
-		line = get_next_line(fd);
-	}
-	if (texture_count != 6)
-		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/10 16:35:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:53:03 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -367,6 +367,8 @@ int					load_map_with_dimensions(char *filename, t_cube *cube);
 
 // parsing8.c
 void				finish_file_reading(int fd);
+int					handle_empty_line(char *line);
+int					allocate_map_from_file(char *filename, t_cube *cube);
 
 // flood_fill.c
 int					is_valid_position(int x, int y, t_map *map);

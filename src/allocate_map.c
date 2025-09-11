@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_main.c                                     :+:      :+:    :+:   */
+/*   allocate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/10 16:01:40 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:23:00 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,34 @@ int	allocate_map(t_map *map)
 {
 	if (!map || map->height <= 0 || map->width <= 0)
 	{
-		printf("DEBUG allocate_map: Invalid parameters - ");
-		if (map)
-			printf("height=%d, width=%d\n", map->height, map->width);
-		else
-			printf("height=%d, width=%d\n", -1, -1);
+		printf("Error: Allocate_map: Invalid parameters\n");
 		return (0);
 	}
-	printf("DEBUG allocate_map: Allocating map %dx%d\n", map->width,
-		map->height);
 	map->map = malloc(sizeof(int *) * map->height);
 	if (!map->map)
 		return (0);
 	if (!allocate_each_row(map))
 		return (0);
-	printf("DEBUG allocate_map: Successfully allocated map %dx%d\n", map->width,
-		map->height);
+	printf("Successfully allocated map %dx%d\n", map->width, map->height);
 	return (1);
 }
 
-int	parse_game(int ac, char **argv, t_cube *cube)
+int	allocate_map_from_file(char *filename, t_cube *cube)
 {
-	if (!load_map(ac, argv, cube))
-	{
-//		printf("Error: Failed to load map\n");
+	int	fd1;
+	int	fd2;
+
+	fd1 = open(filename, O_RDONLY);
+	if (fd1 < 0)
 		return (0);
-	}
-	if (!validate_textures(&cube->map))
+	cube->map.width = check_width(fd1);
+	close(fd1);
+	fd2 = open(filename, O_RDONLY);
+	if (fd2 < 0)
 		return (0);
-	if (!validate_map_content(cube))
+	cube->map.height = check_height(fd2);
+	close(fd2);
+	if (!allocate_map(&cube->map))
 		return (0);
-	if (!validate_doors(cube))
-		return (0);
-	if (!validate_map_boundaries(cube))
-		return (0);
-	printf("Parsing completed successfully\n");
 	return (1);
 }

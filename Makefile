@@ -15,8 +15,8 @@ DEPS = -Iinclude -I$(MLXDIR) -Ilibft
 SRCDIR = ./src/
 SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c $(SRCDIR)check.c $(SRCDIR)draw.c $(SRCDIR)draw_rays.c \
 		$(SRCDIR)update_player.c $(SRCDIR)raycasting.c $(SRCDIR)textures.c $(SRCDIR)check_maps.c \
-		$(SRCDIR)parsing.c $(SRCDIR)parsing2.c $(SRCDIR)parsing3.c $(SRCDIR)parsing4.c \
-		$(SRCDIR)parsing5.c $(SRCDIR)parsing6.c $(SRCDIR)parsing7.c $(SRCDIR)parsing8.c $(SRCDIR)parsing_main.c \
+		$(SRCDIR)allocate_map.c $(SRCDIR)parse_dimensions.c $(SRCDIR)parse_helpers.c $(SRCDIR)parse_main.c \
+		$(SRCDIR)parse_map_content.c $(SRCDIR)parse_textures.c $(SRCDIR)parse_utils.c $(SRCDIR)parse_validation.c $(SRCDIR)validate_map.c \
 		$(SRCDIR)draw_wall.c $(SRCDIR)check_wall_side.c $(SRCDIR)cleanup.c $(SRCDIR)flood_fill.c $(SRCDIR)flood_fill1.c \
 		$(SRCDIR)flood_fill2.c $(SRCDIR)door.c $(SRCDIR)handle_door.c $(SRCDIR)minimap.c $(SRCDIR)accessibility_map.c \
 		$(SRCDIR)miscallenous.c $(SRCDIR)handle_door2.c $(SRCDIR)check_open_walls.c

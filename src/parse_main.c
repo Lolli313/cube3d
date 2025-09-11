@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing2.c                                         :+:      :+:    :+:   */
+/*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/10 16:04:30 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:23:21 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ int	validate_textures_complete(int texture_count)
 		return (0);
 	}
 	return (1);
-}
-
-static int	handle_empty_line(char *line)
-{
-	if (line[0] == '\n' || line[0] == '\0')
-	{
-		free(line);
-		return (1);
-	}
-	return (0);
 }
 
 static void	init_parse_vars(t_parse *parse)
@@ -70,5 +60,21 @@ int	parse_map_file(int fd, t_cube *cube, char *filename)
 		free(line);
 		line = get_next_line(fd);
 	}
+	return (1);
+}
+
+int	parse_game(int ac, char **argv, t_cube *cube)
+{
+	if (!load_map(ac, argv, cube))
+		return (0);
+	if (!validate_textures(&cube->map))
+		return (0);
+	if (!validate_map_content(cube))
+		return (0);
+	if (!validate_doors(cube))
+		return (0);
+	if (!validate_map_boundaries(cube))
+		return (0);
+	printf("Parsing completed successfully\n");
 	return (1);
 }
