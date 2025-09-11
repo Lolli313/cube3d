@@ -6,11 +6,29 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 14:42:20 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:13:40 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static bool	rgb_digit_check(char *rgb_value)
+{
+	int	i;
+
+	i = 0;
+	while (rgb_value[i] == ' ')
+		i++;
+	if (!ft_isdigit(rgb_value[i]))
+		return (false);
+	while (rgb_value[i])
+	{
+		if (!ft_isdigit(rgb_value[i]) && rgb_value[i] != '\n')
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 static int	parse_rgb(char *line)
 {
@@ -26,9 +44,9 @@ static int	parse_rgb(char *line)
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
-	if (ft_strlen(rgb_values[0]) > 3 || r < 0 || r > 255
-		|| ft_strlen(rgb_values[1]) > 3 || g < 0 || g > 255
-		|| ft_strlen(rgb_values[2]) > 3 || b < 0 || b > 255 || rgb_values[3])
+	if (!rgb_digit_check(rgb_values[0]) || (ft_strlen(rgb_values[0]) > 3 && !rgb_digit_check(rgb_values[0])) || r < 0 || r > 255
+		|| !rgb_digit_check(rgb_values[1]) || (ft_strlen(rgb_values[1]) > 3 && !rgb_digit_check(rgb_values[1])) || g < 0 || g > 255
+		|| !rgb_digit_check(rgb_values[2]) || (ft_strlen(rgb_values[2]) > 3 && !rgb_digit_check(rgb_values[2])) || b < 0 || b > 255 || rgb_values[3])
 	{
 		free_matrix(rgb_values);
 		printf("Error: Wrong RGB value(s)\n");
