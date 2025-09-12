@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 14:05:01 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:00:02 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_width(int fd)
 			if (!map_started && (line[0] == '1' || line[0] == '0'
 					|| line[0] == ' '))
 				map_started = 1;
-			else if (map_started)
+			if (map_started)
 				assign_max_width(line, &max_width);
 		}
 		free(line);
