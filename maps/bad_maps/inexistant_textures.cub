@@ -1,15 +1,15 @@
-N ./textures/does_not_exist.png
+NO ./assets/does_not_exist.xpm
 
 
 
-S ./textures/diamond.png
+SO ./assets/brick.xpm
 
 
 
-W ./textures/diamond.png
+WE ./assets/brick.xpm
 
 
-E ./textures/diamond.png
+EA ./assets/brick.xpm
 
 F 220,100,0
 C 225,30,0

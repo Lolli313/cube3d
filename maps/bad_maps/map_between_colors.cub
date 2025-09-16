@@ -1,17 +1,17 @@
 
 
-N ./textures/diamond.png
+NO ./assets/tile.png
 
 
 
-S ./textures/wood.png
+SO ./assets/metal_wire.png
 
 
 
-W ./textures/stone.png
+WE ./assets/fire.png
 
 
-E ./textures/gold.png
+EA ./assets/brick.png
 
 F     254,100,5
 

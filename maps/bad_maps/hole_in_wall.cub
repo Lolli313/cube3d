@@ -1,7 +1,7 @@
-NO assets/Tiled.xpm
-SO assets/Tiled.xpm
-WE assets/Tiled.xpm
-EA assets/Tiled.xpm
+NO ./assets/tiled.xpm
+SO ./assets/tiled.xpm
+WE ./assets/tiled.xpm
+EA ./assets/tiled.xpm
 F 80,20,20
 C 20,20,80
 

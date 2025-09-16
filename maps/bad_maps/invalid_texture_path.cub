@@ -1,15 +1,15 @@
-N ./textures/diamond.png
+NO ./assets/tile.xpm
 
 
 
-S ./texture/wood.png
+SO ./asset/metal_wire.xpm
 
 
 
-W ./textures/stone.png
+WE ./assets/fire.xpm
 
 
-E ./textures/gold.png
+EA ./assets/brick.xpm
 
 F     254,100,5
 C     225,3,4

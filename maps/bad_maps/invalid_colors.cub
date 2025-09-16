@@ -1,15 +1,15 @@
-N ./textures/diamond.png
+NO ./assets/tile.xpm
 
 
 
-S ./textures/diamond.png
+SO ./assets/tile.xpm
 
 
 
-W ./textures/diamond.png
+WE ./assets/tile.xpm
 
 
-E ./textures/diamond.png
+EA ./assets/tile.xpm
 
 F 300,,,,,,,100,0
 C 22,5,30,0,57
