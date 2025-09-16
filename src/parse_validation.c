@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 14:51:45 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:57:56 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	check_map_characters(char *line)
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'N' && line[i] != 'S'
 			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' '
-			&& line[i] != '\n' && line[i] != 'D')
+			&& line[i] != '\n' && line[i] != 'D' && line[i] != 'R')
 		{
 			printf("Error: Map invalid (wrong character)\n");
 			return (0);

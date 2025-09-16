@@ -19,7 +19,7 @@ SRC = $(SRCDIR)main.c $(SRCDIR)hooks.c $(SRCDIR)init.c $(SRCDIR)check.c $(SRCDIR
 		$(SRCDIR)parse_map_content.c $(SRCDIR)parse_textures.c $(SRCDIR)parse_utils.c $(SRCDIR)parse_validation.c $(SRCDIR)validate_map.c \
 		$(SRCDIR)draw_wall.c $(SRCDIR)check_wall_side.c $(SRCDIR)cleanup.c $(SRCDIR)flood_fill.c $(SRCDIR)flood_fill2.c \
 		$(SRCDIR)flood_fill3.c $(SRCDIR)door.c $(SRCDIR)handle_door.c $(SRCDIR)minimap.c $(SRCDIR)accessibility_map.c \
-		$(SRCDIR)get_delta_time.c $(SRCDIR)handle_door2.c $(SRCDIR)check_open_walls.c
+		$(SRCDIR)get_time.c $(SRCDIR)handle_door2.c $(SRCDIR)check_open_walls.c $(SRCDIR)someyt.c
 LIBFTDIR = libft/
 LIBFT = $(LIBFTDIR)libft.a
 OBJDIR = obj/

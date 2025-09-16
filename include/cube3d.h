@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 15:21:17 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:12:02 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@
 # define DEBUG 0
 # define TILESIZE 64
 # define DOOR_TEXTURE "assets/someyt_5x5.xpm"
+# define SOMEYT_INTERVAL 1000
 
 # define LEFT 1
 # define RIGHT 2
@@ -116,13 +117,6 @@ typedef struct s_count
 	int				f_count;
 	int				c_count;
 }					t_count;
-
-typedef struct s_paint
-{
-	int				painting_x;
-	int				painting_y;
-	struct s_paint	*next;
-}					t_paint;
 
 typedef struct s_door
 {
@@ -189,6 +183,19 @@ typedef struct s_keys
 	int				right_pressed;
 }					t_keys;
 
+typedef struct s_someyt
+{
+	bool			has_anim_wall;
+	bool			is_anim_wall;
+	double			start_time;
+	double			new_time;
+	t_img			*current_tex;
+	t_img			*tex_1;
+	t_img			*tex_2;
+	t_img			*tex_3;
+	t_img			*tex_4;
+}					t_someyt;
+
 typedef struct s_map
 {
 	int				**map;
@@ -196,7 +203,6 @@ typedef struct s_map
 	int				width;
 	int				height;
 	int				nbr_doors;
-	int				nbr_paintings;
 	t_img			*no;
 	t_img			*so;
 	t_img			*we;
@@ -237,7 +243,7 @@ typedef struct s_cube
 	t_coord			coord;
 	t_tex			tex;
 	t_door			*door;
-	t_paint			*paint;
+	t_someyt		someyt;
 }					t_cube;
 
 // accessibility_map.c
@@ -291,8 +297,9 @@ int					validate_map_boundaries(t_cube *cube);
 // flood_fill3.c
 int					check_player_on_external_wall(t_map *map, int player_x, int player_y);
 
-// get_delta_time.c
+// get_time.c
 double				get_delta_time(void);
+double				get_total_time(void);
 
 // handle_door.c
 void				handle_door(t_cube *cube);
@@ -358,6 +365,9 @@ int					check_map_characters(char *line);
 // raycasting.c
 void				raycasting(t_cube *cube);
 
+// someyt.c
+t_img				*handle_someyt(t_cube *cube);
+void				init_someyt(t_cube *cube, int row, int col);
 // textures.c
 t_img				*load_textures(t_cube *cube, char *path_plus_newline);
 int					get_texture_pixel(t_img *img, int x, int y);

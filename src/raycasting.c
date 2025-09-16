@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 19:38:57 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/08/09 12:58:02 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:11:13 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	raycasting(t_cube *cube)
 	double	camera_x;
 	int		x;
 
+	if (cube->someyt.has_anim_wall)
+	{
+		cube->someyt.is_anim_wall = false;
+		cube->someyt.new_time = get_total_time();
+		handle_someyt(cube);
+	}
 	plane_length = FOV;
 	plane_x = -cube->p.cam_y * plane_length;
 	plane_y = cube->p.cam_x * plane_length;

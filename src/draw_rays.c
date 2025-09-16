@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:34:58 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:18:13 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:53:32 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,22 @@ static bool	check_door(t_cube *cube)
 	return (false);
 }
 
+static bool	check_wall(t_cube *cube)
+{
+	if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1
+			|| cube->map.map[cube->coord.map_y][cube->coord.map_x] == 5)
+	{
+		cube->someyt.is_anim_wall = false;
+		return (true);
+	}
+	else if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 6)
+	{
+		cube->someyt.is_anim_wall = true;
+		return (true);
+	}
+	return (false);
+}
+
 void	draw_ray(t_cube *cube, int screen_x)
 {
 	prepare_coords(cube);
@@ -90,8 +106,7 @@ void	draw_ray(t_cube *cube, int screen_x)
 		if (cube->coord.map_x < 0 || cube->coord.map_x >= cube->map.width
 			|| cube->coord.map_y < 0 || cube->coord.map_y >= cube->map.height)
 			break ;
-		if (cube->map.map[cube->coord.map_y][cube->coord.map_x] == 1
-			|| cube->map.map[cube->coord.map_y][cube->coord.map_x] == 5)
+		if (check_wall(cube))
 			break ;
 		else if (check_door(cube))
 			break ;

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/10 16:46:20 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:11:25 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,12 @@ void	init_cube(t_cube *cube)
 	cube->door = NULL;
 	cube->map.door = NULL;
 	cube->map.nbr_doors = 0;
-	cube->paint = NULL;
-	cube->map.nbr_paintings = 0;
+	cube->someyt.has_anim_wall = false;
+	cube->someyt.start_time = get_total_time();
+	cube->someyt.tex_1 = NULL;
+	cube->someyt.tex_2 = NULL;
+	cube->someyt.tex_3 = NULL;
+	cube->someyt.tex_4 = NULL;
 	cube->map.height = 0;
 	cube->map.width = 0;
 	cube->map.no = NULL;

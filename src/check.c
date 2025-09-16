@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:26 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:12:27 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:55:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ static bool	check_up_wall(t_cube *cube, int new_y)
 		|| cube->map.map[tile_y][tile_x] == 3
 		|| cube->map.map[tile_y][tile_x2] == 3
 		|| cube->map.map[tile_y][tile_x] == 5
-		|| cube->map.map[tile_y][tile_x2] == 5);
+		|| cube->map.map[tile_y][tile_x2] == 5
+		|| cube->map.map[tile_y][tile_x] == 6
+		|| cube->map.map[tile_y][tile_x2] == 6);
 }
 
 static bool	check_down_wall(t_cube *cube, int new_y)
@@ -51,7 +53,9 @@ static bool	check_down_wall(t_cube *cube, int new_y)
 		|| cube->map.map[tile_y][tile_x] == 3
 		|| cube->map.map[tile_y][tile_x2] == 3
 		|| cube->map.map[tile_y][tile_x] == 5
-		|| cube->map.map[tile_y][tile_x2] == 5);
+		|| cube->map.map[tile_y][tile_x2] == 5
+		|| cube->map.map[tile_y][tile_x] == 6
+		|| cube->map.map[tile_y][tile_x2] == 6);
 }
 
 static bool	check_left_wall(t_cube *cube, int new_x)
@@ -72,7 +76,9 @@ static bool	check_left_wall(t_cube *cube, int new_x)
 		|| cube->map.map[tile_y][tile_x] == 3
 		|| cube->map.map[tile_y2][tile_x] == 3
 		|| cube->map.map[tile_y][tile_x] == 5
-		|| cube->map.map[tile_y2][tile_x] == 5);
+		|| cube->map.map[tile_y2][tile_x] == 5
+		|| cube->map.map[tile_y][tile_x] == 6
+		|| cube->map.map[tile_y2][tile_x] == 6);
 }
 
 static bool	check_right_wall(t_cube *cube, int new_x)
@@ -93,7 +99,9 @@ static bool	check_right_wall(t_cube *cube, int new_x)
 		|| cube->map.map[tile_y][tile_x] == 3
 		|| cube->map.map[tile_y2][tile_x] == 3
 		|| cube->map.map[tile_y][tile_x] == 5
-		|| cube->map.map[tile_y2][tile_x] == 5);
+		|| cube->map.map[tile_y2][tile_x] == 5
+		|| cube->map.map[tile_y][tile_x] == 6
+		|| cube->map.map[tile_y2][tile_x] == 6);
 }
 
 bool	check_wall_tile(t_cube *cube, int new_x, int new_y, int a)

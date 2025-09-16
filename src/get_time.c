@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_delta_time.c                                   :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:06:36 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 15:10:24 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:10:42 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,15 @@ double	get_delta_time(void)
 	delta = (now.tv_sec - last.tv_sec) + (now.tv_usec - last.tv_usec) / 1e6;
 	last = now;
 	return (delta);
+}
+
+double	get_total_time(void)
+{
+	static struct timeval	start;
+	struct timeval			now;
+
+	gettimeofday(&now, NULL);
+	if (start.tv_sec == 0)
+		start = now;
+	return ((now.tv_sec - start.tv_sec) + (now.tv_usec - start.tv_usec) / 1e6);
 }
