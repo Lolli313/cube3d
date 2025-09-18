@@ -6,13 +6,13 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:52:48 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:23:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:28:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-char	*make_frame_path(int i)
+static char	*make_frame_path(int i)
 {
     char	*prefix;
     char	*num;

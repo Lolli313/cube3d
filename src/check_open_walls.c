@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:59:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:10:32 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:32:50 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_open_north(t_map *map)
 		{
 			if (map->map[y][x] == 0 || map->map[y][x] == 3)
 				space = true;
-			else if (map->map[y][x] == 1)
+			else if (map->map[y][x] == 1 || map->map[y][x] == 6)
 				space = false;
 			else if (map->map[y][x] == 5 && space == true)
 				return (1);
@@ -53,7 +53,7 @@ static int	check_open_south(t_map *map)
 		{
 			if (map->map[y][x] == 0 || map->map[y][x] == 3)
 				space = true;
-			else if (map->map[y][x] == 1)
+			else if (map->map[y][x] == 1 || map->map[y][x] == 6)
 				space = false;
 			else if (map->map[y][x] == 5 && space == true)
 				return (1);
@@ -79,7 +79,7 @@ static int	check_open_west(t_map *map)
 		{
 			if (map->map[y][x] == 0 || map->map[y][x] == 3)
 				space = true;
-			else if (map->map[y][x] == 1)
+			else if (map->map[y][x] == 1 || map->map[y][x] == 6)
 				space = false;
 			else if (map->map[y][x] == 5 && space == true)
 				return (1);
@@ -105,7 +105,7 @@ static int	check_open_east(t_map *map)
 		{
 			if (map->map[y][x] == 0 || map->map[y][x] == 3)
 				space = true;
-			else if (map->map[y][x] == 1)
+			else if (map->map[y][x] == 1 || map->map[y][x] == 6)
 				space = false;
 			else if (map->map[y][x] == 5 && space == true)
 				return (1);

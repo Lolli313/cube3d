@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:11:44 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:33:45 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:34:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	draw_minimap_row(t_cube *cube, int map_y, int y,
 		if (cube->map.accessibility_map[map_y][map_x] == 1)
 		{
 			cube->color = WHITE;
-			if (cube->map.map[map_y][map_x] == 1)
+			if (cube->map.map[map_y][map_x] == 1 || cube->map.map[map_y][map_x] == 6)
 				cube->color = BLACK;
 			else if (cube->map.map[map_y][map_x] == 3)
 				cube->color = GREEN;
