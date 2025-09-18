@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:16:56 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:46:19 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	parse_door(t_cube *cube, int row, int col)
 	add_door(cube, row, col);
 	cube->map.nbr_doors++;
 }
+
 int	validate_doors(t_cube *cube)
 {
 	int	i;
@@ -79,7 +80,8 @@ int	validate_doors(t_cube *cube)
 		{
 			if (cube->map.map[i][j] == 3)
 			{
-				if (i == 0 || i == cube->map.height - 1 || j == 0 || j == cube->map.width - 1)
+				if (i == 0 || i == cube->map.height - 1 || j == 0
+					|| j == cube->map.width - 1)
 				{
 					printf("Error: Door cannot be placed at map border\n");
 					return (0);

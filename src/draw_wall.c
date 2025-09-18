@@ -6,13 +6,14 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:17:56 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:18:55 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:44:20 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	draw_line_3(t_cube *cube, int screen_x, int wall_height, int draw_start)
+static void	draw_line_3(t_cube *cube, int screen_x, int wall_height,
+							int draw_start)
 {
 	int	y;
 

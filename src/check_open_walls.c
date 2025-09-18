@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:59:27 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:32:50 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:43:45 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_open_north(t_map *map)
 	int		x;
 	int		y;
 	bool	space;
-	
+
 	x = -1;
 	while (++x < map->width)
 	{
@@ -35,7 +35,7 @@ static int	check_open_north(t_map *map)
 		if (space == true)
 			return (1);
 	}
-	return (0);	
+	return (0);
 }
 
 static int	check_open_south(t_map *map)
@@ -43,7 +43,7 @@ static int	check_open_south(t_map *map)
 	int		x;
 	int		y;
 	bool	space;
-	
+
 	x = -1;
 	while (++x < map->width)
 	{
@@ -61,7 +61,7 @@ static int	check_open_south(t_map *map)
 		if (space == true)
 			return (1);
 	}
-	return (0);	
+	return (0);
 }
 
 static int	check_open_west(t_map *map)
@@ -69,7 +69,7 @@ static int	check_open_west(t_map *map)
 	int		x;
 	int		y;
 	bool	space;
-	
+
 	y = -1;
 	while (++y < map->height)
 	{
@@ -95,7 +95,7 @@ static int	check_open_east(t_map *map)
 	int		x;
 	int		y;
 	bool	space;
-	
+
 	y = -1;
 	while (++y < map->height)
 	{

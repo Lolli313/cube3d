@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:50:57 by njung             #+#    #+#             */
-/*   Updated: 2025/09/18 16:35:41 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:43:23 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int	**create_accessibility_map(t_cube *cube)
 		x = -1;
 		while (++x < cube->map.width)
 		{
-			if (cube->map.map[y][x] != 1 && cube->map.map[y][x] != 5 && cube->map.map[y][x] != 6)
+			if (cube->map.map[y][x] != 1 && cube->map.map[y][x] != 5
+					&& cube->map.map[y][x] != 6)
 				accessibility_map[y][x] = 1;
 		}
 	}

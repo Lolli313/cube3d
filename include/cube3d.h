@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:23:10 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:41:59 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,8 @@ int					load_map(int ac, char **argv, t_cube *cube);
 int					check_open_walls(int **visited, t_map *map);
 
 // check_wall_side.c
-void				check_wall_side(t_cube *cube, int *tex_height, int *tex_width);
+void				check_wall_side(t_cube *cube, int *tex_height,
+						int *tex_width);
 
 // check.c
 bool				check_wall_tile(t_cube *cube, int new_x, int new_y, int a);
@@ -294,7 +295,8 @@ void				flood_fill_recursive(t_map *map_struct, int **visited,
 int					validate_map_boundaries(t_cube *cube);
 
 // flood_fill3.c
-int					check_player_on_external_wall(t_map *map, int player_x, int player_y);
+int					check_player_on_external_wall(t_map *map,
+						int player_x, int player_y);
 
 // get_time.c
 double				get_delta_time(void);
@@ -337,14 +339,17 @@ int					check_arg(int ac);
 int					check_name(char **argv);
 
 // parse_main.c
-int					process_texture_line(char *line, t_cube *cube, int *texture_count);
+int					process_texture_line(char *line,
+						t_cube *cube, int *texture_count);
 int					validate_textures_complete(int texture_count);
 int					parse_map_file(int fd, t_cube *cube, char *filename);
 int					parse_game(int ac, char **argv, t_cube *cube);
 
 // parse_map_content.c
-int					process_order_line(char *line, int *texture_count, int *map_started);
-int					process_line(char *line, t_cube *cube, char *filename, t_parse *parse);
+int					process_order_line(char *line,
+						int *texture_count, int *map_started);
+int					process_line(char *line, t_cube *cube,
+						char *filename, t_parse *parse);
 
 // parse_textures.c
 int					parse_texture_line(char *line, t_cube *cube);
@@ -353,11 +358,13 @@ int					parse_texture_line(char *line, t_cube *cube);
 int					is_texture_element(char c);
 int					is_player_rotation(char c);
 int					is_map_element(char c);
-void				set_player_position(t_cube *cube, char direction, int row, int col);
+void				set_player_position(t_cube *cube, char direction,
+						int row, int col);
 void				init_counters(t_count *counter);
 
 // parse_validation.c
-int					check_map_before_textures(int texture_count, char first_char);
+int					check_map_before_textures(int texture_count,
+						char first_char);
 int					check_duplicates(int fd);
 int					check_map_characters(char *line);
 
