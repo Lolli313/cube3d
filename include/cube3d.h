@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/16 17:12:02 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:23:10 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@
 # define DEBUG 0
 # define TILESIZE 64
 # define DOOR_TEXTURE "assets/someyt_5x5.xpm"
-# define SOMEYT_INTERVAL 1000
+# define SOMEYT_INTERVAL 100
+# define SOMEYT_FRAMES 21
 
 # define LEFT 1
 # define RIGHT 2
@@ -185,15 +186,13 @@ typedef struct s_keys
 
 typedef struct s_someyt
 {
+	bool			is_init;
 	bool			has_anim_wall;
 	bool			is_anim_wall;
 	double			start_time;
 	double			new_time;
 	t_img			*current_tex;
-	t_img			*tex_1;
-	t_img			*tex_2;
-	t_img			*tex_3;
-	t_img			*tex_4;
+	t_img			*tex[SOMEYT_FRAMES];
 }					t_someyt;
 
 typedef struct s_map
