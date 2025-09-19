@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/19 11:38:15 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/19 14:42:07 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	free_doors(t_door *door)
 	}
 }
 
-void	free_someyt(t_cube *cube)
+static void	free_someyt(t_cube *cube)
 {
 	int	i;
 
