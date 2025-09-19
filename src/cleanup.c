@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:15:20 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/19 11:38:15 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,26 @@ static void	free_doors(t_door *door)
 	}
 }
 
+void	free_someyt(t_cube *cube)
+{
+	int	i;
+
+	if (cube->someyt.is_init)
+	{
+		i = 0;
+		while (i < SOMEYT_FRAMES)
+		{
+			mlx_destroy_image(cube->mlx, cube->someyt.tex[i]->img_addr);
+			free(cube->someyt.tex[i]);
+			i++;
+		}
+	}
+}
+
 int	cleanup(t_cube *cube)
 {
 	free_textures(cube);
+	free_someyt(cube);
 	free_map(&cube->map);
 	free_doors(cube->door);
 	mlx_destroy_image(cube->mlx, cube->img.img_addr);

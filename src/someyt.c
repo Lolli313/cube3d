@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:52:48 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:45:35 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/19 11:35:24 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void	init_someyt(t_cube *cube, int row, int col)
 		while (i < SOMEYT_FRAMES)
 		{
 			path = make_frame_path(i);
-			cube->someyt.tex[i++] = load_textures(cube, path);
+			cube->someyt.tex[i] = load_textures(cube, path);
 			free(path);
+			i++;
 		}
+		cube->someyt.is_init = true;
 	}
-	cube->someyt.is_init = true;
 }
 
 t_img	*handle_someyt(t_cube *cube)
