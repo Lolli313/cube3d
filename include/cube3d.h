@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/22 16:23:59 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:50:37 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@
 # define PAINTINGVALUE 10
 # define DEBUG 0
 # define TILESIZE 64
-# define DOOR_TEXTURE "assets/someyt_5x5.xpm"
+# define DOOR_TEXTURE "assets/cyberpunk_door.xpm"
 # define SOMEYT_INTERVAL 100
 # define SOMEYT_FRAMES 21
 
