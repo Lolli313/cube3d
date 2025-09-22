@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:46:35 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:25:22 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ void	init_cube(t_cube *cube)
 	cube->map.so = NULL;
 	cube->map.ea = NULL;
 	cube->map.we = NULL;
+	cube->p.player_speed = PLAYERSPEED;
 }

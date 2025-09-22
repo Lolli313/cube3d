@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 14:30:53 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:26:40 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	key_press_handler(int keysym, t_cube *cube)
 		cube->keys.left_pressed = 1;
 	else if (keysym == XK_Right)
 		cube->keys.right_pressed = 1;
+	else if (keysym == XK_Shift_L)
+		cube->keys.shift_pressed = 1;
 	return (0);
 }
 
@@ -51,6 +53,8 @@ int	key_release_handler(int keysym, t_cube *cube)
 		cube->keys.left_pressed = 0;
 	else if (keysym == XK_Right)
 		cube->keys.right_pressed = 0;
+	else if (keysym == XK_Shift_L)
+		cube->keys.shift_pressed = 0;	
 	return (0);
 }
 
@@ -119,6 +123,10 @@ int	game_loop(t_cube *cube)
 		update_player_position(cube, DOWN);
 	if (cube->keys.d_pressed)
 		update_player_position(cube, RIGHT);
+	if (cube->keys.shift_pressed)
+		cube->p.player_speed = 4;
+	if (!cube->keys.shift_pressed)
+		cube->p.player_speed = 1;
 	handle_door(cube);
 	render_image(cube);
 	return (0);

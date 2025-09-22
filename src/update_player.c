@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 14:16:40 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/11 15:19:10 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:24:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ static void	assign_direction(t_player *p, int dir)
 	p->cam_y = sin(p->player_direction);
 	if (dir == UP)
 	{
-		p->delta_x = PLAYERSPEED * p->cam_x;
-		p->delta_y = PLAYERSPEED * p->cam_y;
+		p->delta_x = p->player_speed * p->cam_x;
+		p->delta_y = p->player_speed * p->cam_y;
 	}
 	else if (dir == RIGHT)
 	{
-		p->delta_x = PLAYERSPEED * (-p->cam_y);
-		p->delta_y = PLAYERSPEED * p->cam_x;
+		p->delta_x = p->player_speed * (-p->cam_y);
+		p->delta_y = p->player_speed * p->cam_x;
 	}
 	else if (dir == DOWN)
 	{
-		p->delta_x = PLAYERSPEED * (-p->cam_x);
-		p->delta_y = PLAYERSPEED * (-p->cam_y);
+		p->delta_x = p->player_speed * (-p->cam_x);
+		p->delta_y = p->player_speed * (-p->cam_y);
 	}
 	else
 	{
-		p->delta_x = PLAYERSPEED * p->cam_y;
-		p->delta_y = PLAYERSPEED * (-p->cam_x);
+		p->delta_x = p->player_speed * p->cam_y;
+		p->delta_y = p->player_speed * (-p->cam_x);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:41:59 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:23:59 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ typedef struct s_keys
 	int				esc_pressed;
 	int				left_pressed;
 	int				right_pressed;
+	int				shift_pressed;
 }					t_keys;
 
 typedef struct s_someyt
@@ -228,6 +229,7 @@ typedef struct s_player
 	int				height;
 	double			distance;
 	double			player_direction;
+	int				player_speed;
 }					t_player;
 
 typedef struct s_cube
