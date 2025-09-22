@@ -3,18 +3,18 @@ C 225,3,4
 
 
 
-NO ./assets/tile.xpm
+NO ./assets/cyberpunk1.xpm
 
 
 
-SO ./assets/metal_wire.xpm
+SO ./assets/cyberpunk2.xpm
 
 
 
-WE ./assets/fire.xpm
+WE ./assets/cyberpunk3.xpm
 
 
-EA ./assets/brick.xpm
+EA ./assets/cyberpunk4.xpm
 
 
             1111111111111111111111111  

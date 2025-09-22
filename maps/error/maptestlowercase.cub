@@ -1,10 +1,10 @@
-no assets/tile.xpm
-so assets/metal_wire.xpm
-we assets/fire.xpm
-ea assets/brick.xpm
+no assets/cyberpunk1.xpm
+so assets/cyberpunk2.xpm
+we assets/cyberpunk3.xpm
+ea assets/cyberpunk4.xpm
 
-F 220,100,0
-C 225,30,0
+F 30,30,30
+C 20,20,20
 
         1111111111111111111111111
         1000000000110000000000001

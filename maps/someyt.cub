@@ -3,8 +3,8 @@ SO assets/ssrun_blue.xpm
 WE assets/ssrun_green.xpm
 EA assets/ssrun_yellow.xpm
 
-F 220,100,0
-C 225,30,0
+F 30,30,30
+C 20,20,20
 
         1111111111111111111111111
         1000000000110000000000001

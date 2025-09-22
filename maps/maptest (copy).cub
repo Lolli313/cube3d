@@ -3,8 +3,8 @@ SO     textures/stone.xpm
 WE      textures/deepslate.xpm
 EA     textures/stonebrick.xpm
 
-F 220,100,0
-C 225,30,0
+F 30,30,30
+C 20,20,20
 
         1111111111111111111111111
         1000000000110000000000001

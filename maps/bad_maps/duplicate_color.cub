@@ -1,15 +1,15 @@
-N ./assets/tile.xpm
+N ./assets/cyberpunk1.xpm
 
 
 
-S ./assets/metal_wire.xpm
+S ./assets/cyberpunk2.xpm
 
 
 
-W ./assets/fire.xpm
+W ./assets/cyberpunk3.xpm
 
 
-E ./assets/brick.xpm
+E ./assets/cyberpunk4.xpm
 
 F     254,100,5
 C     225,3,4

@@ -2,17 +2,17 @@ NO ./assets/does_not_exist.xpm
 
 
 
-SO ./assets/brick.xpm
+SO ./assets/cyberpunk4.xpm
 
 
 
-WE ./assets/brick.xpm
+WE ./assets/cyberpunk4.xpm
 
 
-EA ./assets/brick.xpm
+EA ./assets/cyberpunk4.xpm
 
-F 220,100,0
-C 225,30,0
+F 30,30,30
+C 20,20,20
 
 111111
 100101
