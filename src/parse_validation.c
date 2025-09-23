@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/09/16 13:57:56 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 14:30:02 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static int	check_and_increment(int *count, char *element_name)
 
 static int	count_elements(char *line, t_count *count)
 {
-	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
+	if (line[0] == 'N' && line[1] == 'O' && (line[2] == '\n' || line[2] == ' '))
 		return (check_and_increment(&count->no_count, "NO texture"));
-	else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
+	else if (line[0] == 'S' && line[1] == 'O' && (line[2] == '\n' || line[2] == ' '))
 		return (check_and_increment(&count->so_count, "SO texture"));
-	else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
+	else if (line[0] == 'W' && line[1] == 'E' && (line[2] == '\n' || line[2] == ' '))
 		return (check_and_increment(&count->we_count, "WE texture"));
-	else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
+	else if (line[0] == 'E' && line[1] == 'A' && (line[2] == '\n' || line[2] == ' '))
 		return (check_and_increment(&count->ea_count, "EA texture"));
-	else if (line[0] == 'F' && line[1] == ' ')
+	else if (line[0] == 'F' && (line[1] == '\n' || line[1] == ' '))
 		return (check_and_increment(&count->f_count, "F color"));
-	else if (line[0] == 'C' && line[1] == ' ')
+	else if (line[0] == 'C' && (line[1] == '\n' || line[1] == ' '))
 		return (check_and_increment(&count->c_count, "C color"));
 	return (1);
 }
