@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:36:46 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/18 16:46:19 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 13:21:03 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ static void	add_door(t_cube *cube, int row, int col)
 	new_door->is_open = false;
 	new_door->next = NULL;
 	if (cube->map.nbr_doors == 0)
-	{
 		cube->door = new_door;
-		return ;
+	else
+	{
+		temp = cube->door;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new_door;
 	}
-	temp = cube->door;
-	while (temp)
-		temp = temp->next;
-	temp = new_door;
+	cube->map.nbr_doors++;
 }
 
 t_door	*find_door(t_cube *cube)

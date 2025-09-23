@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/19 14:42:07 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 13:23:35 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,14 @@ static void	free_map(t_map *map)
 
 static void	free_doors(t_door *door)
 {
-	t_door	*temp;
+    t_door	*temp;
 
-	if (door)
-	{
-		temp = door->next;
-		while (door)
-		{
-			free(door);
-			door = temp;
-		}
-	}
+    while (door)
+    {
+        temp = door->next;
+        free(door);
+        door = temp;
+    }
 }
 
 static void	free_someyt(t_cube *cube)
