@@ -2,10 +2,10 @@ NO assets/cyberpunk1.xpm
 SO assets/cyberpunk2.xpm
 WE assets/cyberpunk3.xpm
 EA assets/cyberpunk4.xpm
-F 30,30,30
-C 20,20,20
-111111111111
-100000000001
-100000000001
-1000N0000001
-111111111111
+F 80,20,20
+C 20,20,80
+
+111111
+100001
+10E000
+111111

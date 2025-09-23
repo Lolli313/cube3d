@@ -14,19 +14,19 @@
 11111111 1111111 111111111111
 
 
-N ./textures/diamond.png
+NO ./assets/cyberpunk1.xpm
 
 
 
-S ./textures/wood.png
+SO ./assets/cyberpunk2.xpm
 
 
 
-W ./textures/stone.png
+WE ./assets/cyberpunk3.xpm
 
 
-E ./textures/gold.png
+EA ./assets/cyberpunk4.xpm
 
-F     254,100,5
-C     225,3,4
+F 254,100,5
+C 225,3,4
 

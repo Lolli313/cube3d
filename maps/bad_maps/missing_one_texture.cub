@@ -1,14 +1,14 @@
-N ./textures/diamond.png
+NO ./assets/cyberpunk1.xpm
 
 
 
-S ./textures/wood.png
+SO ./assets/cyberpunk2.xpm
 
 
 
 
 
-E ./textures/gold.png
+EA ./assets/cyberpunk4.xpm
 
 F     254,100,5
 C     225,3,4

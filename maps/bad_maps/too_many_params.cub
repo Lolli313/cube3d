@@ -1,11 +1,11 @@
-NO ./textures/cobblestone.xpm
-SO ./textures/cobblestone.xpm
-WE ./textures/cobblestone.xpm
-EA ./textures/cobblestone.xpm
+NO ./assets/cyberpunk1.xpm
+SO ./assets/cyberpunk2.xpm
+WE ./assets/cyberpunk3.xpm
+EA ./assets/cyberpunk4.xpm
+EA ./assets/cyberpunk4.xpm
 
 F 255,0,0
 C 0,0,255
-R 0,0,0
 
 1111111111111111111111111111111111111
 1000000000000000000000000000000000001

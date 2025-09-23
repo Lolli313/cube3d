@@ -1,19 +1,19 @@
-NO ./assets/cyberpunk1.png
-NO ./assets/cyberpunk1.png
+NO ./assets/cyberpunk1.xpm
+NO ./assets/cyberpunk1.xpm
 
 
 
-SO ./assets/meta_wire.png
+SO ./assets/cyberpunk2.xpm
 
 
 
-WE ./assets/cyberpunk3.png
+WE ./assets/cyberpunk3.xpm
 
 
-EA ./assets/cyberpunk4.png
+EA ./assets/cyberpunk4.xpm
 
-F     254,100,5
-C     225,3,4
+F 254,100,5
+C 225,3,4
 
             1111111111111111111111111  
             1000000000110000000000001

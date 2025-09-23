@@ -1,7 +1,7 @@
-NO textures/cobble.xpm
-SO textures/stone.xpm
-WE textures/deepslate.xpm
-EA textures/vide.xpm
+NO assets/cyberpunk1.xpm
+SO assets/cyberpunk2.xpm
+WE assets/cyberpunk3.xpm
+EA assets/vide.xpm
 
 F 30,30,30
 C 20,20,20

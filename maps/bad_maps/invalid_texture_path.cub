@@ -2,7 +2,7 @@ NO ./assets/cyberpunk1.xpm
 
 
 
-SO ./asset/cyberpunk2.xpm
+SO ./wrong/cyberpunk2.xpm
 
 
 
@@ -11,8 +11,8 @@ WE ./assets/cyberpunk3.xpm
 
 EA ./assets/cyberpunk4.xpm
 
-F     254,100,5
-C     225,3,4
+F 254,100,5
+C 225,3,4
 
             1111111111111111111111111  
             1000000000110000000000001
