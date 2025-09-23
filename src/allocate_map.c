@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 14:06:24 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:00:47 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	allocate_map(t_map *map)
 		return (0);
 	if (!allocate_each_row(map))
 		return (0);
-	printf("Successfully allocated map %dx%d\n", map->width, map->height);
 	return (1);
 }
 

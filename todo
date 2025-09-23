@@ -1,9 +1,0 @@
-ASK NOLAN
-
-	- If it's okay to have characters in RGB color (parser parses it to 0)       bad_maps/alpha_colors.cub
-
-	- Only 3 characters are valid in each color ex. " 20" or "  5"
-
-	- "Error: Invalid map format" error message appears after "Error: Wrong RGB value(s)" message appears, might be unnecessary EXCEPT bad_maps/only_color_id.cub and bad_maps/empty_texture.cub           bad_maps/invalid_colors.cub
-
-	- Duplicate texture doesn't say an error message if there's no texture (ex. WE)     bad_maps/wront_text.cub

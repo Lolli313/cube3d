@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/12 15:00:02 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:00:18 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	check_width(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("DEBUG check_width: max_width = %d\n", max_width);
 	return (max_width);
 }
 
@@ -63,6 +62,5 @@ int	check_height(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("DEBUG check_height: height = %d\n", height);
 	return (height);
 }
