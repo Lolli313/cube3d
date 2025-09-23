@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:47:28 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/22 16:26:40 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:06:11 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	key_release_handler(int keysym, t_cube *cube)
 	else if (keysym == XK_Right)
 		cube->keys.right_pressed = 0;
 	else if (keysym == XK_Shift_L)
-		cube->keys.shift_pressed = 0;	
+		cube->keys.shift_pressed = 0;
 	return (0);
 }
 
