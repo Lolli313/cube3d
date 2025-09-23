@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:43:09 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/22 16:25:22 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 12:08:54 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_keys(t_cube *cube)
 	cube->keys.esc_pressed = 0;
 	cube->keys.left_pressed = 0;
 	cube->keys.right_pressed = 0;
+	cube->keys.shift_pressed = 0;
 }
 
 void	init_hooks(t_cube *cube)
