@@ -6,7 +6,7 @@
 /*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/23 13:05:41 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/23 13:49:38 by aakerblo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	parse_rgb(char *line)
 	b = ft_atoi(rgb_values[2]);
 	if (ft_strlen(rgb_values[0]) > 3 || r < 0 || r > 255
 		|| ft_strlen(rgb_values[1]) > 3 || g < 0 || g > 255
-		|| ft_strlen(rgb_values[2]) > 3 || b < 0 || b > 255 || rgb_values[3])
+		|| ft_strlen(rgb_values[2]) > 4 || b < 0 || b > 255 || rgb_values[3])
 	{
 		free_matrix(rgb_values);
 		return (printf("Error: Wrong RGB value(s)\n"), -1);
