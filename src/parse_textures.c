@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 13:43:59 by njung             #+#    #+#             */
-/*   Updated: 2025/09/24 14:27:14 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/24 14:54:13 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static int	parse_rgb(char *line)
 	int		color;
 
 	rgb_values = ft_split(line, ',');
-	if (!is_valid_rgb_digit(*rgb_values))
-	{
-		free_matrix(rgb_values);
-		return (printf("Error\nWrong RGB value(s)\n"), -1);
-	}
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	{
+		free_matrix(rgb_values);
+		return (printf("Error\nWrong RGB value(s)\n"), -1);
+	}
+	if (!is_valid_rgb_values(rgb_values))
 	{
 		free_matrix(rgb_values);
 		return (printf("Error\nWrong RGB value(s)\n"), -1);

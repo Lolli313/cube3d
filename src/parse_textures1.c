@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:14:26 by njung             #+#    #+#             */
-/*   Updated: 2025/09/24 14:27:09 by njung            ###   ########.fr       */
+/*   Updated: 2025/09/24 15:12:03 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	is_valid_rgb_digit(char *str)
 	int	i;
 
 	i = 0;
-	if (!str || !str[0])
+	if (!str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '\n')
 			return (0);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:15:54 by njung             #+#    #+#             */
-/*   Updated: 2025/09/11 13:23:21 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:32:58 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	validate_textures_complete(int texture_count)
 {
 	if (texture_count != 6)
 	{
-		printf("Error: Invalid map format\n");
+		printf("Error\nInvalid map format\n");
 		return (0);
 	}
 	return (1);

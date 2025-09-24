@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:09:15 by njung             #+#    #+#             */
-/*   Updated: 2025/09/23 16:00:47 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:32:58 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	allocate_map(t_map *map)
 {
 	if (!map || map->height <= 0 || map->width <= 0)
 	{
-		printf("Error: Allocate_map: Invalid parameters\n");
+		printf("Error\nAllocate_map: Invalid parameters\n");
 		return (0);
 	}
 	map->map = malloc(sizeof(int *) * map->height);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:19 by njung             #+#    #+#             */
-/*   Updated: 2025/09/23 16:05:54 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:32:58 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_and_increment(int *count, char *element_name)
 	*count += 1;
 	if (*count > 1)
 	{
-		printf("Error: Duplicate %s\n", element_name);
+		printf("Error\nDuplicate %s\n", element_name);
 		return (0);
 	}
 	return (1);
@@ -47,7 +47,7 @@ int	check_map_before_textures(int texture_count, char first_char)
 {
 	if (texture_count < 6 && is_map_element(first_char))
 	{
-		printf("Error: Map found before all textures defined\n");
+		printf("Error\nMap found before all textures defined\n");
 		return (0);
 	}
 	return (1);
@@ -90,7 +90,7 @@ int	check_map_characters(char *line)
 			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' '
 			&& line[i] != '\n' && line[i] != 'D' && line[i] != 'R')
 		{
-			printf("Error: Map invalid (wrong character)\n");
+			printf("Error\nMap invalid (wrong character)\n");
 			return (0);
 		}
 		i++;
