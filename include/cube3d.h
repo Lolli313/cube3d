@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:44:05 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/22 16:50:37 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:23:10 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define CUBE3D_H
 
 # include "libft.h"
+# include <X11/Xlib.h>
+# include <X11/extensions/Xfixes.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
-# include <limits.h>
-# include <X11/Xlib.h>
-# include <X11/extensions/Xfixes.h>
 
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -284,8 +284,8 @@ void				draw_wall(t_cube *cube, int screen_x);
 
 // draw.c
 void				draw_pixel(t_img *img, int x, int y, int color);
-double				scale(double value, double origin_max,
-						double target_min, double target_max);
+double				scale(double value, double origin_max, double target_min,
+						double target_max);
 void				render_image(t_cube *cube);
 
 // flood_fill.c
@@ -297,8 +297,8 @@ void				flood_fill_recursive(t_map *map_struct, int **visited,
 int					validate_map_boundaries(t_cube *cube);
 
 // flood_fill3.c
-int					check_player_on_external_wall(t_map *map,
-						int player_x, int player_y);
+int					check_player_on_external_wall(t_map *map, int player_x,
+						int player_y);
 
 // get_time.c
 double				get_delta_time(void);
@@ -341,27 +341,31 @@ int					check_arg(int ac);
 int					check_name(char **argv);
 
 // parse_main.c
-int					process_texture_line(char *line,
-						t_cube *cube, int *texture_count);
+int					process_texture_line(char *line, t_cube *cube,
+						int *texture_count);
 int					validate_textures_complete(int texture_count);
 int					parse_map_file(int fd, t_cube *cube, char *filename);
 int					parse_game(int ac, char **argv, t_cube *cube);
 
 // parse_map_content.c
-int					process_order_line(char *line,
-						int *texture_count, int *map_started);
-int					process_line(char *line, t_cube *cube,
-						char *filename, t_parse *parse);
+int					process_order_line(char *line, int *texture_count,
+						int *map_started);
+int					process_line(char *line, t_cube *cube, char *filename,
+						t_parse *parse);
 
 // parse_textures.c
 int					parse_texture_line(char *line, t_cube *cube);
+
+// parse_textures1.c
+int					is_valid_rgb_digit(char *str);
+int					is_valid_rgb_values(char **rgb);
 
 // parse_utils.c
 int					is_texture_element(char c);
 int					is_player_rotation(char c);
 int					is_map_element(char c);
-void				set_player_position(t_cube *cube, char direction,
-						int row, int col);
+void				set_player_position(t_cube *cube, char direction, int row,
+						int col);
 void				init_counters(t_count *counter);
 
 // parse_validation.c

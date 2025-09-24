@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakerblo <aakerblo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:47:43 by aakerblo          #+#    #+#             */
-/*   Updated: 2025/09/23 16:05:41 by aakerblo         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:27:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ int	cleanup(t_cube *cube)
 	free_doors(cube->door);
 	mlx_destroy_image(cube->mlx, cube->img.img_addr);
 	mlx_destroy_window(cube->mlx, cube->mlx_win);
-#ifdef __linux__
 	mlx_destroy_display(cube->mlx);
-#endif
 	free(cube->mlx);
 	exit(0);
 }
